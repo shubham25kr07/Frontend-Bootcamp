@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+
+    <label for="quota">Number of primes:</label>
+    <input type="text" id="quota" name="quota" value="1000000" />
+
+    <button id="generate">Generate primes</button>
+    <button id="reload">Reload</button>
+
+    <div id="output"></div>
+
+    <button id="xhr">Click to start request</button>
+    <button id="reload">Reload</button>
+    <h1>Authors</h1>
+    <ul id="authors"></ul>
+
+    <pre readonly class="event-log"></pre>
+  </head>
+  <body>
+    <script>
+      ul = document.getElementById("authors");
+      const list = document.createDocumentFragment();
+      const url = "https://jsonplaceholder.typicode.com/users";
+
+      fetch(url)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          let authors = data;
+          console.log(authors);
+          authors.map(function (author) {
+            let li = document.createElement("li");
+            let name = document.createElement("h2");
+            let email = document.createElement("span");
+
+            name.innerHTML = `${author.name}`;
+            email.innerHTML = `${author.email}`;
+
+            li.appendChild(name);
+            li.appendChild(email);
+            list.appendChild(li);
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+      ul.innerHTML = `${list}`;
+    </script>
+  </body>
+</html>
