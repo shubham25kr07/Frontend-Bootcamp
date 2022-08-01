@@ -1,77 +1,121 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Letter Page</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@500&display=swap" rel="stylesheet">
-        <style>
-            .right {
-              text-align: right;
-            }
-            .left {
-              text-align: left;
-            }
-            .left h1 {
-                font-family: 'Roboto', sans-serif;
-            }
-           div p:nth-child(3) {
-                font-family: 'Open Sans', sans-serif;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="right">
-            <address>
-                <strong>Dr.Elanor Gyae</strong><br>
-                Awesone Science faculty<br>
-                University of Awesome<br>
-                Brob, CA 9999,<br>
-                USA<br>
-                <strong>Tel:</strong> 123-456-7890<br>
-                <strong>Email:</strong> no_reply@gmail.com
-            </address>
-            <p>29 July 2022</p>
-        </div>
-        <div class="left">
-            <address>
-                <strong>Miss Eilen Dover</strong><br>
-                4321 cliff<br>
-                Dover<br>
-                UK<br>
-            </address>
-        </div>
-        <div class="left">
-            <h1>Re: University Application</h1>
-            <p>Dear Elines</p>
-            <p>Thank you for To put it simply, plain text
-                is any text that isn’t formatted. It does 
-                not take any special formatting, such as
-                varying fonts, font sizes, bold font, or italics. 
-                It also only contains standard characters, which are those
-                found in the default set of characters that an application 
-                can display.
-            </p>
-            <h2>Starting dates</h2>
-            <p>put it simply, plain text is any text that isn't formatted. It does not take any special formatting, such as varying fonts, font sizes, bold font</p>
-            <ul>
-                <li>First semester: 15 sept 2022</li>
-                <li>second semester 15 sept 2022</li>
-                <li>third semester 15 sept 2022</li>
-            </ul>
-            <p>It also only contains standard characters, which are those
-                found in the default set of characters that an application 
-                can display.
-            </p>
-            <p>
-                you can access the link about <a href="https://www.google.com" >more information about this</a> on gogole
-            </p>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Letter Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .right {
+        text-align: right;
+      }
+      .left {
+        text-align: left;
+      }
+      .left h1 {
+        font-family: "Roboto", sans-serif;
+      }
+      div p:nth-child(3) {
+        font-family: "Open Sans", sans-serif;
+      }
+      .main {
+        display: flex;
+        width: 90%;
+        margin: 0 auto;
+        flex-wrap: wrap;
+      }
+      .imgae {
+        width: 300px; 
+        height: 300px;
+        width: 25%;
+        flex-basis: 100%;
+      }
 
-        </div>
-
-    </body>
+      @media screen and (max-width: 768px) {
+        .imgae {
+          flex-basis: 100%
+        }
+      }
+      @media screen and (min-width: 769px)  and (max-width:1024px){
+        .imgae {
+          flex-basis: 50%
+        }
+      }
+      @media screen and (min-width: 1024px) {
+        .imgae {
+          flex-basis: 33.33%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="right">
+      <address>
+        <strong>Dr.Elanor Gyae</strong><br />
+        Awesone Science faculty<br />
+        University of Awesome<br />
+        Brob, CA 9999,<br />
+        USA<br />
+        <strong>Tel:</strong> 123-456-7890<br />
+        <strong>Email:</strong> no_reply@gmail.com
+      </address>
+      <p>29 July 2022</p>
+    </div>
+    <div class="left">
+      <address>
+        <strong>Miss Eilen Dover</strong><br />
+        4321 cliff<br />
+        Dover<br />
+        UK<br />
+      </address>
+    </div>
+    <div class="left">
+      <h1>Re: University Application</h1>
+      <p>Dear Elines</p>
+      <p>
+        Thank you for To put it simply, plain text is any text that isn’t
+        formatted. It does not take any special formatting, such as varying
+        fonts, font sizes, bold font, or italics. It also only contains standard
+        characters, which are those found in the default set of characters that
+        an application can display.
+      </p>
+      <h2>Starting dates</h2>
+      <p>
+        put it simply, plain text is any text that isn't formatted. It does not
+        take any special formatting, such as varying fonts, font sizes, bold
+        font
+      </p>
+      <ul>
+        <li>First semester: 15 sept 2022</li>
+        <li>second semester 15 sept 2022</li>
+        <li>third semester 15 sept 2022</li>
+      </ul>
+      <p>
+        It also only contains standard characters, which are those found in the
+        default set of characters that an application can display.
+      </p>
+      <p>
+        you can access the link about
+        <a href="https://www.google.com">more information about this</a> on
+        gogole
+      </p>
+    </div>
+    <div class="main">
+      <img class="imgae" src="image.jpeg" />
+      <img class="imgae" src="image.jpeg" />
+      <img class="imgae" src="image.jpeg" />
+      <img class="imgae" src="image.jpeg" />
+      <img class="imgae" src="image.jpeg" />
+      <img class="imgae" src="image.jpeg" />
+      <img class="imgae" src="image.jpeg" />
+      <img class="imgae" src="image.jpeg" />
+      <img class="imgae" src="image.jpeg" />
+    </div>
+  </body>
 </html>
-
-<!-- lorem ipsum -->
-
-
