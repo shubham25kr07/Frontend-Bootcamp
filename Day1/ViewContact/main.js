@@ -1,7 +1,7 @@
 let div = document.getElementById("content");
 let data = [];
 
-let ViewContact = () => {
+let viewContact = () => {
   if (data.length == 0) {
     let h3 = document.createElement("h3");
     h3.innerHTML = "No contact available";
@@ -38,5 +38,5 @@ let ViewContact = () => {
 (() => {
   data = JSON.parse(localStorage.getItem("data")) || [];
   console.log(data);
-  ViewContact();
+  viewContact();
 })();
