@@ -42,13 +42,17 @@
             li.appendChild(name);
             li.appendChild(email);
             list.appendChild(li);
+            // console.log(JSON.stringify());
+            // ul.appendChild(li);
+            console.log(JSON.stringify());
           });
+          ul.appendChild(list);
         })
         .catch(function (error) {
           console.log(error);
         });
 
-      ul.innerHTML = `${list}`;
+      // ul.innerHTML = `${list}`;
     </script>
   </body>
 </html>

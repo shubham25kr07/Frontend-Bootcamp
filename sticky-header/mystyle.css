@@ -1,6 +1,5 @@
 .sticky {
   display: flex;
-  height: 50px;
   position: fixed;
   background-color: black;
   justify-content: space-around;
@@ -8,20 +7,17 @@
   border: 2px solid red;
   top: 0%;
   height: 50px;
+  align-items: center;
 }
-div.addresses address.Address_1 {
-  text-align: right;
-  white-space: pre;
+
+.sticky a {
+  color: white;
 }
-div.addresses address.Address_2 {
-  white-space: pre;
+
+div.images img {
+  width: 100%;
 }
-div.Re {
-  white-space: pre;
-}
-div.wireframe {
-  align-content: left;
-}
+
 @media only screen and (min-width: 1024px) {
   div.images {
     width: 33%;
@@ -43,8 +39,3 @@ div.wireframe {
 body {
   margin-top: 55px;
 }
-/* @media only screen and (max-width: 812px) {
-  .dog-image {
-    width: 100%;
-  }
-} */
