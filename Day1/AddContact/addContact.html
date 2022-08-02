@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Header</h2>
+      </div>
+      <div class="home">
+        <div class="menu">
+          <div>
+            <a href="../index.html">Home</a>
+          </div>
+          <div>
+            <a href="addContact.html">Add Contact</a>
+          </div>
+          <div>
+            <a href="../ViewContact/viewContact.html">View Contact</a>
+          </div>
+        </div>
+        <div class="content">
+          <form id="addContactForm">
+            <label for="fname">Name:</label><br />
+            <input type="text" id="fname" name="fname" required /><br />
+            <label for="phonenumber">Phone Number:</label><br />
+            <input
+              type="p"
+              id="phonenumber"
+              name="phonenumber"
+              pattern="[0-9]{10}"
+              placeholder="1234567809"
+              required
+            /><br /><br />
+            <button type="submit">Create Contact</button>
+          </form>
+        </div>
+        <div class="aside">
+          <h4>Aside</h4>
+        </div>
+      </div>
+      <div class="footer">
+        <h2>Footer</h2>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>

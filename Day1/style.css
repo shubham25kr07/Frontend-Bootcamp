@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  background-color: pink;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+.footer {
+  display: flex;
+  background-color: lightblue;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+.home {
+  display: flex;
+  height: 650px;
+  flex-wrap: wrap;
+}
+.menu {
+  flex-grow: 1;
+  background-color: yellow;
+  text-align: center;
+}
+.content {
+  flex-grow: 4;
+  background-color: green;
+  text-align: center;
+}
+.aside {
+  flex-grow: 1;
+  background-color: orange;
+  text-align: center;
+}
+#tableview,
+#tableview th,
+#tableview td {
+  border: 1px solid black;
+}
+
+@media only screen and (max-width: 1024px) {
+  .home {
+    flex-direction: column;
+  }
+  .header {
+    flex-direction: column;
+  }
+}
