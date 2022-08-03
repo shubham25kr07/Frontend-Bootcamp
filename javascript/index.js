@@ -56,3 +56,11 @@
 // document.querySelector("#reload").addEventListener("click", () => {
 //   document.location.reload();
 // });
+
+function goget() {
+  for (var i = 0; i < 122; i++) {}
+  console.log(i);
+  console.log(x);
+}
+goget();
+let x;
