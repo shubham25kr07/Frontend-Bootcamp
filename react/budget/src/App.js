@@ -1,9 +1,10 @@
-import "./App.css";
+import Budget from "./Budget";
+import ExpenseList from "./ExpenseList";
 
 function App() {
   return (
     <div>
-      <Budget />
+      <ExpenseList />
     </div>
   );
 }
