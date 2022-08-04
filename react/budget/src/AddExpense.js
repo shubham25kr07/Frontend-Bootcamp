@@ -48,7 +48,7 @@ const AddExpense = (props) => {
   };
 
   return (
-    <div>
+    <div class="addexpense">
       <form className="addExpense" onSubmit={addExpense}>
         <label for="name">Name:</label>
         <input

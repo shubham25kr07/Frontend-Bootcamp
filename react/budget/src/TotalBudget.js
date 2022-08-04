@@ -3,11 +3,12 @@ import React, { useState } from "react";
 const TotalBudget = (props) => {
   const { totalBudget, setBudget, setRemainingBudget } = props;
   const [flag, setFlag] = useState(0);
+  const [value, setValue] = useState(0);
 
   const updateBudget = (e) => {
     setFlag(0);
-    setBudget(Number(e.target.value));
-    setRemainingBudget(Number(e.target.value));
+    setBudget(value);
+    setRemainingBudget(value);
   };
 
   return (
@@ -23,7 +24,13 @@ const TotalBudget = (props) => {
       {flag ? (
         <div>
           <label for="budget">Enter Budget:</label>
-          <input type="number" id="budget" name="budget" required />
+          <input
+            type="number"
+            id="budget"
+            name="budget"
+            onChange={(e) => setValue(Number(e.target.value))}
+            required
+          />
           <button onClick={updateBudget}>Submit</button>
         </div>
       ) : null}

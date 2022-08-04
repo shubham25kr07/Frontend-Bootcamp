@@ -15,18 +15,22 @@ const Budget = () => {
   }, []);
   return (
     <div className="budgetContainer">
-      <TotalBudget
-        totalBudget={budget}
-        setBudget={setBudget}
-        setRemainingBudget={setRemainingBudget}
-      />
-      <RemainingBudgets remaining={RemainingBudget} />
-      <TotalExpenses expense={totalExpense} />
-      <ExpenseList
-        remainingBudget={RemainingBudget}
-        setRemainingBudget={setRemainingBudget}
-        setTotalExpense={setTotalExpense}
-      />
+      <div className="budgetview">
+        <TotalBudget
+          totalBudget={budget}
+          setBudget={setBudget}
+          setRemainingBudget={setRemainingBudget}
+        />
+        <RemainingBudgets remaining={RemainingBudget} />
+        <TotalExpenses expense={totalExpense} />
+      </div>
+      <div className="expenseview">
+        <ExpenseList
+          remainingBudget={RemainingBudget}
+          setRemainingBudget={setRemainingBudget}
+          setTotalExpense={setTotalExpense}
+        />
+      </div>
     </div>
   );
 };

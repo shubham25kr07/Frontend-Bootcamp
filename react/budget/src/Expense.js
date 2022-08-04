@@ -24,7 +24,7 @@ const Expense = (props) => {
   };
 
   return (
-    <div>
+    <div className="expnese">
       <h3>name : {name}</h3>
       <h3>cost : {cost}</h3>
       <button onClick={deleteExpense}>delete</button>
