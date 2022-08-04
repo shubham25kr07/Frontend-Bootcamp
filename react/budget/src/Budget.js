@@ -1,22 +1,32 @@
-
 import React, { useEffect, useState } from "react";
-import ToatlBudget from "./TotalBudget";
-import RemainingBudget from "./RemainingBudget";
-import ToatlExpenses from "./TotalExpense";
+import TotalBudget from "./TotalBudget";
+import RemainingBudgets from "./RemainingBudgets";
+import TotalExpenses from "./TotalExpense";
+import ExpenseList from "./ExpenseList";
 
 const Budget = () => {
   const [budget, setBudget] = useState(0);
-  const [expense, setExpense] = useState(0);
-  const [remaining, setRemaining] = useState(0);
+  const [totalExpense, setTotalExpense] = useState(0);
+  const [RemainingBudget, setRemainingBudget] = useState(0);
 
   useEffect(() => {
     setBudget(1000);
+    setRemainingBudget(1000);
   }, []);
   return (
     <div className="budgetContainer">
-      <ToatlBudget totalbudget={budget} />
-      <RemainingBudget remaining={remaining} />
-      <ToatlExpenses expense={expense} />
+      <TotalBudget
+        totalBudget={budget}
+        setBudget={setBudget}
+        setRemainingBudget={setRemainingBudget}
+      />
+      <RemainingBudgets remaining={RemainingBudget} />
+      <TotalExpenses expense={totalExpense} />
+      <ExpenseList
+        remainingBudget={RemainingBudget}
+        setRemainingBudget={setRemainingBudget}
+        setTotalExpense={setTotalExpense}
+      />
     </div>
   );
 };

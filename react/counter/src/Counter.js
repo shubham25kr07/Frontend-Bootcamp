@@ -4,10 +4,16 @@ class Counter extends React.Component {
   state = {
     count: 0,
   };
-  addCount = () => {
+  addCount = (e) => {
+    console.log(e);
     this.setState((prevState) => ({
       count: prevState.count + 1,
     }));
+  };
+  aa = () => {
+    fetch(`https://jsonplaceholder.typicode.com/todos/${counterStep}`)
+      .then((response) => response.json())
+      .then((json) => setData(json));
   };
   subtractCount = () => {
     this.setState((prevState) => ({
@@ -20,7 +26,12 @@ class Counter extends React.Component {
       <div className="container">
         <h1 className="counter">Counter : {this.state.count}</h1>
         <div className="buttons">
-          <button className="button-add" onClick={this.addCount}>
+          <button
+            className="button-add"
+            onClick={(e) => {
+              this.addCount(e);
+            }}
+          >
             Add
           </button>
           <br />

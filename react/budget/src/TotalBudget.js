@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 
-const ToatlBudget = (props) => {
-  const { totalbudget } = props;
+const TotalBudget = (props) => {
+  const { totalBudget, setBudget, setRemainingBudget } = props;
+  const [flag, setFlag] = useState(0);
+
+  const updateBudget = (e) => {
+    setFlag(0);
+    setBudget(Number(e.target.value));
+    setRemainingBudget(Number(e.target.value));
+  };
+
   return (
     <div className="budgetcard">
-      <h4>Budget:{totalbudget}</h4>
+      <h4>Budget:{totalBudget}</h4>
+      <button
+        onClick={() => {
+          setFlag(1);
+        }}
+      >
+        Edit
+      </button>
+      {flag ? (
+        <div>
+          <label for="budget">Enter Budget:</label>
+          <input type="number" id="budget" name="budget" required />
+          <button onClick={updateBudget}>Submit</button>
+        </div>
+      ) : null}
     </div>
   );
 };
 
-export default ToatlBudget;
+export default TotalBudget;

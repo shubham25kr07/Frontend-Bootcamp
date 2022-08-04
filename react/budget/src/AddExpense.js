@@ -1,11 +1,11 @@
 import { useState } from "react";
+import TotalBudget from "./TotalBudget";
 
 const AddExpense = (props) => {
   const {
     setExpenseList,
-    RemainingBudget,
+    remainingBudget,
     setRemainingBudget,
-    setBudget,
     setTotalExpense,
   } = props;
   const [name, setName] = useState("");
@@ -13,7 +13,7 @@ const AddExpense = (props) => {
 
   const addExpense = (e) => {
     e.preventDefault();
-    if (cost > RemainingBudget) {
+    if (cost > remainingBudget) {
       alert("Cost is more than RemainingBudget");
       return;
     }
@@ -27,18 +27,21 @@ const AddExpense = (props) => {
       alert("Enter Correct Types");
       return;
     }
+    // cost = Number(cost);
+    // }
+    console.log(typeof cost);
+    console.log(typeof remainingBudget);
 
     setExpenseList((prevExpeneseList) => {
       const expense = [{ name: name, cost: cost }];
 
       return [...prevExpeneseList, ...expense];
     });
+
     setRemainingBudget((prevRemainingBudget) => {
       return prevRemainingBudget - cost;
     });
-    setBudget((prevBudget) => {
-      return prevBudget - cost;
-    });
+
     setTotalExpense((prevTotalExpense) => {
       return prevTotalExpense + cost;
     });
@@ -46,7 +49,7 @@ const AddExpense = (props) => {
 
   return (
     <div>
-      <form className="addExpense">
+      <form className="addExpense" onSubmit={addExpense}>
         <label for="name">Name:</label>
         <input
           type="text"
@@ -59,14 +62,15 @@ const AddExpense = (props) => {
         <input
           id="cost"
           name="cost"
-          onChange={(e) => setCost(e.target.value)}
+          type="number"
+          onChange={(e) => setCost(Number(e.target.value))}
           required
         />
         <br />
         <br />
-        <button type="submit" onClick={addExpense}>
-          Create Contact
-        </button>
+        {/* <input type="submit" value="clickMe"></input> */}
+        <button>Create Contact</button>
+        {/* <button type="button">Dummy button</button> */}
       </form>
     </div>
   );

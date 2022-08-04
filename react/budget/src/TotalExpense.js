@@ -1,6 +1,6 @@
 import React from "react";
 
-const ToatlExpenses = (props) => {
+const TotalExpenses = (props) => {
   const { expense } = props;
   return (
     <div className="budgetcard">
@@ -9,4 +9,4 @@ const ToatlExpenses = (props) => {
   );
 };
 
-export default ToatlExpenses;
+export default TotalExpenses;
