@@ -1,6 +1,6 @@
 import React from "react";
 
-const RemainingBudget = (props) => {
+const RemainingBudgets = (props) => {
   const { remaining } = props;
   return (
     <div className="budgetcard">
@@ -9,4 +9,4 @@ const RemainingBudget = (props) => {
   );
 };
 
-export default RemainingBudget;
+export default RemainingBudgets;
