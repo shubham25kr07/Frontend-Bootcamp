@@ -24,13 +24,12 @@ const Budget = () => {
         <RemainingBudgets remaining={RemainingBudget} />
         <TotalExpenses expense={totalExpense} />
       </div>
-      <div className="expenseview">
-        <ExpenseList
-          remainingBudget={RemainingBudget}
-          setRemainingBudget={setRemainingBudget}
-          setTotalExpense={setTotalExpense}
-        />
-      </div>
+
+      <ExpenseList
+        remainingBudget={RemainingBudget}
+        setRemainingBudget={setRemainingBudget}
+        setTotalExpense={setTotalExpense}
+      />
     </div>
   );
 };
