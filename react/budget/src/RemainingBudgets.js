@@ -3,7 +3,7 @@ import React from "react";
 const RemainingBudgets = (props) => {
   const { remaining } = props;
   return (
-    <div className="budgetcard">
+    <div className="remainingBudget">
       <h4>Remaining:{remaining}</h4>
     </div>
   );

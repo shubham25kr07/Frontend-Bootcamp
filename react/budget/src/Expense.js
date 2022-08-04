@@ -1,3 +1,4 @@
+import image from "./image.png";
 const Expense = (props) => {
   const {
     name,
@@ -24,10 +25,17 @@ const Expense = (props) => {
   };
 
   return (
-    <div className="expnese">
-      <h3>name : {name}</h3>
-      <h3>cost : {cost}</h3>
-      <button onClick={deleteExpense}>delete</button>
+    <div className="card">
+      <div>
+        <h3>name : {name}</h3>
+        <h3>cost : {cost}</h3>
+      </div>
+      <div className="image-button">
+        <img src={image} />
+        <button className="button" onClick={deleteExpense}>
+          delete
+        </button>
+      </div>
     </div>
   );
 };

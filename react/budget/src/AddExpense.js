@@ -48,29 +48,33 @@ const AddExpense = (props) => {
   };
 
   return (
-    <div class="addexpense">
-      <form className="addExpense" onSubmit={addExpense}>
-        <label for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <label for="cost">Cost:</label>
-        <input
-          id="cost"
-          name="cost"
-          type="number"
-          onChange={(e) => setCost(Number(e.target.value))}
-          required
-        />
-        <br />
-        <br />
-        {/* <input type="submit" value="clickMe"></input> */}
-        <button>Create Contact</button>
-        {/* <button type="button">Dummy button</button> */}
+    <div className="addExpense">
+      <form className="addExpenseForm" onSubmit={addExpense}>
+        <div className="formRow">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            className="formInput"
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="formRow">
+          <label for="cost">Cost:</label>
+          <input
+            className="formInput"
+            id="cost"
+            name="cost"
+            type="number"
+            onChange={(e) => setCost(Number(e.target.value))}
+            required
+          />
+        </div>
+        <div>
+          <button className="buttonDiv">Create Contact</button>
+        </div>
       </form>
     </div>
   );

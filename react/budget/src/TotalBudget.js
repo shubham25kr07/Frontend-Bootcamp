@@ -15,6 +15,7 @@ const TotalBudget = (props) => {
     <div className="budgetcard">
       <h4>Budget:{totalBudget}</h4>
       <button
+        className="button"
         onClick={() => {
           setFlag(1);
         }}
@@ -31,7 +32,9 @@ const TotalBudget = (props) => {
             onChange={(e) => setValue(Number(e.target.value))}
             required
           />
-          <button onClick={updateBudget}>Submit</button>
+          <button className="button" onClick={updateBudget}>
+            Submit
+          </button>
         </div>
       ) : null}
     </div>
