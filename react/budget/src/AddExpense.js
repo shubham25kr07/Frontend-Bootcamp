@@ -11,6 +11,11 @@ const AddExpense = (props) => {
   const [name, setName] = useState("");
   const [cost, setCost] = useState(0);
 
+  let resetForm = (e) => {
+    e.target.name.value = "";
+    e.target.cost.value = "";
+  };
+
   const addExpense = (e) => {
     e.preventDefault();
     if (cost > remainingBudget) {
@@ -45,6 +50,7 @@ const AddExpense = (props) => {
     setTotalExpense((prevTotalExpense) => {
       return prevTotalExpense + cost;
     });
+    resetForm(e);
   };
 
   return (
