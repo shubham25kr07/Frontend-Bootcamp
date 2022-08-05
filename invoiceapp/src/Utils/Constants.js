@@ -1,0 +1,5 @@
+const ENTITY = {
+  CUSTOMER_ENTITY: "CUSTOMERLIST",
+  ITEM_ENTITY: "ITEMLIST",
+};
+export default ENTITY;

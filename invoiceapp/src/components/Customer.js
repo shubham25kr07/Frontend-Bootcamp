@@ -1,11 +1,12 @@
 import { getByLabelText } from "@testing-library/dom";
 import { useEffect, useState } from "react";
+import ENTITY from "../Utils/Constants";
 import Table from "../Utils/Table";
+import CustomerForm from "./CustomerForm";
 const Customer = () => {
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
   const [customerList, setCustomerList] = useState([]);
+  const [flag, setFlag] = useState(0);
+  const CUSTOMER_ENTITY = ENTITY.CUSTOMER_ENTITY;
 
   useEffect(() => {
     // call customer get method in order to get the customerlist
@@ -13,22 +14,14 @@ const Customer = () => {
   }, []);
 
   const callAPI = () => {
-    const data = JSON.parse(localStorage.getItem("data")) || [
-      {
-        name: "shubham",
-        phone_number: "1234",
-        email: "sk@gmail.com",
-        created_at: "05-02-2022",
-      },
-      {
-        name: "pradeep",
-        phone_number: "1234",
-        email: "pk@gmail.com",
-        created_at: "05-02-2022",
-      },
-    ];
+    const data = JSON.parse(localStorage.getItem(CUSTOMER_ENTITY)) || [];
 
     setCustomerList(data);
+  };
+  const showTable = () => {
+    setFlag(!flag);
+
+    setCustomerList(JSON.parse(localStorage.getItem(CUSTOMER_ENTITY)));
   };
 
   const column = () => {
@@ -48,7 +41,7 @@ const Customer = () => {
       {
         title: "PHONE NUMBER",
         render: (rowData) => {
-          return <span>{rowData.phone_number}</span>;
+          return <span>{rowData.phoneNumber}</span>;
         },
       },
       {
@@ -63,7 +56,22 @@ const Customer = () => {
   return (
     <div>
       {/* call form component */}
-      <Table column={column()} datalist={customerList} />
+
+      {flag ? (
+        <div>
+          <button type="button" onClick={showTable}>
+            Add Customer
+          </button>
+          <Table column={column()} datalist={customerList} />
+        </div>
+      ) : (
+        <div>
+          <button type="button" onClick={showTable}>
+            Customer List
+          </button>
+          <CustomerForm setFlag={setFlag} />
+        </div>
+      )}
     </div>
   );
 };

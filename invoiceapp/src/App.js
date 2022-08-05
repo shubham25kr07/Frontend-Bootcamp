@@ -1,7 +1,11 @@
 import InvoiceApp from "./InvoiceApp";
 
 function App() {
-  return <InvoiceApp />;
+  return (
+    <div>
+      <InvoiceApp />
+    </div>
+  );
 }
 
 export default App;
