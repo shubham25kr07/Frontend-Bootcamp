@@ -4,7 +4,7 @@ import FormInput from "../Utils/FormInput";
 
 const ItemForm = (props) => {
   const ITEM_ENTITY = ENTITY.ITEM_ENTITY;
-  const { setFlag } = props;
+  const { setFlag, setItemList } = props;
   const [inputValue, setInputValue] = useState({
     name: "",
     price: "",
@@ -30,6 +30,7 @@ const ItemForm = (props) => {
     localStorage.setItem(ITEM_ENTITY, JSON.stringify(newArray));
     setFlag(1);
     array = JSON.parse(localStorage.getItem(ITEM_ENTITY));
+    setItemList(array);
   };
 
   return (

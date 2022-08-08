@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ENTITY from "../Utils/Constants";
-import Form from "../Utils/Form";
 import Table from "../Utils/Table";
 import ItemForm from "./ItemForm";
 
@@ -66,7 +65,7 @@ const Item = () => {
           <button type="button" onClick={showTable}>
             Item List
           </button>
-          <ItemForm setFlag={setFlag} />
+          <ItemForm setItemList={setItemList} setFlag={setFlag} />
         </div>
       )}
     </div>
