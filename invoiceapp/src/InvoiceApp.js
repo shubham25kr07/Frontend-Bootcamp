@@ -7,7 +7,7 @@ const InvoiceApp = () => {
 
   const handleButton = (event) => {
     event.preventDefault();
-    setIsCustomer(!isCustomer);
+    setIsCustomer(isCustomer ? 0 : 1);
   };
   return (
     <div>

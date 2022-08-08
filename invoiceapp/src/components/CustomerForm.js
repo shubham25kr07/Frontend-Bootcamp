@@ -1,10 +1,9 @@
 import { useState } from "react";
-import ENTITY from "../Utils/Constants";
+import { ENTITY } from "../Utils/Constants";
 import FormInput from "../Utils/FormInput";
-
+const CUSTOMER_ENTITY = ENTITY.CUSTOMER_ENTITY;
 const CustomerForm = (props) => {
-  const CUSTOMER_ENTITY = ENTITY.CUSTOMER_ENTITY;
-  const { setFlag, setCustomerList } = props;
+  const { setFlag, setCustomerList, customerList } = props;
   const [inputValue, setInputValue] = useState({
     name: "",
     email: "",
@@ -23,15 +22,11 @@ const CustomerForm = (props) => {
   const handleSubmit = (event) => {
     //Call Post Api for Customer Form
     event.preventDefault();
-    var x = [inputValue];
-    var array = JSON.parse(localStorage.getItem(CUSTOMER_ENTITY)) || [];
 
-    let newArray = [...array, ...x];
+    let newArray = [...customerList, inputValue];
     localStorage.setItem(CUSTOMER_ENTITY, JSON.stringify(newArray));
-
-    array = JSON.parse(localStorage.getItem(CUSTOMER_ENTITY));
-    setCustomerList(array);
-    setFlag(1);
+    setCustomerList(newArray);
+    setFlag(true);
   };
 
   return (
