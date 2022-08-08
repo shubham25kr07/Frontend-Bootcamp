@@ -134,3 +134,76 @@
   font-weight: bold;
   color: #009879;
 }
+
+/* Left Side Navigation Bar */
+
+/* $sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+
+$orange: #DF4500;
+$gray: #35302D;
+$gray-shine: #3C3735;
+$white-off: #DFDBD9; */
+/* 
+.unstyled{ list-style: none; padding: 0; margin: 0;
+  a: { text-decoration: none; }
+}
+.list-inline{ overflow: hidden;
+  li{ float: left; }
+}
+
+.header{
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 17.5em;
+  background: $gray;
+}
+
+
+.main-nav ul{
+    border-top: solid 1px $gray-shine;
+  }
+  
+.main-nav li{
+    border-bottom: solid 1px #3C3735 ;
+  }
+  
+.main-nav a{
+    padding: 1.1em 0;
+    color: $white-off;
+    font: 400 1.125em $sans;
+    text:{
+      align: center;
+      transform: lowercase;
+    }
+    
+} */
+
+/* .list-hover-slide button {
+  position: relative;
+  overflow: hidden;
+} */
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 17.5em;
+  background-color: #009879;
+}
+
+.list-hover-slide button {
+  background: transparent;
+  border: none !important;
+  font-size: 50px;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: 0.35s ease color;
+  width: 100%;
+}
+.list-hover-slide button:hover {
+  color: blue;
+}
