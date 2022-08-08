@@ -45,8 +45,6 @@ const CustomerForm = (props) => {
             name="name"
             onChange={handleChange.bind(null, "name")}
           />
-        </div>
-        <div className="input-container ic2">
           <FormInput
             type="text"
             value={email}
@@ -56,7 +54,7 @@ const CustomerForm = (props) => {
             onChange={handleChange.bind(null, "email")}
           />
         </div>
-        <div className="input-container ic2">
+        <div className="input-container">
           <FormInput
             type="text"
             value={phoneNumber}
@@ -65,8 +63,8 @@ const CustomerForm = (props) => {
             name="phoneNumber"
             onChange={handleChange.bind(null, "phoneNumber")}
           />
+          <button className="submit">Submit Form</button>
         </div>
-        <button className="submit">Submit Form</button>
       </form>
     </div>
   );
