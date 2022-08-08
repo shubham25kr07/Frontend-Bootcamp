@@ -69,7 +69,7 @@ const Customer = () => {
           <button type="button" onClick={showTable}>
             Customer List
           </button>
-          <CustomerForm setFlag={setFlag} />
+          <CustomerForm setCustomerList={setCustomerList} setFlag={setFlag} />
         </div>
       )}
     </div>

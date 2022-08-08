@@ -43,13 +43,13 @@
   justify-content: space-around;
   flex-direction: row;
 }
-.expense {
+/* .expense {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 33%;
   justify-content: space-around;
-}
+} */
 
 .addExpense {
   display: flex;

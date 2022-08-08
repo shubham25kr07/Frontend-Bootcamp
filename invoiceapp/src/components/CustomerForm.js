@@ -4,7 +4,7 @@ import FormInput from "../Utils/FormInput";
 
 const CustomerForm = (props) => {
   const CUSTOMER_ENTITY = ENTITY.CUSTOMER_ENTITY;
-  const { setFlag } = props;
+  const { setFlag, setCustomerList } = props;
   const [inputValue, setInputValue] = useState({
     name: "",
     email: "",
@@ -30,6 +30,7 @@ const CustomerForm = (props) => {
     localStorage.setItem(CUSTOMER_ENTITY, JSON.stringify(newArray));
 
     array = JSON.parse(localStorage.getItem(CUSTOMER_ENTITY));
+    setCustomerList(array);
     setFlag(1);
   };
 
