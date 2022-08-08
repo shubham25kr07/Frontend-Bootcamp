@@ -1,13 +1,15 @@
 import { getByLabelText } from "@testing-library/dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { ENTITY, CUSTOMER_COLUMN } from "../Utils/Constants";
 import Table from "../Utils/Table";
 import CustomerForm from "./CustomerForm";
+import { entityDetails } from "../App";
 
 const CUSTOMER_ENTITY = ENTITY.CUSTOMER_ENTITY;
 
 const Customer = () => {
-  const [customerList, setCustomerList] = useState([]);
+  const { customerList, setCustomerList } = useContext(entityDetails);
+
   const [flag, setFlag] = useState(true);
 
   useEffect(() => {
@@ -28,22 +30,18 @@ const Customer = () => {
   return (
     <div>
       {flag ? (
-        <div>
+        <div className="table-form">
           <button type="button" onClick={showTable}>
             Add Customer
           </button>
           <Table column={CUSTOMER_COLUMN} datalist={customerList} />
         </div>
       ) : (
-        <div>
+        <div className="table-form">
           <button type="button" onClick={showTable}>
             Customer List
           </button>
-          <CustomerForm
-            setCustomerList={setCustomerList}
-            customerList={customerList}
-            setFlag={setFlag}
-          />
+          <CustomerForm setFlag={setFlag} />
         </div>
       )}
     </div>

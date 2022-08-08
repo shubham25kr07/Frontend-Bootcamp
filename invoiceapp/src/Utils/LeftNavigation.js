@@ -1,4 +1,4 @@
-import ENTITY from "./Constants";
+import { ENTITY } from "./Constants";
 
 const LeftNavigation = (props) => {
   const { setEntityType } = props;

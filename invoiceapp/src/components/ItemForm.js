@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { entityDetails } from "../App";
 import { ENTITY } from "../Utils/Constants";
 import FormInput from "../Utils/FormInput";
 
 const ItemForm = (props) => {
-  const { setFlag, setItemList, itemList } = props;
+  const { setFlag } = props;
+  const { itemList, setItemList } = useContext(entityDetails);
   const [inputValue, setInputValue] = useState({
     name: "",
     price: "",
@@ -25,8 +27,8 @@ const ItemForm = (props) => {
 
     let newArray = [...itemList, inputValue];
     localStorage.setItem(ENTITY.ITEM_ENTITY, JSON.stringify(newArray));
-    setFlag(true);
     setItemList(newArray);
+    setFlag(true);
   };
 
   return (

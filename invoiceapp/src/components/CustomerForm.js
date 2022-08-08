@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { entityDetails } from "../App";
 import { ENTITY } from "../Utils/Constants";
 import FormInput from "../Utils/FormInput";
+
 const CUSTOMER_ENTITY = ENTITY.CUSTOMER_ENTITY;
 const CustomerForm = (props) => {
-  const { setFlag, setCustomerList, customerList } = props;
+  const { setFlag } = props;
+  const { customerList, setCustomerList } = useContext(entityDetails);
   const [inputValue, setInputValue] = useState({
     name: "",
     email: "",
