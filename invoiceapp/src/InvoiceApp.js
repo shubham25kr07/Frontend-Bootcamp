@@ -7,6 +7,7 @@ import ENTITY from "./Utils/Constants";
 import LeftNavigation from "./Utils/LeftNavigation";
 
 const InvoiceApp = () => {
+
   const [entityType, setEntityType] = useState(ENTITY.CUSTOMER_ENTITY);
   function changeEntityType() {
     switch (entityType) {
@@ -24,6 +25,7 @@ const InvoiceApp = () => {
         break;
     }
   }
+
   return (
     <div>
       <LeftNavigation setEntityType={setEntityType} />
