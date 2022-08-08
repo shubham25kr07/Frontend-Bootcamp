@@ -2,23 +2,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .table-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .form {
-  background-color: #15172b;
+  background-color: aliceblue;
   border-radius: 20px;
   box-sizing: border-box;
   height: 500px;
   padding: 20px;
-  width: 320px;
+  width: 100%;
 }
 
 .title {
-  color: #eee;
+  color: black;
   font-family: sans-serif;
   font-size: 36px;
   font-weight: 600;
@@ -26,9 +28,14 @@
 }
 
 .input-container {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  justify-content: space-around;
+  align-items: baseline;
   height: 50px;
-  position: relative;
   width: 100%;
+  margin: 50px;
 }
 .ic1 {
   margin-top: 40px;
@@ -45,17 +52,17 @@
   padding: 4px 20px 0;
   width: 100%;
 }
-.cut {
-  background-color: #15172b;
-  border-radius: 10px;
-  height: 20px;
-  left: 20px;
-  position: absolute;
-  top: -20px;
-  transform: translateY(0);
-  transition: transform 200ms;
-  width: 76px;
-}
+/* .cut {
+    background-color: #15172b;
+    border-radius: 10px;
+    height: 20px;
+    left: 20px;
+    position: absolute;
+    top: -20px;
+    transform: translateY(0);
+    transition: transform 200ms;
+    width: 76px;
+  } */
 
 .cut-short {
   width: 50px;
@@ -86,10 +93,9 @@
   cursor: pointer;
   font-size: 18px;
   height: 50px;
-  margin-top: 38px;
+
   /* outline: 0; */
   text-align: center;
-  width: 100%;
 }
 
 .submit:active {
@@ -99,7 +105,9 @@
 .content-table {
   border-collapse: collapse;
   margin: 25px 0;
+  margin-top: 0%;
   font-size: 0.9em;
+  width: 100%;
   min-width: 400px;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
@@ -107,28 +115,34 @@
 }
 
 .content-table thead tr {
-  background-color: #15172b;
-  color: #ffffff;
+  background-color: aliceblue;
+  color: black;
   text-align: left;
   font-weight: bold;
 }
 
 .content-table th,
 .content-table td {
-  padding: 12px 15px;
+  padding: 20px 25px;
+  font-size: 20px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
+.content-table td {
+  background-color: white;
+}
 .content-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
-.content-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-}
+/* .content-table tbody tr:nth-of-type(even) {
+  background-color: white;
+} */
 
-.content-table tbody tr:last-of-type {
+/* .content-table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
-}
+} */
 
 .content-table tbody tr.active-row {
   font-weight: bold;
@@ -137,72 +151,33 @@
 
 /* Left Side Navigation Bar */
 
-/* $sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-
-$orange: #DF4500;
-$gray: #35302D;
-$gray-shine: #3C3735;
-$white-off: #DFDBD9; */
-/* 
-.unstyled{ list-style: none; padding: 0; margin: 0;
-  a: { text-decoration: none; }
-}
-.list-inline{ overflow: hidden;
-  li{ float: left; }
-}
-
-.header{
-  position: fixed;
-  left: 0; top: 0; bottom: 0;
-  width: 17.5em;
-  background: $gray;
-}
-
-
-.main-nav ul{
-    border-top: solid 1px $gray-shine;
-  }
-  
-.main-nav li{
-    border-bottom: solid 1px #3C3735 ;
-  }
-  
-.main-nav a{
-    padding: 1.1em 0;
-    color: $white-off;
-    font: 400 1.125em $sans;
-    text:{
-      align: center;
-      transform: lowercase;
-    }
-    
-} */
-
-/* .list-hover-slide button {
-  position: relative;
-  overflow: hidden;
-} */
 .header {
   position: fixed;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  /* display: flex; */
+  /* align-items: center; */
+  /* align-items: flex-start; */
+  /* flex-direction: column; */
   left: 0;
   top: 0;
   bottom: 0;
-  width: 17.5em;
-  background-color: #009879;
+  width: 150px;
+  background-color: white;
+}
+.unstyled {
+  display: flex;
+  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 0%;
 }
 
 .list-hover-slide button {
   background: transparent;
   border: none !important;
-  font-size: 50px;
-  display: block;
-  position: relative;
-  z-index: 1;
+  font-size: 20px;
   transition: 0.35s ease color;
-  width: 100%;
+  margin-top: 40px;
+  margin-left: 10px;
 }
 .list-hover-slide button:hover {
   color: blue;
@@ -213,4 +188,53 @@ $white-off: #DFDBD9; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 250px;
+  width: 85vw;
+  background-color: aliceblue;
+  padding: 0%;
+}
+/* buttons */
+.customers-addcustomer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  margin-bottom: -1%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  /* margin-left: */
+}
+
+.add-button {
+  margin-right: 3%;
+  background-color: #7303fc;
+  font-size: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  height: 40px;
+}
+
+i {
+  margin-right: 10px;
+}
+@font-face {
+  font-family: "YourFontName"; /*a name to be used later*/
+  src: url("http://domain.example/fonts/font.ttf"); /*URL to font*/
+}
+/* Then, trivially, to use the font on a specific element:
+
+.classname {
+  font-family: 'YourFontName';
+} */
+.nav-button {
+  font-size: 20px;
+  /* margin-left: -%; */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: black;
+}
+
+i {
+  margin-right: 10px;
 }

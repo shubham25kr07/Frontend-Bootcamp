@@ -7,17 +7,37 @@ const LeftNavigation = (props) => {
   };
   return (
     <div className="header">
-      <div id="mySidenav" className="unstyled list-hover-slide">
-        <button onClick={changeType} value={ENTITY.CUSTOMER_ENTITY}>
+      <div className="unstyled list-hover-slide">
+        <button
+          className="nav-button"
+          onClick={changeType}
+          value={ENTITY.CUSTOMER_ENTITY}
+        >
+          <i class="fa fa-user"></i>
           Customer
         </button>
-        <button onClick={changeType} value={ENTITY.ITEM_ENTITY}>
+        <button
+          className="nav-button"
+          onClick={changeType}
+          value={ENTITY.ITEM_ENTITY}
+        >
+          <i class="fa fa-star"></i>
           Item
         </button>
-        <button onClick={changeType} value={ENTITY.INVOICE_ENTITY}>
+        <button
+          className="nav-button"
+          onClick={changeType}
+          value={ENTITY.INVOICE_ENTITY}
+        >
+          <i class="fa fa-file"></i>
           Invoice
         </button>
-        <button onClick={changeType} value={ENTITY.DASHBOARD_ENTITY}>
+        <button
+          className="nav-button"
+          onClick={changeType}
+          value={ENTITY.DASHBOARD_ENTITY}
+        >
+          <i className="fa fa-tachometer"></i>
           Dashboard
         </button>
       </div>

@@ -31,9 +31,13 @@ const Customer = () => {
     <div>
       {flag ? (
         <div className="table-form">
-          <button type="button" onClick={showTable}>
-            Add Customer
-          </button>
+          <div class="customers-addcustomer">
+            <h1>Customers</h1>
+            <button type="button" className="add-button" onClick={showTable}>
+              <i class="fa fa-plus"></i>
+              Add Customer
+            </button>
+          </div>
           <Table column={CUSTOMER_COLUMN} datalist={customerList} />
         </div>
       ) : (
