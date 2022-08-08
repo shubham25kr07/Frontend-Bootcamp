@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import { entityDetails } from "../App";
 import { ENTITY } from "../Utils/Constants";
 import FormInput from "../Utils/FormInput";
+import { useNavigate } from "react-router-dom";
 
-const ItemForm = (props) => {
-  const { setFlag } = props;
+const ItemForm = () => {
   const { itemList, setItemList } = useContext(entityDetails);
   const [inputValue, setInputValue] = useState({
     name: "",
@@ -20,7 +20,7 @@ const ItemForm = (props) => {
       [type]: value,
     }));
   };
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     //Call Post Api for Customer Form
     event.preventDefault();
@@ -28,7 +28,7 @@ const ItemForm = (props) => {
     let newArray = [...itemList, inputValue];
     localStorage.setItem(ENTITY.ITEM_ENTITY, JSON.stringify(newArray));
     setItemList(newArray);
-    setFlag(true);
+    navigate("/item");
   };
 
   return (

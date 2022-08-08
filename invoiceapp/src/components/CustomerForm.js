@@ -2,10 +2,9 @@ import { useState, useContext } from "react";
 import { entityDetails } from "../App";
 import { ENTITY } from "../Utils/Constants";
 import FormInput from "../Utils/FormInput";
-
+import { useNavigate } from "react-router-dom";
 const CUSTOMER_ENTITY = ENTITY.CUSTOMER_ENTITY;
-const CustomerForm = (props) => {
-  const { setFlag } = props;
+const CustomerForm = () => {
   const { customerList, setCustomerList } = useContext(entityDetails);
   const [inputValue, setInputValue] = useState({
     name: "",
@@ -21,7 +20,7 @@ const CustomerForm = (props) => {
       [type]: value,
     }));
   };
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     //Call Post Api for Customer Form
     event.preventDefault();
@@ -29,7 +28,7 @@ const CustomerForm = (props) => {
     let newArray = [...customerList, inputValue];
     localStorage.setItem(CUSTOMER_ENTITY, JSON.stringify(newArray));
     setCustomerList(newArray);
-    setFlag(true);
+    navigate("/customer");
   };
 
   return (
