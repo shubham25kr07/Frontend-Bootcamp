@@ -5,6 +5,10 @@ import Invoice from "./components/Invoice";
 import Item from "./components/Items";
 import { ENTITY } from "./Utils/Constants";
 import LeftNavigation from "./Utils/LeftNavigation";
+import { BrowserRouter, Switch, Route, Routes } from "react-router-dom";
+import CustomerForm from "./components/CustomerForm";
+import ItemForm from "./components/ItemForm";
+import Home from "./components/Home";
 
 const changeEntityType = (entityType) => {
   switch (entityType) {
@@ -23,12 +27,18 @@ const changeEntityType = (entityType) => {
   }
 };
 const InvoiceApp = () => {
-  const [entityType, setEntityType] = useState(ENTITY.CUSTOMER_ENTITY);
+  const [entityType, setEntityType] = useState(ENTITY.ITEM_ENTITY);
 
   return (
     <div>
-      <LeftNavigation setEntityType={setEntityType} />
-      {changeEntityType(entityType)}
+      <BrowserRouter>
+        <LeftNavigation />
+        <Routes>
+          {/* <Route exact path="/" element={<Home />} /> */}
+          <Route path="/customer" element={<Customer />} />
+          <Route path="/item" element={<Item />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
