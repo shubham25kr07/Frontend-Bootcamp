@@ -8,27 +8,30 @@ import LeftNavigation from "./Utils/LeftNavigation";
 
 const InvoiceApp = () => {
   const [entityType, setEntityType] = useState(ENTITY.CUSTOMER_ENTITY);
-
+  function changeEntityType() {
+    switch (entityType) {
+      case ENTITY.CUSTOMER_ENTITY:
+        return <Customer />;
+        break;
+      case ENTITY.ITEM_ENTITY:
+        return <Item />;
+        break;
+      case ENTITY.INVOICE_ENTITY:
+        return <Invoice />;
+        break;
+      case ENTITY.DASHBOARD_ENTITY:
+        return <Dashboard />;
+        break;
+    }
+  }
   return (
     <div>
       <LeftNavigation setEntityType={setEntityType} />
 
-      {(() => {
-        switch (entityType) {
-          case ENTITY.CUSTOMER_ENTITY:
-            return <Customer />;
-            break;
-          case ENTITY.ITEM_ENTITY:
-            return <Item />;
-            break;
-          case ENTITY.INVOICE_ENTITY:
-            return <Invoice />;
-            break;
-          case ENTITY.DASHBOARD_ENTITY:
-            return <Dashboard />;
-            break;
-        }
-      })()}
+      {/* {(() => {
+       
+      })()} */}
+      {changeEntityType()}
     </div>
   );
 };
