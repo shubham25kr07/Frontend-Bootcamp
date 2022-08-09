@@ -1,14 +1,11 @@
-import { getByLabelText } from "@testing-library/dom";
-import { useEffect, useState, useContext } from "react";
-import { ENTITY, CUSTOMER_COLUMN } from "../Utils/Constants";
+import { useEffect, useContext } from "react";
+import { CUSTOMER_COLUMN } from "../Utils/Constants";
 import Table from "../Utils/Table";
-import { entityDetails } from "../App";
+import { EntityDetailsContext } from "../App";
 import { Link } from "react-router-dom";
 
-const CUSTOMER_ENTITY = ENTITY.CUSTOMER_ENTITY;
-
 const Customer = () => {
-  const { customerList, setCustomerList } = useContext(entityDetails);
+  const { customerList, setCustomerList } = useContext(EntityDetailsContext);
 
   useEffect(() => {
     const url = "http://localhost:8080/v1/customer/customerList?page=1";
@@ -32,6 +29,7 @@ const Customer = () => {
     <div className="table-form">
       <div class="customers-addcustomer ">
         <h1>Customers</h1>
+
         <Link to="/customer/add" className="add-button">
           <i class="fa fa-plus"></i>
           Add Customer

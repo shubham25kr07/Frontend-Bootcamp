@@ -1,11 +1,8 @@
-import { useState, useContext } from "react";
-import { entityDetails } from "../App";
-import { ENTITY } from "../Utils/Constants";
+import { useState } from "react";
 import FormInput from "../Utils/FormInput";
 import { useNavigate } from "react-router-dom";
-const CUSTOMER_ENTITY = ENTITY.CUSTOMER_ENTITY;
+
 const CustomerForm = () => {
-  const { customerList, setCustomerList } = useContext(entityDetails);
   const [inputValue, setInputValue] = useState({
     name: "",
     email: "",
@@ -13,16 +10,16 @@ const CustomerForm = () => {
   });
   const navigate = useNavigate();
   const { name, email, phone_number } = inputValue;
+  const url = "http://localhost:8080/v1/customer/add";
 
   const handleChange = (type, e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setInputValue((prev) => ({
       ...prev,
       [type]: value,
     }));
   };
 
-  const url = "http://localhost:8080/v1/customer/add";
   const handleSubmit = (event) => {
     event.preventDefault();
     fetch(url, {
