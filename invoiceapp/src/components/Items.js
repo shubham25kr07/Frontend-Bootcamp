@@ -23,7 +23,8 @@ const Item = () => {
       .then((response) => response.json())
       .then((json) => {
         setItemList(json.item);
-      });
+      })
+      .catch((error) => console.table(error));
   };
 
   return (
@@ -43,3 +44,14 @@ const Item = () => {
 };
 
 export default Item;
+
+/*
+Validator
+Item Price
+
+Invoice add->
+
+
+
+
+*/

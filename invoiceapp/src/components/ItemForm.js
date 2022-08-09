@@ -28,7 +28,7 @@ const ItemForm = () => {
       body: JSON.stringify(inputValue),
     }).then((response) => response.json());
 
-    alert("Item Added Successfully");
+    // alert("Item Added Successfully");
     navigate("/item");
   };
 
