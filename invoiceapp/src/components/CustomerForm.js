@@ -27,11 +27,17 @@ const CustomerForm = () => {
       method: "POST",
       body: JSON.stringify(inputValue),
     })
-      .then((response) => response.json())
-      .then((json) => json)
-      .catch((error) => console.log(error));
-    // alert("Customer Added Successfully");
-    navigate("/customer");
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        if (json.message !== null) {
+          alert(json.message);
+        } else {
+          alert("Customer Added Successfully");
+          navigate("/customer");
+        }
+      });
   };
 
   return (
