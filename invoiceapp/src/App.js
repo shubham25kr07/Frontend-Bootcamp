@@ -1,6 +1,6 @@
 import InvoiceApp from "./InvoiceApp";
 import { createContext, useState } from "react";
-export const entityDetails = createContext();
+export const EntityDetailsContext = createContext();
 function App() {
   const [customerList, setCustomerList] = useState([]);
   const [itemList, setItemList] = useState([]);
@@ -15,9 +15,9 @@ function App() {
   };
   return (
     <div>
-      <entityDetails.Provider value={propsValue}>
+      <EntityDetailsContext.Provider value={propsValue}>
         <InvoiceApp />
-      </entityDetails.Provider>
+      </EntityDetailsContext.Provider>
     </div>
   );
 }

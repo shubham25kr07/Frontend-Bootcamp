@@ -1,20 +1,20 @@
-import { useContext, useEffect, useState } from "react";
-import { ENTITY, ITEM_COLUMN } from "../Utils/Constants";
+import { useContext, useEffect } from "react";
+import { ITEM_COLUMN } from "../Utils/Constants";
 import Table from "../Utils/Table";
-import { entityDetails } from "../App";
+import { EntityDetailsContext } from "../App";
 import { Link } from "react-router-dom";
 
 const Item = () => {
-  const { itemList, setItemList } = useContext(entityDetails);
-
+  const { itemList, setItemList } = useContext(EntityDetailsContext);
+  const url = "http://localhost:8080/v1/item/itemList?page=1";
   useEffect(() => {
-    const url = "http://localhost:8080/v1/item/itemList?page=1";
     const data = {
       sort_key: "item_name",
       sort_value: "ASC",
     };
     callAPI(url, data);
   }, []);
+
   const callAPI = (url, data) => {
     fetch(url, {
       method: "POST",
@@ -23,7 +23,6 @@ const Item = () => {
       .then((response) => response.json())
       .then((json) => {
         setItemList(json.item);
-        // console.log(json.item);
       });
   };
 

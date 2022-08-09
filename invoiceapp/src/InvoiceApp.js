@@ -1,26 +1,25 @@
-import { useState } from "react";
-import Customer from "./components/Customer";
-import Dashboard from "./components/Dashboard";
-import Invoice from "./components/Invoice";
-import Item from "./components/Items";
-import { ENTITY } from "./Utils/Constants";
+import { lazy, Suspense } from "react";
 import LeftNavigation from "./Utils/LeftNavigation";
-import { BrowserRouter, Switch, Route, Routes } from "react-router-dom";
-import CustomerForm from "./components/CustomerForm";
-import ItemForm from "./components/ItemForm";
-import Home from "./components/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+const LazyCustomer = lazy(() => import("./components/Customer"));
+const LazyItem = lazy(() => import("./components/Items"));
+const LazyCustomerForm = lazy(() => import("./components/CustomerForm"));
+const LazyItemForm = lazy(() => import("./components/ItemForm"));
 
 const InvoiceApp = () => {
   return (
     <div>
       <BrowserRouter>
         <LeftNavigation />
-        <Routes>
-          <Route path="/customer" element={<Customer />} />
-          <Route path="/customer/add" element={<CustomerForm />} />
-          <Route path="/item" element={<Item />} />
-          <Route path="/item/add" element={<ItemForm />} />
-        </Routes>
+        <Suspense fallback={<h1>Loadding Please Wait ... </h1>}>
+          <Routes>
+            <Route path="/customer" element={<LazyCustomer />} />
+            <Route path="/customer/add" element={<LazyCustomerForm />} />
+            <Route path="/item" element={<LazyItem />} />
+            <Route path="/item/add" element={<LazyItemForm />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </div>
   );

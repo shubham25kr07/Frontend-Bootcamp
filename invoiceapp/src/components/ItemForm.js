@@ -1,29 +1,25 @@
-import { useContext, useState } from "react";
-import { entityDetails } from "../App";
-import { ENTITY } from "../Utils/Constants";
+import { useState } from "react";
 import FormInput from "../Utils/FormInput";
 import { useNavigate } from "react-router-dom";
 
 const ItemForm = () => {
-  const { itemList, setItemList } = useContext(entityDetails);
   const [inputValue, setInputValue] = useState({
     Item_Name: "",
     Item_Description: "",
     Price: "",
   });
   const navigate = useNavigate();
-
   const { Item_Name, Item_Description, Price } = inputValue;
+  const url = "http://localhost:8080/v1/item/add";
 
   const handleChange = (type, e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setInputValue((prev) => ({
       ...prev,
       [type]: value,
     }));
   };
 
-  const url = "http://localhost:8080/v1/item/add";
   const handleSubmit = (event) => {
     event.preventDefault();
 
