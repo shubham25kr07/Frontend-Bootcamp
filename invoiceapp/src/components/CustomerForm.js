@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FormInput from "../Utils/FormInput";
 import { useNavigate } from "react-router-dom";
+import { configure } from "@testing-library/react";
 
 const CustomerForm = () => {
   const [inputValue, setInputValue] = useState({
@@ -25,8 +26,11 @@ const CustomerForm = () => {
     fetch(url, {
       method: "POST",
       body: JSON.stringify(inputValue),
-    }).then((response) => response.json());
-    alert("Customer Added Successfully");
+    })
+      .then((response) => response.json())
+      .then((json) => json)
+      .catch((error) => console.log(error));
+    // alert("Customer Added Successfully");
     navigate("/customer");
   };
 
