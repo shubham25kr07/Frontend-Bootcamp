@@ -7,11 +7,13 @@ import { useNavigate } from "react-router-dom";
 const ItemForm = () => {
   const { itemList, setItemList } = useContext(entityDetails);
   const [inputValue, setInputValue] = useState({
-    name: "",
-    price: "",
-    description: "",
+    Item_Name: "",
+    Item_Description: "",
+    Price: "",
   });
-  const { name, price, description } = inputValue;
+  const navigate = useNavigate();
+
+  const { Item_Name, Item_Description, Price } = inputValue;
 
   const handleChange = (type, e) => {
     const { name, value } = e.target;
@@ -20,14 +22,17 @@ const ItemForm = () => {
       [type]: value,
     }));
   };
-  const navigate = useNavigate();
+
+  const url = "http://localhost:8080/v1/item/add";
   const handleSubmit = (event) => {
-    //Call Post Api for Customer Form
     event.preventDefault();
 
-    let newArray = [...itemList, inputValue];
-    localStorage.setItem(ENTITY.ITEM_ENTITY, JSON.stringify(newArray));
-    setItemList(newArray);
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(inputValue),
+    }).then((response) => response.json());
+
+    alert("Item Added Successfully");
     navigate("/item");
   };
 
@@ -38,31 +43,31 @@ const ItemForm = () => {
         <div className="input-container ic1">
           <FormInput
             type="text"
-            value={name}
+            value={Item_Name}
             placeholder="Item Name"
             label="Name"
             name="name"
-            onChange={handleChange.bind(null, "name")}
+            onChange={handleChange.bind(null, "Item_Name")}
           />
         </div>
         <div className="input-container ic2">
           <FormInput
             type="text"
-            value={price}
+            value={Price}
             placeholder="Price"
             label="price"
             name="price"
-            onChange={handleChange.bind(null, "price")}
+            onChange={handleChange.bind(null, "Price")}
           />
         </div>
         <div className="input-container ic2">
           <FormInput
             type="text"
-            value={description}
+            value={Item_Description}
             placeholder="Description"
             label="description"
             name="description"
-            onChange={handleChange.bind(null, "description")}
+            onChange={handleChange.bind(null, "Item_Description")}
           />
         </div>
         <button className="submit">Submit Form</button>

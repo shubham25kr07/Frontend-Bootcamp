@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80vw;
+  margin-left: 260px;
 }
 .table-container {
   display: flex;
@@ -190,8 +191,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 250px;
-  width: 85vw;
+  margin-left: 260px;
+  width: 80vw;
   background-color: aliceblue;
   padding: 0%;
 }

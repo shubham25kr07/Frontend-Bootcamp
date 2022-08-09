@@ -9,9 +9,10 @@ const CustomerForm = () => {
   const [inputValue, setInputValue] = useState({
     name: "",
     email: "",
-    phoneNumber: "",
+    phone_number: "",
   });
-  const { name, email, phoneNumber } = inputValue;
+  const navigate = useNavigate();
+  const { name, email, phone_number } = inputValue;
 
   const handleChange = (type, e) => {
     const { name, value } = e.target;
@@ -20,14 +21,15 @@ const CustomerForm = () => {
       [type]: value,
     }));
   };
-  const navigate = useNavigate();
-  const handleSubmit = (event) => {
-    //Call Post Api for Customer Form
-    event.preventDefault();
 
-    let newArray = [...customerList, inputValue];
-    localStorage.setItem(CUSTOMER_ENTITY, JSON.stringify(newArray));
-    setCustomerList(newArray);
+  const url = "http://localhost:8080/v1/customer/add";
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(inputValue),
+    }).then((response) => response.json());
+    alert("Customer Added Successfully");
     navigate("/customer");
   };
 
@@ -56,11 +58,11 @@ const CustomerForm = () => {
         <div className="input-container">
           <FormInput
             type="text"
-            value={phoneNumber}
+            value={phone_number}
             placeholder="Phone Number"
             label="phoneNumber"
             name="phoneNumber"
-            onChange={handleChange.bind(null, "phoneNumber")}
+            onChange={handleChange.bind(null, "phone_number")}
           />
           <button className="submit">Submit Form</button>
         </div>

@@ -8,11 +8,23 @@ const Item = () => {
   const { itemList, setItemList } = useContext(entityDetails);
 
   useEffect(() => {
-    callAPI();
+    const url = "http://localhost:8080/v1/item/itemList?page=1";
+    const data = {
+      sort_key: "item_name",
+      sort_value: "ASC",
+    };
+    callAPI(url, data);
   }, []);
-  const callAPI = () => {
-    const data = JSON.parse(localStorage.getItem(ENTITY.ITEM_ENTITY)) || [];
-    setItemList(data);
+  const callAPI = (url, data) => {
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setItemList(json.item);
+        // console.log(json.item);
+      });
   };
 
   return (

@@ -11,28 +11,33 @@ const Customer = () => {
   const { customerList, setCustomerList } = useContext(entityDetails);
 
   useEffect(() => {
-    // call customer get method in order to get the customerlist
-    callAPI();
+    const url = "http://localhost:8080/v1/customer/customerList?page=1";
+    const data = {
+      sort_key: "name",
+      sort_value: "ASC",
+    };
+    callAPI(url, data);
   }, []);
 
-  const callAPI = () => {
-    const data = JSON.parse(localStorage.getItem(CUSTOMER_ENTITY)) || [];
-
-    setCustomerList(data);
+  const callAPI = (url, data) => {
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((json) => setCustomerList(json.customer));
   };
 
   return (
-    <div>
-      <div className="table-form">
-        <div class="customers-addcustomer ">
-          <h1>Customers</h1>
-          <Link to="/customer/add" className="add-button">
-            <i class="fa fa-plus"></i>
-            Add Customer
-          </Link>
-        </div>
-        <Table column={CUSTOMER_COLUMN} datalist={customerList} />
+    <div className="table-form">
+      <div class="customers-addcustomer ">
+        <h1>Customers</h1>
+        <Link to="/customer/add" className="add-button">
+          <i class="fa fa-plus"></i>
+          Add Customer
+        </Link>
       </div>
+      <Table column={CUSTOMER_COLUMN} datalist={customerList} />
     </div>
   );
 };

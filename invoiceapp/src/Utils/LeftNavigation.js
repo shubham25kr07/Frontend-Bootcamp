@@ -4,7 +4,6 @@ import { ENTITY } from "./Constants";
 const LeftNavigation = () => {
   return (
     <div className="header">
-      {/* <div className="unstyled1 list-hover-slide1"> */}
       <nav className="nav-menu active">
         <ul className="nav-menu-items">
           {/* <li className="nav-text active">

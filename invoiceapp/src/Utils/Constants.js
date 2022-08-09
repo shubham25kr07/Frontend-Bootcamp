@@ -7,6 +7,12 @@ const ENTITY = {
 
 const CUSTOMER_COLUMN = [
   {
+    title: "ID",
+    render: (rowData) => {
+      return <span>{rowData.id}</span>;
+    },
+  },
+  {
     title: "NAME",
     render: (rowData) => {
       return <span>{rowData.name}</span>;
@@ -21,7 +27,7 @@ const CUSTOMER_COLUMN = [
   {
     title: "PHONE NUMBER",
     render: (rowData) => {
-      return <span>{rowData.phoneNumber}</span>;
+      return <span>{rowData.phone_number}</span>;
     },
   },
   {
@@ -34,9 +40,15 @@ const CUSTOMER_COLUMN = [
 
 const ITEM_COLUMN = [
   {
+    title: "ID",
+    render: (rowData) => {
+      return <span>{rowData.id}</span>;
+    },
+  },
+  {
     title: "NAME",
     render: (rowData) => {
-      return <span>{rowData.name}</span>;
+      return <span>{rowData.Item_Name}</span>;
     },
   },
   {
@@ -48,13 +60,13 @@ const ITEM_COLUMN = [
   {
     title: "DESCRIPTION",
     render: (rowData) => {
-      return <span>{rowData.description}</span>;
+      return <span>{rowData.Item_Description}</span>;
     },
   },
   {
     title: "CREATED ON",
     render: (rowData) => {
-      return <span>{rowData.created_at}</span>;
+      return <span>{rowData.added_on}</span>;
     },
   },
 ];
