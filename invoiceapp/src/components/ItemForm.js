@@ -1,25 +1,6 @@
 import { useState } from "react";
 import FormInput from "../Utils/FormInput";
 import { useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
-
-const validate = (values) => {
-  const errors = {};
-
-  if (!values.Item_Name) {
-    errors.Item_Name = "Required";
-  }
-
-  if (!values.Price) {
-    errors.Price = "Required";
-  }
-
-  if (!values.Item_Description) {
-    errors.Item_Description = "Required";
-  }
-
-  return errors;
-};
 
 const ItemForm = () => {
   const [inputValue, setInputValue] = useState({
@@ -27,22 +8,13 @@ const ItemForm = () => {
     Item_Description: "",
     Price: "",
   });
-
-  const formik = useFormik({
-    initialValues: {
-      Item_Name: "",
-      Item_Description: "",
-      Price: "",
-    },
-    validate,
-    onSubmit: (values) => {
-      console.log(values);
-      alert(JSON.stringify(values, null, 2));
-    },
+  const [errors, setErrors] = useState({
+    Item_Name: "",
+    Item_Description: "",
+    Price: null,
   });
-
-  const navigate = useNavigate();
   const { Item_Name, Item_Description, Price } = inputValue;
+  const navigate = useNavigate();
   const url = "http://localhost:8080/v1/item/add";
 
   const handleChange = (type, e) => {
@@ -53,6 +25,21 @@ const ItemForm = () => {
     }));
   };
 
+  const handleBlur = (type, e) => {
+    const { value } = e.target;
+    console.log("handleBlur");
+    if (value === "") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [type]: "Required",
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [type]: "",
+      }));
+    }
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -67,69 +54,57 @@ const ItemForm = () => {
 
   return (
     <div className="form-container">
-      <form className="form" onSubmit={formik.handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <div className="title">Add Item</div>
         <div className="input-container ic1">
           <FormInput
             type="text"
-            // value={Item_Name}
+            value={Item_Name}
             placeholder="Item Name"
             label="Name"
             name="name"
-            // onChange={handleChange.bind(null, "Item_Name")}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.Item_Name}
+            onChange={handleChange.bind(null, "Item_Name")}
+            onBlur={handleBlur.bind(null, "Item_Name")}
           />
-          {formik.touched.Item_Name && formik.errors.Item_Name ? (
-            <div>{formik.errors.Item_Name}</div>
-          ) : null}
+          {errors.Item_Name && (
+            <div>
+              <h1>{errors.Item_Name}</h1>
+            </div>
+          )}
         </div>
         <div className="input-container ic2">
           <FormInput
             type="text"
-            // value={Price}
+            value={Price}
             placeholder="Price"
             label="price"
             name="price"
-            // onChange={handleChange.bind(null, "Price")}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.Price}
+            onChange={handleChange.bind(null, "Price")}
+            onBlur={handleBlur.bind(null, "Price")}
           />
-          {formik.touched.Price && formik.errors.Price ? (
-            <div>{formik.errors.Price}</div>
-          ) : null}
+          {errors.Price && (
+            <div>
+              <h1>{errors.Price}</h1>
+            </div>
+          )}
         </div>
+
         <div className="input-container ic2">
-          <input
+          <FormInput
+            placeholder="Price"
+            label="price"
             id="Item_Description"
             name="Item_Description"
             type="Item_Description"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.Item_Description}
+            value={Item_Description}
+            onChange={handleChange.bind(null, "Item_Description")}
+            onBlur={handleBlur.bind(null, "Item_Description")}
           />
-          {formik.touched.Item_Description && formik.errors.Item_Description ? (
-            <div>{formik.errors.Item_Description}</div>
-          ) : null}
-          {/* 
-          <FormInput
-            type="text"
-            // onblur={handleBlur}
-            // value={Item_Description}
-            placeholder="Description"
-            label="description"
-            name="description"
-            // onChange={handleChange.bind(null, "Item_Description")}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.Item_Description}
-          />
-          {formik.touched.Item_Description &&
-          formik.errors.PricItem_Descriptione ? (
-            <div>{formik.errors.Item_Description}</div>
-          ) : null} */}
+          {errors.Item_Description && (
+            <div>
+              <h1>{errors.Item_Description}</h1>
+            </div>
+          )}
         </div>
         <button className="submit">Submit Form</button>
       </form>
