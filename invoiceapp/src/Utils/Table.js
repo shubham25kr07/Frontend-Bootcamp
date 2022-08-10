@@ -1,5 +1,5 @@
 const Table = (props) => {
-  const { column, datalist } = props;
+  const { column, datalist, setCurrentPage, currentPage } = props;
   return (
     <div className="table-container">
       <table className="content-table">
@@ -26,6 +26,30 @@ const Table = (props) => {
               </tr>
             ))}
         </tbody>
+        <div>
+          {currentPage > 1 ? (
+            <button
+              onClick={() => {
+                setCurrentPage((prePage) => {
+                  if (prePage > 1) return prePage - 1;
+                  return prePage;
+                });
+              }}
+            >
+              Prev
+            </button>
+          ) : null}
+
+          <button
+            onClick={() => {
+              setCurrentPage((prePage) => {
+                return prePage + 1;
+              });
+            }}
+          >
+            Next
+          </button>
+        </div>
       </table>
     </div>
   );

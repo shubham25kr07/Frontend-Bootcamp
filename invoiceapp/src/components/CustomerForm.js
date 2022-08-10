@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FormInput from "../Utils/FormInput";
 import { useNavigate } from "react-router-dom";
-import { configure } from "@testing-library/react";
 
 const CustomerForm = () => {
   const [inputValue, setInputValue] = useState({
@@ -27,16 +26,22 @@ const CustomerForm = () => {
       method: "POST",
       body: JSON.stringify(inputValue),
     })
-      .then((response) => {
-        return response.json();
+      .then(async (response) => {
+        const x = await response.json();
+        console.log(x, response);
+        // return x;
+        if (response.status !== 200) {
+          throw new Error(x.message);
+        } else {
+          return x;
+        }
       })
       .then((json) => {
-        if (json.message !== null) {
-          alert(json.message);
-        } else {
-          alert("Customer Added Successfully");
-          navigate("/customer");
-        }
+        alert("Customer Added Successfully");
+        navigate("/customer");
+      })
+      .catch((error) => {
+        console.table(error);
       });
   };
 

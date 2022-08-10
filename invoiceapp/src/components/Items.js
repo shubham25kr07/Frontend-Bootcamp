@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ITEM_COLUMN } from "../Utils/Constants";
 import Table from "../Utils/Table";
 import { EntityDetailsContext } from "../App";
@@ -6,14 +6,15 @@ import { Link } from "react-router-dom";
 
 const Item = () => {
   const { itemList, setItemList } = useContext(EntityDetailsContext);
-  const url = "http://localhost:8080/v1/item/itemList?page=1";
+  const [currentPage, setCurrentPage] = useState(1);
   useEffect(() => {
+    const url = `http://localhost:8080/v1/item/itemList?page=${currentPage}`;
     const data = {
       sort_key: "item_name",
       sort_value: "ASC",
     };
     callAPI(url, data);
-  }, []);
+  }, [currentPage]);
 
   const callAPI = (url, data) => {
     fetch(url, {
@@ -37,7 +38,12 @@ const Item = () => {
             Add Item
           </Link>
         </div>
-        <Table column={ITEM_COLUMN} datalist={itemList} />
+        <Table
+          column={ITEM_COLUMN}
+          datalist={itemList}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
       </div>
     </div>
   );
