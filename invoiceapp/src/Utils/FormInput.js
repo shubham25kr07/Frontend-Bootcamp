@@ -1,6 +1,14 @@
 import React from "react";
 
-const FormInput = ({ value, label, name, placeholder, type, onChange }) => (
+const FormInput = ({
+  value,
+  label,
+  name,
+  placeholder,
+  type,
+  onChange,
+  onBlur,
+}) => (
   <div className="form-group">
     {/* <label for="firstname" className="placeholder">
       {label}
@@ -13,6 +21,7 @@ const FormInput = ({ value, label, name, placeholder, type, onChange }) => (
       name={name}
       placeholder={placeholder}
       onChange={onChange}
+      onBlur={onBlur}
     />
   </div>
 );

@@ -11,9 +11,9 @@ const LazyItemForm = lazy(() => import("./components/ItemForm"));
 const InvoiceApp = () => {
   return (
     <div>
-      Hello
-      <Home />
-      {/* <BrowserRouter>
+      {/* Hello
+      <Home /> */}
+      <BrowserRouter>
         <LeftNavigation />
         <Suspense fallback={<h1>Loadding Please Wait ... </h1>}>
           <Routes>
@@ -23,7 +23,7 @@ const InvoiceApp = () => {
             <Route path="/item/add" element={<LazyItemForm />} />
           </Routes>
         </Suspense>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </div>
   );
 };
