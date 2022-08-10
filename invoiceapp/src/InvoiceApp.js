@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import LeftNavigation from "./Utils/LeftNavigation";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
 
 const LazyCustomer = lazy(() => import("./components/Customer"));
 const LazyItem = lazy(() => import("./components/Items"));
@@ -10,7 +11,9 @@ const LazyItemForm = lazy(() => import("./components/ItemForm"));
 const InvoiceApp = () => {
   return (
     <div>
-      <BrowserRouter>
+      Hello
+      <Home />
+      {/* <BrowserRouter>
         <LeftNavigation />
         <Suspense fallback={<h1>Loadding Please Wait ... </h1>}>
           <Routes>
@@ -20,7 +23,7 @@ const InvoiceApp = () => {
             <Route path="/item/add" element={<LazyItemForm />} />
           </Routes>
         </Suspense>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 };
