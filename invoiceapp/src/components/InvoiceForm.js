@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Table } from "react-virtualized";
 import FormInput from "../Utils/FormInput";
 
 const InvoiceForm = () => {
@@ -11,11 +12,13 @@ const InvoiceForm = () => {
   });
   const { IssuedAt, DueDate, Notes, ReferenceNumber, InvoiceNumber } =
     inputValue;
-
+  const [showItemList, setShowItemList] = useState(false);
   const handleChange = () => {};
   const saveInvoice = () => {};
   const validateDate = () => {};
-  const itemListPopUp = () => {};
+  const itemListPopUp = () => {
+    setShowItemList(!showItemList);
+  };
   const validateNotes = () => {};
 
   return (
@@ -76,7 +79,7 @@ const InvoiceForm = () => {
           </div>
         </div>
         <div>
-          // Selected Items Table
+          <Table />
           <button type="button" onClick={itemListPopUp}>
             Add an Item
           </button>

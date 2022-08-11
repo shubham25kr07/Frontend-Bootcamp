@@ -23,6 +23,7 @@ const InvoiceApp = () => {
             <Route path="/item" element={<LazyItem />} />
             <Route path="/item/add" element={<LazyItemForm />} />
             <Route path="/invoice" element={<LazyInvoice />} />
+            <Route path="/invoice/add" element={<LazyInvoice />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

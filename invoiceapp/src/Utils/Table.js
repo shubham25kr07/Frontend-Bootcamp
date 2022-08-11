@@ -1,16 +1,27 @@
 const Table = (props) => {
   const {
+    // flag,
     column,
     datalist,
     setCurrentPage,
     currentPage,
     pagination = true,
+    flag = true,
   } = props;
+
   const clickedOnRow = (e) => {
     // console.log("clcikedf", e.target.parentElement.innerHTML);
-    console.log("clcikedf", e.target.parentElement);
 
-    const x = e.target.parentElement;
+    const x = e.target.parentElement.id;
+    const arr = datalist.filter((data) => data.id === Number(x));
+    console.log(arr);
+    // const url = `http://localhost:8080/v1/customer/${x}`;
+    // fetch(url, {
+    //   method: "GET",
+    // })
+    //   .then((response) => response.json())
+    //   .then((json) => console.log(json));
+    // console.log("Name: " + name + "\nAge: " + age);
     // while(e.target!="tr"){
     //   console.log(e.target)
     //   e.target=e.target.tr
@@ -31,7 +42,7 @@ const Table = (props) => {
         <tbody>
           {datalist &&
             datalist.map((item, index) => (
-              <tr key={index} onClick={clickedOnRow}>
+              <tr key={index} id={item.id} onClick={flag && clickedOnRow}>
                 {column.map(
                   (col, key) =>
                     col.title !== "ID" ? (
