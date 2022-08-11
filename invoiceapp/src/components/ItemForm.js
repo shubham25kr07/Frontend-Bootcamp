@@ -31,7 +31,7 @@ const ItemForm = () => {
     if (value === "") {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        [type]: "Required",
+        [type]: ` ${type} is a Required`,
       }));
     } else {
       setErrors((prevErrors) => ({
@@ -64,7 +64,7 @@ const ItemForm = () => {
             label="Name"
             name="name"
             onChange={handleChange.bind(null, "Item_Name")}
-            onBlur={handleBlur.bind(null, "Item_Name")}
+            onBlur={handleBlur.bind(null, "Item_Name")} //change the name of handleBlur
           />
           {errors.Item_Name && (
             <div>
