@@ -71,4 +71,48 @@ const ITEM_COLUMN = [
   },
 ];
 
-export { ENTITY, CUSTOMER_COLUMN, ITEM_COLUMN };
+const INVOICE_COLUMN = [
+  {
+    title: "ID",
+    render: (rowData) => {
+      return <span>{rowData.InvoiceId}</span>;
+    },
+  },
+  {
+    title: "DATE",
+    render: (rowData) => {
+      return <span>{rowData.CreatedAt}</span>;
+    },
+  },
+  {
+    title: "CUSTOMER",
+    render: (rowData) => {
+      return <span>{rowData.CustomerName}</span>;
+    },
+  },
+  {
+    title: "NUMBER",
+    render: (rowData) => {
+      return <span>rowData.ReferenceNumber</span>;
+    },
+  },
+  {
+    title: "PAID STATUS",
+    render: (rowData) => {
+      return <span>{rowData.PaidStatus}</span>;
+    },
+  },
+  {
+    title: "AMOUNT",
+    render: (rowData) => {
+      return <span>{rowData.TotalAmount}</span>;
+    },
+  },
+  // {
+  //   title: "CREATED ON",
+  //   render: (rowData) => {
+  //     return <span>{rowData.added_on}</span>;
+  //   },
+  // },
+];
+export { ENTITY, CUSTOMER_COLUMN, ITEM_COLUMN, INVOICE_COLUMN };

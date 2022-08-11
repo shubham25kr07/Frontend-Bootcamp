@@ -1,5 +1,21 @@
 const Table = (props) => {
-  const { column, datalist, setCurrentPage, currentPage } = props;
+  const {
+    column,
+    datalist,
+    setCurrentPage,
+    currentPage,
+    pagination = true,
+  } = props;
+  const clickedOnRow = (e) => {
+    // console.log("clcikedf", e.target.parentElement.innerHTML);
+    console.log("clcikedf", e.target.parentElement);
+
+    const x = e.target.parentElement;
+    // while(e.target!="tr"){
+    //   console.log(e.target)
+    //   e.target=e.target.tr
+    // }
+  };
   return (
     <div className="table-container">
       <table className="content-table">
@@ -15,7 +31,7 @@ const Table = (props) => {
         <tbody>
           {datalist &&
             datalist.map((item, index) => (
-              <tr key={item.id || index}>
+              <tr key={index} onClick={clickedOnRow}>
                 {column.map(
                   (col, key) =>
                     col.title !== "ID" ? (
@@ -26,30 +42,32 @@ const Table = (props) => {
               </tr>
             ))}
         </tbody>
-        <div>
-          {currentPage > 1 ? (
+        {pagination === true ? (
+          <div>
+            {currentPage > 1 ? (
+              <button
+                onClick={() => {
+                  setCurrentPage((prePage) => {
+                    if (prePage > 1) return prePage - 1;
+                    return prePage;
+                  });
+                }}
+              >
+                Prev
+              </button>
+            ) : null}
+
             <button
               onClick={() => {
                 setCurrentPage((prePage) => {
-                  if (prePage > 1) return prePage - 1;
-                  return prePage;
+                  return prePage + 1;
                 });
               }}
             >
-              Prev
+              Next
             </button>
-          ) : null}
-
-          <button
-            onClick={() => {
-              setCurrentPage((prePage) => {
-                return prePage + 1;
-              });
-            }}
-          >
-            Next
-          </button>
-        </div>
+          </div>
+        ) : null}
       </table>
     </div>
   );

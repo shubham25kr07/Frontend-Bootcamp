@@ -25,7 +25,7 @@ const LeftNavigation = () => {
             </Link>
           </li>
           <li className="nav-text active">
-            <Link to="#">
+            <Link to="/invoice">
               <i className="fa fa-file"></i>
               <span>{ENTITY.INVOICE_ENTITY}</span>
             </Link>
