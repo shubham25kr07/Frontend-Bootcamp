@@ -9,31 +9,36 @@ const CUSTOMER_COLUMN = [
   {
     title: "ID",
     render: (rowData) => {
-      return <span>{rowData.id}</span>;
+      return rowData.id;
+      // return <span>{rowData.id}</span>;
     },
   },
   {
     title: "NAME",
     render: (rowData) => {
-      return <span>{rowData.name}</span>;
+      return rowData.name;
+      // return <span>{rowData.name}</span>;
     },
   },
   {
     title: "EMAIL",
     render: (rowData) => {
-      return <span>{rowData.email}</span>;
+      return rowData.email;
+      // return <span>{rowData.email}</span>;
     },
   },
   {
     title: "PHONE NUMBER",
     render: (rowData) => {
-      return <span>{rowData.phone_number}</span>;
+      return rowData.phone_number;
+      // return <span>{rowData.phone_number}</span>;
     },
   },
   {
     title: "CREATED ON",
     render: (rowData) => {
-      return <span>{rowData.created_at}</span>;
+      return rowData.created_at;
+      // return <span>{rowData.created_at}</span>;
     },
   },
 ];
