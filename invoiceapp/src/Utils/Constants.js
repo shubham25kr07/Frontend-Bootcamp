@@ -98,7 +98,7 @@ const INVOICE_COLUMN = [
   {
     title: "NUMBER",
     render: (rowData) => {
-      return <span>rowData.ReferenceNumber</span>;
+      return <span>{rowData.ReferenceNumber}</span>;
     },
   },
   {

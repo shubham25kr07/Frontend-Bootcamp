@@ -1,8 +1,11 @@
-import { useState } from "react";
-import { Table } from "react-virtualized";
+import { useContext, useState } from "react";
+import { ITEM_COLUMN } from "../Utils/Constants";
+// import { Table } from "react-virtualized";
 import FormInput from "../Utils/FormInput";
-
+import Table from "../Utils/Table";
+import { EntityDetailsContext } from "../App";
 const InvoiceForm = () => {
+  const { itemList, setItemList } = useContext(EntityDetailsContext);
   const [inputValue, setInputValue] = useState({
     IssuedAt: new Date().toISOString().slice(0, 10),
     DueDate: "",
@@ -10,6 +13,7 @@ const InvoiceForm = () => {
     InvoiceNumber: "",
     ReferenceNumber: "",
   });
+  const pagination = false;
   const { IssuedAt, DueDate, Notes, ReferenceNumber, InvoiceNumber } =
     inputValue;
   const [showItemList, setShowItemList] = useState(false);
@@ -22,7 +26,7 @@ const InvoiceForm = () => {
   const validateNotes = () => {};
 
   return (
-    <div>
+    <div className="input-container ic1">
       <form onSubmit={saveInvoice}>
         <div>
           <h1>New Invoice</h1>
@@ -79,10 +83,17 @@ const InvoiceForm = () => {
           </div>
         </div>
         <div>
-          <Table />
+          {/* <Table /> */}
           <button type="button" onClick={itemListPopUp}>
             Add an Item
           </button>
+          {showItemList && (
+            <Table
+              column={ITEM_COLUMN}
+              datalist={itemList}
+              pagination={pagination}
+            />
+          )}
         </div>
         <div>
           {/* Notes */}

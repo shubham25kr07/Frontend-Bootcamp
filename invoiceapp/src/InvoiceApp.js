@@ -8,6 +8,7 @@ const LazyItem = lazy(() => import("./components/Items"));
 const LazyInvoice = lazy(() => import("./components/Invoice"));
 const LazyCustomerForm = lazy(() => import("./components/CustomerForm"));
 const LazyItemForm = lazy(() => import("./components/ItemForm"));
+const LazyInvoiceForm = lazy(() => import("./components/InvoiceForm"));
 
 const InvoiceApp = () => {
   return (
@@ -23,7 +24,7 @@ const InvoiceApp = () => {
             <Route path="/item" element={<LazyItem />} />
             <Route path="/item/add" element={<LazyItemForm />} />
             <Route path="/invoice" element={<LazyInvoice />} />
-            <Route path="/invoice/add" element={<LazyInvoice />} />
+            <Route path="/invoice/add" element={<LazyInvoiceForm />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
