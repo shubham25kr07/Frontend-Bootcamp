@@ -4,8 +4,16 @@ import { ITEM_COLUMN } from "../Utils/Constants";
 import FormInput from "../Utils/FormInput";
 import Table from "../Utils/Table";
 import { EntityDetailsContext } from "../App";
+import PopUp from "../Utils/PopUp";
+import DropDownModal from "../Utils/DropDownList";
 const InvoiceForm = () => {
   const { itemList, setItemList } = useContext(EntityDetailsContext);
+  const [displayModel, setDisplayModel] = useState(false);
+
+  console.log(displayModel);
+  const showModel = () => {
+    setDisplayModel(!displayModel);
+  };
   const [inputValue, setInputValue] = useState({
     IssuedAt: new Date().toISOString().slice(0, 10),
     DueDate: "",
@@ -13,6 +21,7 @@ const InvoiceForm = () => {
     InvoiceNumber: "",
     ReferenceNumber: "",
   });
+  console.log(itemList);
   const pagination = false;
   const { IssuedAt, DueDate, Notes, ReferenceNumber, InvoiceNumber } =
     inputValue;
@@ -84,16 +93,9 @@ const InvoiceForm = () => {
         </div>
         <div>
           {/* <Table /> */}
-          <button type="button" onClick={itemListPopUp}>
-            Add an Item
+          <button type="button" onClick={showModel}>
+            Open Modal
           </button>
-          {showItemList && (
-            <Table
-              column={ITEM_COLUMN}
-              datalist={itemList}
-              pagination={pagination}
-            />
-          )}
         </div>
         <div>
           {/* Notes */}
@@ -108,6 +110,11 @@ const InvoiceForm = () => {
           />
         </div>
       </form>
+      <PopUp
+        dataList={itemList}
+        displayModel={displayModel}
+        showModel={showModel}
+      />
     </div>
   );
 };
