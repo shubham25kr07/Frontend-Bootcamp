@@ -59,7 +59,7 @@ const ITEM_COLUMN = [
   {
     title: "PRICE",
     render: (rowData) => {
-      return <span>{rowData.price}</span>;
+      return <span>{rowData.Price}</span>;
     },
   },
   {

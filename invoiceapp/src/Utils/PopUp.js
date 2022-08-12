@@ -1,7 +1,7 @@
 import SelectList from "./SelectList";
 
 const PopUp = (props) => {
-  const { displayModel, showModel, dataList } = props;
+  const { displayModel, showModel, dataList, setSelectedItemList } = props;
 
   return (
     <div>
@@ -11,7 +11,11 @@ const PopUp = (props) => {
             <button className="close-btn" onClick={showModel}>
               Close
             </button>
-            <SelectList dataList={dataList} />
+            <SelectList
+              dataList={dataList}
+              showModel={showModel}
+              setSelectedItemList={setSelectedItemList}
+            />
           </div>
         </div>
       )}

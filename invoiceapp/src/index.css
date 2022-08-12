@@ -408,3 +408,66 @@ Select Box
 #checkboxes label:hover {
   background-color: #1e90ff;
 }
+
+/* invoice form  */
+.form-top-header {
+  display: flex;
+  background-color: whitesmoke;
+  height: 70px;
+  width: 80vw;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-top-header h1 {
+  margin-left: 10px;
+}
+.form-top-header button {
+  margin-right: 10px;
+}
+.button-61 {
+  align-items: center;
+  appearance: none;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: white;
+  background-color: purple;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Roboto, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  height: 36px;
+  justify-content: center;
+  letter-spacing: 0.0892857em;
+  line-height: normal;
+  min-width: 64px;
+  outline: none;
+  overflow: visible;
+  padding: 0 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  will-change: transform, opacity;
+}
+
+.form-first-div {
+  display: flex;
+  height: 200px;
+  background-color: whitesmoke;
+}
+.div-f1 {
+  display: flex;
+  background-color: green;
+  height: 100px;
+  width: 400px;
+  /* width: 80vw; */
+  /* justify-content: space-between;
+  align-items: center; */
+}

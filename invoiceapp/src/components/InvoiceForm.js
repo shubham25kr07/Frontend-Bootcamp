@@ -33,19 +33,27 @@ const InvoiceForm = () => {
     setShowItemList(!showItemList);
   };
   const validateNotes = () => {};
-
+  const [selectedItemList, setSelectedItemList] = useState([]);
+  console.log(selectedItemList);
   return (
-    <div className="input-container ic1">
+    <div className="form-container">
       <form onSubmit={saveInvoice}>
-        <div>
+        <div className="form-top-header">
           <h1>New Invoice</h1>
-          <button>Save Invoice</button>
+          <button className="button-61">
+            <i className="fa fa-file"></i>Save Invoice
+          </button>
         </div>
+        <div className="form-first-div">
+          <div className="div-f1"></div>
+          <div></div>
+        </div>
+
         <div>
-          <div>
+          {/* <div>
             <FormInput />
             <button>Change</button>
-          </div>
+          </div> */}
           <div>
             <div>
               <FormInput
@@ -114,6 +122,7 @@ const InvoiceForm = () => {
         dataList={itemList}
         displayModel={displayModel}
         showModel={showModel}
+        setSelectedItemList={setSelectedItemList}
       />
     </div>
   );
