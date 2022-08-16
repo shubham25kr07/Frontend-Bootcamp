@@ -8,13 +8,14 @@ const FormInput = ({
   type,
   onChange,
   onBlur,
+  className,
 }) => (
   <>
     <div>
       <label>{label}</label>
     </div>
     <input
-      className="input"
+      className={className || "input"}
       type={type}
       value={value}
       name={name}

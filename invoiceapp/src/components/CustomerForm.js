@@ -8,6 +8,11 @@ const CustomerForm = () => {
     email: "",
     phone_number: "",
   });
+  const [errors, setErrors] = useState({
+    Name: "",
+    Phone: "",
+    Email: "",
+  });
   const navigate = useNavigate();
   const { name, email, phone_number } = inputValue;
   const url = "http://localhost:8080/v1/customer/add";
@@ -18,6 +23,22 @@ const CustomerForm = () => {
       ...prev,
       [type]: value,
     }));
+  };
+
+  const handleBlur = (type, e) => {
+    const { value } = e.target;
+    console.log("handleBlur");
+    if (value === "") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [type]: ` *${type} is a Required`,
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [type]: "",
+      }));
+    }
   };
 
   const handleSubmit = (event) => {
@@ -49,7 +70,7 @@ const CustomerForm = () => {
     <div className="form-container">
       <div className="title">New Customer</div>
       <form className="form" onSubmit={handleSubmit}>
-        <div className="input-container">
+        <div className="input-container customer-input-container">
           <div className="lable-input">
             <FormInput
               type="text"
@@ -58,7 +79,13 @@ const CustomerForm = () => {
               label="Name"
               name="name"
               onChange={handleChange.bind(null, "name")}
+              onBlur={handleBlur.bind(null, "Name")} //change the name of handleBlur
             />
+            <div>
+              {errors.Name && (
+                <div className="customer-error">{errors.Name}</div>
+              )}
+            </div>
           </div>
           <div className="lable-input  ic1">
             <FormInput
@@ -68,10 +95,16 @@ const CustomerForm = () => {
               label="Phone"
               name="phoneNumber"
               onChange={handleChange.bind(null, "phone_number")}
+              onBlur={handleBlur.bind(null, "Phone")} //change the name of handleBlur
             />
+            <div>
+              {errors.Phone && (
+                <div className="customer-error">{errors.Phone}</div>
+              )}
+            </div>
           </div>
         </div>
-        <div className="input-container">
+        <div className="input-container customer-input-container">
           <div className="lable-input">
             <FormInput
               type="text"
@@ -80,7 +113,13 @@ const CustomerForm = () => {
               label="Email"
               name="email"
               onChange={handleChange.bind(null, "email")}
+              onBlur={handleBlur.bind(null, "Email")} //change the name of handleBlur
             />
+            <div>
+              {errors.Email && (
+                <div className="customer-error">{errors.Email}</div>
+              )}
+            </div>
           </div>
           <div className="lable-input  ic1">
             <button className="submit">

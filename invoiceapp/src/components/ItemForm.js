@@ -10,7 +10,7 @@ const ItemForm = () => {
   });
   const [errors, setErrors] = useState({
     Item_Name: "",
-    Item_Description: "",
+    Description: "",
     Price: null,
   });
   const { Item_Name, Item_Description, Price } = inputValue;
@@ -31,7 +31,7 @@ const ItemForm = () => {
     if (value === "") {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        [type]: ` ${type} is a Required`,
+        [type]: ` *${type} is a Required`,
       }));
     } else {
       setErrors((prevErrors) => ({
@@ -54,59 +54,55 @@ const ItemForm = () => {
 
   return (
     <div className="form-container">
+      <div className="title">New Item</div>
       <form className="form" onSubmit={handleSubmit}>
-        <div className="title">Add Item</div>
-        <div className="input-container ic1">
-          <FormInput
-            type="text"
-            value={Item_Name}
-            placeholder="Item Name"
-            label="Name"
-            name="name"
-            onChange={handleChange.bind(null, "Item_Name")}
-            onBlur={handleBlur.bind(null, "Item_Name")} //change the name of handleBlur
-          />
-          {errors.Item_Name && (
-            <div>
-              <h1>{errors.Item_Name}</h1>
-            </div>
+        <div className="input-container label-and-error">
+          <div className="lable-input ">
+            <FormInput
+              type="text"
+              value={Item_Name}
+              label="Name"
+              name="name"
+              onChange={handleChange.bind(null, "Item_Name")}
+              onBlur={handleBlur.bind(null, "Name")} //change the name of handleBlur
+            />
+          </div>
+          {errors.Name && <div className="error">{errors.Name}</div>}
+        </div>
+        <div className="input-container label-and-error">
+          <div className="lable-input">
+            <FormInput
+              type="text"
+              value={Price}
+              label="Price"
+              name="price"
+              onChange={handleChange.bind(null, "Price")}
+              onBlur={handleBlur.bind(null, "Price")}
+            />
+          </div>
+          {errors.Price && <div className="error">{errors.Price}</div>}
+        </div>
+        <div className="input-container label-and-error">
+          <div className="lable-input">
+            <FormInput
+              className={"description"}
+              label="Description"
+              id="Item_Description"
+              name="Item_Description"
+              type="Item_Description"
+              value={Item_Description}
+              onChange={handleChange.bind(null, "Item_Description")}
+              onBlur={handleBlur.bind(null, "Description")}
+            />
+          </div>
+          {errors.Description && (
+            <div className="error">{errors.Description}</div>
           )}
         </div>
-        <div className="input-container ic2">
-          <FormInput
-            type="text"
-            value={Price}
-            placeholder="Price"
-            label="price"
-            name="price"
-            onChange={handleChange.bind(null, "Price")}
-            onBlur={handleBlur.bind(null, "Price")}
-          />
-          {errors.Price && (
-            <div>
-              <h1>{errors.Price}</h1>
-            </div>
-          )}
-        </div>
-
-        <div className="input-container ic2">
-          <FormInput
-            placeholder="Price"
-            label="price"
-            id="Item_Description"
-            name="Item_Description"
-            type="Item_Description"
-            value={Item_Description}
-            onChange={handleChange.bind(null, "Item_Description")}
-            onBlur={handleBlur.bind(null, "Item_Description")}
-          />
-          {errors.Item_Description && (
-            <div>
-              <h1>{errors.Item_Description}</h1>
-            </div>
-          )}
-        </div>
-        <button className="submit">Submit Form</button>
+        <button className="submit">
+          {" "}
+          <i className="fa fa-file"></i>Save Item
+        </button>
       </form>
     </div>
   );
