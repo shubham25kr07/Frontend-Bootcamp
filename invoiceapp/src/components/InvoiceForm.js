@@ -45,6 +45,7 @@ const InvoiceForm = () => {
           </button>
         </div>
         <div className="form-first-div">
+          Bill To
           <div className="div-f1"></div>
           <div></div>
         </div>
@@ -100,9 +101,16 @@ const InvoiceForm = () => {
           </div>
         </div>
         <div>
+          {selectedItemList.map((selecteItem) => {
+            return (
+              <div>
+                Name : {selecteItem.Item_Name} Price: {selecteItem.Price}
+              </div>
+            );
+          })}
           {/* <Table /> */}
           <button type="button" onClick={showModel}>
-            Open Modal
+            Add Item
           </button>
         </div>
         <div>
