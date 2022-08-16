@@ -6,6 +6,8 @@ import Table from "../Utils/Table";
 import { EntityDetailsContext } from "../App";
 import PopUp from "../Utils/PopUp";
 import DropDownModal from "../Utils/DropDownList";
+import Label from "../Utils/Label";
+import Input from "../Utils/Input";
 const InvoiceForm = () => {
   const { itemList, setItemList } = useContext(EntityDetailsContext);
   const [displayModel, setDisplayModel] = useState(false);
@@ -61,57 +63,71 @@ const InvoiceForm = () => {
           <div className="div-f2">
             <div className="div-dates">
               <div>
-                <FormInput
-                  type="date"
-                  className="input-dates"
-                  value={IssuedAt}
-                  placeholder="Issued At"
-                  label="Issued At"
-                  name="IssuedAt"
-                  onChange={handleChange.bind(null, "IssuedAt")}
-                  onBlur={validateDate.bind(null, "IssuedAt")} //change the name of handleBlur
-                  isDisabled={true}
-                />
+                <Label label="Issued At" />
+                <div className="div-i-input">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  <Input
+                    type="date"
+                    className="input-dates"
+                    value={IssuedAt}
+                    placeholder="Issued At"
+                    name="IssuedAt"
+                    onChange={handleChange.bind(null, "IssuedAt")}
+                    onBlur={validateDate.bind(null, "IssuedAt")} //change the name of handleBlur
+                    isDisabled={true}
+                  />
+                </div>
               </div>
               <div>
-                <FormInput
-                  type="date"
-                  className="input-dates"
-                  value={DueDate}
-                  placeholder="Due Date"
-                  label="Due Date"
-                  name="DueDate"
-                  onChange={handleChange.bind(null, "DueDate")}
-                  onBlur={validateDate.bind(null, "DueDate")} //change the name of handleBlur
-                />
+                <Label label="Due Date" />
+                <div className="div-i-input">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  <Input
+                    type="date"
+                    className="input-dates"
+                    value={DueDate}
+                    placeholder="Due Date"
+                    name="DueDate"
+                    // onFocus={showPicker()}
+                    onChange={handleChange.bind(null, "DueDate")}
+                    onBlur={validateDate.bind(null, "DueDate")} //change the name of handleBlur
+                  />
+                </div>
               </div>
             </div>
             <div className="div-numbers">
               <div>
-                <FormInput
-                  type="text"
-                  value={InvoiceNumber}
-                  className="input-dates"
-                  placeholder="InvoiceNumber"
-                  label="Invoice Number"
-                  name="InvoiceNumber"
-                  onChange={handleChange.bind(null, "IssuedAt")}
-                  onBlur={validateDate.bind(null, "IssuedAt")} //change the name of handleBlur
-                  isDisabled={true}
-                />
+                <Label label="Invoice Number" />
+                <div className="div-i-input">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i>
+                  <Input
+                    type="text"
+                    value={InvoiceNumber}
+                    className="input-dates"
+                    placeholder="InvoiceNumber"
+                    name="InvoiceNumber"
+                    onChange={handleChange.bind(null, "IssuedAt")}
+                    onBlur={validateDate.bind(null, "IssuedAt")} //change the name of handleBlur
+                    isDisabled={true}
+                  />
+                </div>
               </div>
               <div>
-                <FormInput
-                  type="text"
-                  value={ReferenceNumber}
-                  placeholder="ReferenceNumber"
-                  className="input-dates"
-                  label="Ref Number"
-                  name="ReferenceNumber"
-                  onChange={handleChange.bind(null, "ReferenceNumber")}
-                  onBlur={validateDate.bind(null, "ReferenceNumber")} //change the name of handleBlur
-                  isDisabled={true}
-                />
+                <Label label="Ref Number" />
+                <div className="div-i-input">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i>
+                  <Input
+                    type="text"
+                    value={ReferenceNumber}
+                    placeholder="ReferenceNumber"
+                    className="input-dates"
+                    label="Ref Number"
+                    name="ReferenceNumber"
+                    onChange={handleChange.bind(null, "ReferenceNumber")}
+                    onBlur={validateDate.bind(null, "ReferenceNumber")} //change the name of handleBlur
+                    isDisabled={true}
+                  />
+                </div>
               </div>
             </div>
           </div>

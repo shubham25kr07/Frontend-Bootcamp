@@ -1,21 +1,13 @@
-import React from "react";
-
-const FormInput = ({
+const Input = ({
   value,
-  label,
   name,
-  placeholder,
   type,
   onChange,
   onBlur,
   className,
   isDisabled = false,
-}) => (
-  <>
-    <div>
-      <label>{label}</label>
-    </div>
-
+}) => {
+  return (
     <input
       className={className || "input"}
       type={type}
@@ -25,7 +17,7 @@ const FormInput = ({
       onBlur={onBlur}
       disabled={isDisabled}
     />
-  </>
-);
+  );
+};
 
-export default FormInput;
+export default Input;

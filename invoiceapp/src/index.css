@@ -567,6 +567,7 @@ Select Box
   /* position: relative;
   padding-left: -100px; */
   width: 200px;
+  padding-left: 25px;
 }
 
 .active {
@@ -584,4 +585,20 @@ Select Box
   width: 600px;
   margin-left: 80px;
   padding-left: 112px;
+}
+
+.div-i-input i {
+  position: absolute;
+
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.fa-hashtag {
+  color: lightgray;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
 }
