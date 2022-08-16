@@ -4,39 +4,33 @@ import { ENTITY } from "./Constants";
 const LeftNavigation = () => {
   return (
     <div className="header">
-      <nav className="nav-menu active">
-        <ul className="nav-menu-items">
-          {/* <li className="nav-text active">
-            <Link to="/">
-              <i className="fa fa-user"></i>
-              <span>HOME</span>
-            </Link>
-          </li> */}
-          <li className="nav-text active">
+      <nav className="nav-menu1 active1">
+        <div>
+          <div className="left-nav-text" id="left-nav-id">
             <Link to="/customer">
               <i className="fa fa-user"></i>
               <span>{ENTITY.CUSTOMER_ENTITY}</span>
             </Link>
-          </li>
-          <li className="nav-text active">
+          </div>
+          <div className="left-nav-text  ">
             <Link to="/item">
               <i className="fa fa-star"></i>
               <span>{ENTITY.ITEM_ENTITY}</span>
             </Link>
-          </li>
-          <li className="nav-text active">
+          </div>
+          <div className="left-nav-text">
             <Link to="/invoice">
               <i className="fa fa-file"></i>
               <span>{ENTITY.INVOICE_ENTITY}</span>
             </Link>
-          </li>
-          <li className="nav-text active">
+          </div>
+          <div className="left-nav-text">
             <Link to="#">
               <i className="fa fa-tachometer"></i>
               <span>{ENTITY.DASHBOARD_ENTITY}</span>
             </Link>
-          </li>
-        </ul>
+          </div>
+        </div>
       </nav>
       {/* <button
           className="nav-button"

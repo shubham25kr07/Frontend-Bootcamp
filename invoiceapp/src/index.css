@@ -4,7 +4,8 @@
   align-items: center; */
   width: 83vw;
   margin-left: 16.5%;
-  background-color: #fafbff;
+  background-color: blue;
+  /* background-color: #fafbff; */
   padding-bottom: 50px;
 }
 .table-container {
@@ -14,7 +15,8 @@
   width: 100%;
 }
 .form {
-  background-color: white;
+  background-color: green;
+  /* background-color: white; */
   margin-top: 48px;
   margin-right: 24px;
   margin-left: 24px;
@@ -28,7 +30,24 @@
   padding: 20px;
   width: 100%; */
 }
-
+.label-and-error {
+  display: flex;
+}
+.error {
+  margin-left: 50px;
+  margin-top: 45px;
+  color: indianred;
+}
+.description {
+  background-color: white;
+  border-color: lightgray;
+  border: 2px solid;
+  border-radius: 4px;
+  height: 100px;
+  margin-top: 8px;
+  color: #eee;
+  width: 400px;
+}
 .title {
   color: black;
   font-family: sans-serif;
@@ -48,6 +67,9 @@
   height: 50px;
   width: 100%;
   margin: 50px; */
+}
+.customer-input-container {
+  height: 100px;
 }
 .ic1 {
   margin-left: 150px;
@@ -71,6 +93,10 @@
   outline: 0;
   padding: 4px 20px 0;
   width: 100%; */
+}
+.customer-error {
+  margin-top: 10px;
+  color: indianred;
 }
 /* .cut {
     background-color: #15172b;
@@ -183,14 +209,11 @@
 
 .header {
   position: fixed;
-  /* display: flex; */
-  /* align-items: center; */
-  /* align-items: flex-start; */
-  /* flex-direction: column; */
   left: 0;
   top: 0;
   bottom: 0;
-  width: 150px;
+  width: 255px;
+  margin-left: 10px;
   background-color: white;
 }
 .unstyled {
@@ -254,91 +277,86 @@ i {
   src: url("http://domain.example/fonts/font.ttf"); /*URL to font*/
 }
 /* Then, trivially, to use the font on a specific element:
-
+/* 
 .classname {
   font-family: 'YourFontName';
 } */
-.nav-button {
+/* .nav-button {
   font-size: 20px;
   /* margin-left: -%; */
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+/* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: black;
 }
 
 i {
   margin-right: 10px;
-}
+}  */
 
-/* 
-.navbar {
-  background-color: #060b26;
-  height: 80px;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-} */
-/* 
-.menu-bars {
-  margin-left: 2rem;
-  font-size: 2rem;
-  background: none;
-} */
-
-.nav-menu {
-  background-color: #060b26;
-  width: 250px;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: -100%;
-  transition: 850ms;
-}
-
-.nav-menu.active {
-  left: 0;
-  transition: 350ms;
-}
-
-.nav-text {
-  display: flex;
+.left-nav-text {
+  font-size: 25px;
+  list-style: none;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  /* background-color: yellow; */
+  height: 60px;
+  /* display: flex;
   justify-content: start;
   align-items: center;
   padding: 8px 0px 8px 16px;
   list-style: none;
-  height: 60px;
+  height: 60px; */
 }
 
-.nav-text :focus {
-  background-color: #009879;
+.left-nav-text:hover {
+  background: #eff8ff;
+}
 
-  /* left: 0;
+/* .left-nav-text:focus {
+  background: green;
+} */
+.left-nav-text:focus {
+  background-color: #eff8ff;
+}
+.left-nav-text a {
+  color: black;
+  text-decoration: none;
+  height: 30px;
+}
+.left-nav-text a:hover {
+  color: #7303fc;
+}
+.left-nav-text a:focus {
+  color: #7303fc;
+}
+/* .left-nav-text :focus {
+  background-color: #009879; */
+
+/* left: 0;
   transition: 350ms; */
-}
 
 /* .nav-text :active {
   background-color: #009879;
 } */
-.nav-text a {
+/* .nav-text a {
   text-decoration: none;
   color: #f5f5f5;
-  font-size: 18px;
+
   width: 95%;
   height: 100%;
   display: flex;
   align-items: center;
   padding: 0 16px;
   border-radius: 4px;
-}
+} */
 
 .nav-text a:hover {
   background-color: #1a83ff;
 }
 
-.nav-menu-items {
-  width: 100%;
-}
+/* .nav-menu-items {
+    width: 100%;
+  } */
 
 .navbar-toggle {
   background-color: #060b26;
