@@ -37,24 +37,66 @@ const InvoiceForm = () => {
   console.log(selectedItemList);
   return (
     <div className="form-container">
+      <div className="form-top-header">
+        <h1>New Invoice</h1>
+        <button className="button-61">
+          <i className="fa fa-file"></i>Save Invoice
+        </button>
+      </div>
       <form onSubmit={saveInvoice}>
-        <div className="form-top-header">
-          <h1>New Invoice</h1>
-          <button className="button-61">
-            <i className="fa fa-file"></i>Save Invoice
-          </button>
-        </div>
         <div className="form-first-div">
-          Bill To
-          <div className="div-f1"></div>
-          <div></div>
+          <div className="div-f1">
+            <div className="invoice-bill-to">Bill To</div>
+
+            <div className="invoice-customer-details-button">
+              <div className="">
+                <div>Name:</div>
+                <div>Phone: </div>
+                <div>Email:</div>
+              </div>
+
+              <button className="invoice-bill-to-button">Change</button>
+            </div>
+          </div>
+          <div className="div-f2">
+            <div className="div-dates">
+              <div>
+                <FormInput
+                  type="date"
+                  className="input-dates"
+                  value={IssuedAt}
+                  placeholder="Issued At"
+                  label="IssuedAt"
+                  name="IssuedAt"
+                  onChange={handleChange.bind(null, "IssuedAt")}
+                  onBlur={validateDate.bind(null, "IssuedAt")} //change the name of handleBlur
+                  disabled
+                />
+              </div>
+              <div>
+                <FormInput
+                  type="date"
+                  className="input-dates"
+                  value={DueDate}
+                  placeholder="Due Date"
+                  label="DueDate"
+                  name="DueDate"
+                  onChange={handleChange.bind(null, "DueDate")}
+                  onBlur={validateDate.bind(null, "DueDate")} //change the name of handleBlur
+                />
+              </div>
+            </div>
+            <div className="div-numbers">
+              <div></div>
+              <div></div>
+            </div>
+          </div>
         </div>
 
-        <div>
-          {/* <div>
-            <FormInput />
-            <button>Change</button>
-          </div> */}
+        <div></div>
+        <div></div>
+        {/* <div>
+     
           <div>
             <div>
               <FormInput
@@ -99,8 +141,8 @@ const InvoiceForm = () => {
               />
             </div>
           </div>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           {selectedItemList.map((selecteItem) => {
             return (
               <div>
@@ -108,14 +150,14 @@ const InvoiceForm = () => {
               </div>
             );
           })}
-          {/* <Table /> */}
+
           <button type="button" onClick={showModel}>
             Add Item
           </button>
         </div>
-        <div>
-          {/* Notes */}
-          <FormInput
+        <div> */}
+
+        {/* <FormInput
             type="text"
             value={Notes}
             placeholder=""
@@ -124,7 +166,7 @@ const InvoiceForm = () => {
             onChange={handleChange.bind(null, "Notes")}
             onBlur={validateNotes.bind(null, "Notes")} //change the name of handleBlur
           />
-        </div>
+        </div> */}
       </form>
       <PopUp
         dataList={itemList}
