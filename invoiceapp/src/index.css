@@ -457,17 +457,17 @@ Select Box
 /* invoice form  */
 .form-top-header {
   display: flex;
-  background-color: whitesmoke;
-  height: 70px;
-  width: 80vw;
+
+  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
 .form-top-header h1 {
-  margin-left: 10px;
+  padding-left: 40px;
 }
 .form-top-header button {
-  margin-right: 10px;
+  margin-right: 20px;
+  /* margin-right: 50px; */
 }
 .button-61 {
   align-items: center;
@@ -505,14 +505,43 @@ Select Box
 .form-first-div {
   display: flex;
   height: 200px;
-  background-color: whitesmoke;
+  padding-left: 40px;
+  background-color: yellow;
 }
 .div-f1 {
+  background-color: white;
+  margin: 20px;
+  width: 300px;
+  height: 125px;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+.invoice-bill-to {
+  /* border-color: lightgray;
+  border: 2px solid;
+  border-radius: 4px; */
+  border: 0px white;
+
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: gray;
+
+  /* width: 400px; */
+}
+
+.invoice-customer-details-button {
   display: flex;
-  background-color: green;
-  height: 100px;
-  width: 400px;
-  /* width: 80vw; */
-  /* justify-content: space-between;
-  align-items: center; */
+  flex-direction: row;
+  justify-content: space-between;
+}
+.invoice-bill-to-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #7303fc;
+}
+.div-dates {
+  display: flex;
+}
+.input-dates {
 }
