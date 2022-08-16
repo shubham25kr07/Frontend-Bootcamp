@@ -51,7 +51,7 @@ const SelectList = (props) => {
         {dataList.map((item, index) => {
           return (
             <option value={index}>
-              Name: {item.Item_Name} | Price: {item.price}
+              Name: {item.Item_Name} | Price: {item.Price}
             </option>
           );
         })}
