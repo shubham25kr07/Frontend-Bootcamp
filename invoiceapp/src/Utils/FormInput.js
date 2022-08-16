@@ -9,6 +9,7 @@ const FormInput = ({
   onChange,
   onBlur,
   className,
+  isDisabled = false,
 }) => (
   <>
     <div>
@@ -21,6 +22,7 @@ const FormInput = ({
       name={name}
       onChange={onChange}
       onBlur={onBlur}
+      disabled={isDisabled}
     />
   </>
 );

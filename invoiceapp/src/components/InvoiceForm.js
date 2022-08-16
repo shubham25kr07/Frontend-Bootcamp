@@ -50,9 +50,9 @@ const InvoiceForm = () => {
 
             <div className="invoice-customer-details-button">
               <div className="">
-                <div>Name:</div>
-                <div>Phone: </div>
-                <div>Email:</div>
+                <div>shubham</div>
+                <div>1234 </div>
+                <div>sk@gmail.com</div>
               </div>
 
               <button className="invoice-bill-to-button">Change</button>
@@ -66,11 +66,11 @@ const InvoiceForm = () => {
                   className="input-dates"
                   value={IssuedAt}
                   placeholder="Issued At"
-                  label="IssuedAt"
+                  label="Issued At"
                   name="IssuedAt"
                   onChange={handleChange.bind(null, "IssuedAt")}
                   onBlur={validateDate.bind(null, "IssuedAt")} //change the name of handleBlur
-                  disabled
+                  isDisabled={true}
                 />
               </div>
               <div>
@@ -79,7 +79,7 @@ const InvoiceForm = () => {
                   className="input-dates"
                   value={DueDate}
                   placeholder="Due Date"
-                  label="DueDate"
+                  label="Due Date"
                   name="DueDate"
                   onChange={handleChange.bind(null, "DueDate")}
                   onBlur={validateDate.bind(null, "DueDate")} //change the name of handleBlur
@@ -87,8 +87,32 @@ const InvoiceForm = () => {
               </div>
             </div>
             <div className="div-numbers">
-              <div></div>
-              <div></div>
+              <div>
+                <FormInput
+                  type="text"
+                  value={InvoiceNumber}
+                  className="input-dates"
+                  placeholder="InvoiceNumber"
+                  label="Invoice Number"
+                  name="InvoiceNumber"
+                  onChange={handleChange.bind(null, "IssuedAt")}
+                  onBlur={validateDate.bind(null, "IssuedAt")} //change the name of handleBlur
+                  isDisabled={true}
+                />
+              </div>
+              <div>
+                <FormInput
+                  type="text"
+                  value={ReferenceNumber}
+                  placeholder="ReferenceNumber"
+                  className="input-dates"
+                  label="Ref Number"
+                  name="ReferenceNumber"
+                  onChange={handleChange.bind(null, "ReferenceNumber")}
+                  onBlur={validateDate.bind(null, "ReferenceNumber")} //change the name of handleBlur
+                  isDisabled={true}
+                />
+              </div>
             </div>
           </div>
         </div>

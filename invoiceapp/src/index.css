@@ -1,11 +1,15 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
 .form-container {
   /* display: flex;
   justify-content: center;
   align-items: center; */
   width: 83vw;
   margin-left: 16.5%;
-  background-color: blue;
-  /* background-color: #fafbff; */
+  /* background-color: blue; */
+  background-color: #fafbff;
   padding-bottom: 50px;
 }
 .table-container {
@@ -15,14 +19,15 @@
   width: 100%;
 }
 .form {
-  background-color: green;
-  /* background-color: white; */
+  /* background-color: green; */
+  background-color: white;
   margin-top: 48px;
   margin-right: 24px;
   margin-left: 24px;
   padding: 40px;
   /* padding-top: 17px; */
   margin-bottom: 48px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   /* background-color: aliceblue;
   border-radius: 20px;
   box-sizing: border-box;
@@ -30,23 +35,26 @@
   padding: 20px;
   width: 100%; */
 }
+.item-form {
+  width: 450px;
+}
 .label-and-error {
-  display: flex;
+  height: 100px;
 }
 .error {
-  margin-left: 50px;
-  margin-top: 45px;
   color: indianred;
 }
 .description {
   background-color: white;
-  border-color: lightgray;
+
   border: 2px solid;
   border-radius: 4px;
   height: 100px;
-  margin-top: 8px;
-  color: #eee;
+  /* margin-top: 8px; */
+  color: black;
   width: 400px;
+  border-color: lightgray;
+  padding-left: 8px;
 }
 .title {
   color: black;
@@ -76,13 +84,16 @@
 }
 .input {
   background-color: white;
-  border-color: lightgray;
+
   border: 2px solid;
   border-radius: 4px;
   height: 40px;
   margin-top: 8px;
-  color: #eee;
+  /* color: #eee; */
   width: 400px;
+  padding-left: 8px;
+  color: black;
+  border-color: lightgray;
   /* background-color: #303245;
   border-radius: 12px;
   border: 0;
@@ -131,7 +142,7 @@
 }
 
 .submit {
-  margin-top: 25px;
+  margin-top: 30px;
   height: 45px;
   width: 200px;
   cursor: pointer;
@@ -293,13 +304,14 @@ i {
 }  */
 
 .left-nav-text {
-  font-size: 25px;
+  font-size: 20px;
   list-style: none;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  padding-top: 20px;
+  /* margin-top: 30px;
+  margin-bottom: 30px; */
   width: 100%;
   /* background-color: yellow; */
-  height: 60px;
+  height: 40px;
   /* display: flex;
   justify-content: start;
   align-items: center;
@@ -315,9 +327,10 @@ i {
 /* .left-nav-text:focus {
   background: green;
 } */
-.left-nav-text:focus {
+
+/* .left-nav-text:focus {
   background-color: #eff8ff;
-}
+} */
 .left-nav-text a {
   color: black;
   text-decoration: none;
@@ -326,9 +339,9 @@ i {
 .left-nav-text a:hover {
   color: #7303fc;
 }
-.left-nav-text a:focus {
+/* .left-nav-text a:focus {
   color: #7303fc;
-}
+} */
 /* .left-nav-text :focus {
   background-color: #009879; */
 
@@ -466,7 +479,7 @@ Select Box
   padding-left: 40px;
 }
 .form-top-header button {
-  margin-right: 20px;
+  margin-right: 28px;
   /* margin-right: 50px; */
 }
 .button-61 {
@@ -476,7 +489,7 @@ Select Box
   border-style: none;
   box-sizing: border-box;
   color: white;
-  background-color: purple;
+  background-color: #7303fc;
   cursor: pointer;
   display: inline-flex;
   font-family: Roboto, sans-serif;
@@ -506,12 +519,13 @@ Select Box
   display: flex;
   height: 200px;
   padding-left: 40px;
-  background-color: yellow;
+  padding-right: 30px;
+  /* background-color: yellow; */
 }
 .div-f1 {
   background-color: white;
   margin: 20px;
-  width: 300px;
+  width: 400px;
   height: 125px;
   padding-left: 10px;
   padding-right: 5px;
@@ -542,6 +556,32 @@ Select Box
 }
 .div-dates {
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 .input-dates {
+  /* padding-left: 25px;
+  background: url("https://static.thenounproject.com/png/101791-200.png")
+    no-repeat left;
+  background-size: 20px; */
+  /* position: relative;
+  padding-left: -100px; */
+  width: 200px;
+}
+
+.active {
+  color: #fff;
+  background: #7600dc;
+}
+
+.div-numbers {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.div-f2 {
+  width: 600px;
+  margin-left: 80px;
+  padding-left: 112px;
 }

@@ -55,7 +55,7 @@ const ItemForm = () => {
   return (
     <div className="form-container">
       <div className="title">New Item</div>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form item-form" onSubmit={handleSubmit}>
         <div className="input-container label-and-error">
           <div className="lable-input ">
             <FormInput
@@ -66,8 +66,8 @@ const ItemForm = () => {
               onChange={handleChange.bind(null, "Item_Name")}
               onBlur={handleBlur.bind(null, "Name")} //change the name of handleBlur
             />
+            {errors.Name && <div className="error">{errors.Name}</div>}
           </div>
-          {errors.Name && <div className="error">{errors.Name}</div>}
         </div>
         <div className="input-container label-and-error">
           <div className="lable-input">
@@ -79,8 +79,8 @@ const ItemForm = () => {
               onChange={handleChange.bind(null, "Price")}
               onBlur={handleBlur.bind(null, "Price")}
             />
+            {errors.Price && <div className="error">{errors.Price}</div>}
           </div>
-          {errors.Price && <div className="error">{errors.Price}</div>}
         </div>
         <div className="input-container label-and-error">
           <div className="lable-input">
@@ -94,10 +94,10 @@ const ItemForm = () => {
               onChange={handleChange.bind(null, "Item_Description")}
               onBlur={handleBlur.bind(null, "Description")}
             />
+            {errors.Description && (
+              <div className="error">{errors.Description}</div>
+            )}
           </div>
-          {errors.Description && (
-            <div className="error">{errors.Description}</div>
-          )}
         </div>
         <button className="submit">
           {" "}

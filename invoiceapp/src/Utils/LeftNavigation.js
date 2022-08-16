@@ -12,7 +12,7 @@ const LeftNavigation = () => {
               <span>{ENTITY.CUSTOMER_ENTITY}</span>
             </Link>
           </div>
-          <div className="left-nav-text  ">
+          <div className="left-nav-text   ">
             <Link to="/item">
               <i className="fa fa-star"></i>
               <span>{ENTITY.ITEM_ENTITY}</span>
