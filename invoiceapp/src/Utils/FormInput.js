@@ -9,21 +9,19 @@ const FormInput = ({
   onChange,
   onBlur,
 }) => (
-  <div className="form-group">
-    {/* <label for="firstname" className="placeholder">
-      {label}
-    </label> */}
-    <div className="cut"></div>
+  <>
+    <div>
+      <label>{label}</label>
+    </div>
     <input
       className="input"
       type={type}
       value={value}
       name={name}
-      placeholder={placeholder}
       onChange={onChange}
       onBlur={onBlur}
     />
-  </div>
+  </>
 );
 
 export default FormInput;

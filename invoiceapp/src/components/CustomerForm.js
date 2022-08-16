@@ -47,36 +47,46 @@ const CustomerForm = () => {
 
   return (
     <div className="form-container">
+      <div className="title">New Customer</div>
       <form className="form" onSubmit={handleSubmit}>
-        <div className="title">Add Customer</div>
-        <div className="input-container ic1">
-          <FormInput
-            type="text"
-            value={name}
-            placeholder="Customer Name"
-            label="Name"
-            name="name"
-            onChange={handleChange.bind(null, "name")}
-          />
-          <FormInput
-            type="text"
-            value={email}
-            placeholder="Email"
-            label="email"
-            name="email"
-            onChange={handleChange.bind(null, "email")}
-          />
+        <div className="input-container">
+          <div className="lable-input">
+            <FormInput
+              type="text"
+              value={name}
+              placeholder="Customer Name"
+              label="Name"
+              name="name"
+              onChange={handleChange.bind(null, "name")}
+            />
+          </div>
+          <div className="lable-input  ic1">
+            <FormInput
+              type="text"
+              value={phone_number}
+              placeholder="Phone Number"
+              label="Phone"
+              name="phoneNumber"
+              onChange={handleChange.bind(null, "phone_number")}
+            />
+          </div>
         </div>
         <div className="input-container">
-          <FormInput
-            type="text"
-            value={phone_number}
-            placeholder="Phone Number"
-            label="phoneNumber"
-            name="phoneNumber"
-            onChange={handleChange.bind(null, "phone_number")}
-          />
-          <button className="submit">Submit Form</button>
+          <div className="lable-input">
+            <FormInput
+              type="text"
+              value={email}
+              placeholder="Email"
+              label="Email"
+              name="email"
+              onChange={handleChange.bind(null, "email")}
+            />
+          </div>
+          <div className="lable-input  ic1">
+            <button className="submit">
+              <i className="fa fa-file"></i>Save Customer
+            </button>
+          </div>
         </div>
       </form>
     </div>

@@ -1,9 +1,11 @@
 .form-container {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  width: 80vw;
-  margin-left: 260px;
+  align-items: center; */
+  width: 83vw;
+  margin-left: 16.5%;
+  background-color: #fafbff;
+  padding-bottom: 50px;
 }
 .table-container {
   display: flex;
@@ -12,12 +14,19 @@
   width: 100%;
 }
 .form {
-  background-color: aliceblue;
+  background-color: white;
+  margin-top: 48px;
+  margin-right: 24px;
+  margin-left: 24px;
+  padding: 40px;
+  /* padding-top: 17px; */
+  margin-bottom: 48px;
+  /* background-color: aliceblue;
   border-radius: 20px;
   box-sizing: border-box;
   height: 500px;
   padding: 20px;
-  width: 100%;
+  width: 100%; */
 }
 
 .title {
@@ -25,24 +34,34 @@
   font-family: sans-serif;
   font-size: 36px;
   font-weight: 600;
-  margin-top: 30px;
+  padding-top: 28px;
+  padding-left: 24px;
 }
 
 .input-container {
   display: flex;
+  margin-bottom: 40px;
+  /* display: flex;
   flex-direction: row;
-  /* justify-content: center; */
   justify-content: space-around;
   align-items: baseline;
   height: 50px;
   width: 100%;
-  margin: 50px;
+  margin: 50px; */
 }
 .ic1 {
-  margin-top: 40px;
+  margin-left: 150px;
 }
 .input {
-  background-color: #303245;
+  background-color: white;
+  border-color: lightgray;
+  border: 2px solid;
+  border-radius: 4px;
+  height: 40px;
+  margin-top: 8px;
+  color: #eee;
+  width: 400px;
+  /* background-color: #303245;
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
@@ -51,7 +70,7 @@
   height: 100%;
   outline: 0;
   padding: 4px 20px 0;
-  width: 100%;
+  width: 100%; */
 }
 /* .cut {
     background-color: #15172b;
@@ -86,19 +105,27 @@
 }
 
 .submit {
-  background-color: #08d;
+  margin-top: 25px;
+  height: 45px;
+  width: 200px;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #5851d9;
+  color: white;
+  border-radius: 4px;
+  /* background-color: #08d;
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
   color: #eee;
   cursor: pointer;
   font-size: 18px;
-  height: 50px;
+  height: 50px; */
   /* justify-content: center;
   align-items: center; */
-  margin-left: 50%;
+  /* margin-left: 50%; */
   /* outline: 0; */
-  text-align: center;
+  /* text-align: center; */
 }
 
 .submit:active {
