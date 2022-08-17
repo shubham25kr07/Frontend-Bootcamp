@@ -88,7 +88,6 @@ const InvoiceForm = () => {
                     value={DueDate}
                     placeholder="Due Date"
                     name="DueDate"
-                    // onFocus={showPicker()}
                     onChange={handleChange.bind(null, "DueDate")}
                     onBlur={validateDate.bind(null, "DueDate")} //change the name of handleBlur
                   />
