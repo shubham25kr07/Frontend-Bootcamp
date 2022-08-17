@@ -1,6 +1,5 @@
 const TableHeader = (props) => {
   const { columns, className } = props;
-  //   console.log(columns);
   return (
     <>
       {columns.map((item, index) => (

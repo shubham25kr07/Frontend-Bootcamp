@@ -10,35 +10,30 @@ const CUSTOMER_COLUMN = [
     title: "ID",
     render: (rowData) => {
       return rowData.id;
-      // return <span>{rowData.id}</span>;
     },
   },
   {
     title: "NAME",
     render: (rowData) => {
       return rowData.name;
-      // return <span>{rowData.name}</span>;
     },
   },
   {
     title: "EMAIL",
     render: (rowData) => {
       return rowData.email;
-      // return <span>{rowData.email}</span>;
     },
   },
   {
     title: "PHONE NUMBER",
     render: (rowData) => {
       return rowData.phone_number;
-      // return <span>{rowData.phone_number}</span>;
     },
   },
   {
     title: "CREATED ON",
     render: (rowData) => {
       return rowData.created_at;
-      // return <span>{rowData.created_at}</span>;
     },
   },
 ];
@@ -113,24 +108,18 @@ const INVOICE_COLUMN = [
       return <span>{rowData.TotalAmount}</span>;
     },
   },
-  // {
-  //   title: "CREATED ON",
-  //   render: (rowData) => {
-  //     return <span>{rowData.added_on}</span>;
-  //   },
-  // },
 ];
 const INVOICE_ITEM_MODAL_HEADER = [
   {
     title: "Items",
     render: (rowData) => {
-      return <div className="table-row-0">{rowData.Item_Name}</div>;
+      return `${rowData.Item_Name} - `;
     },
   },
   {
     title: "Price",
     render: (rowData) => {
-      return <div className="table-row-1">{rowData.Price}</div>;
+      return <div>{rowData.Price}</div>;
     },
   },
 ];
@@ -138,22 +127,19 @@ const INVOICE_CUSTOMER_MODAL_HEADER = [
   {
     title: "Customers",
     render: (rowData) => {
-      return rowData.name;
-      // return <span>{rowData.name}</span>;
+      return `${rowData.name} - `;
     },
   },
   {
     title: "email",
     render: (rowData) => {
-      return rowData.email;
-      // return <span>{rowData.name}</span>;
+      return `${rowData.email} - `;
     },
   },
   {
     title: "Number",
     render: (rowData) => {
-      return rowData.phone_number;
-      // return <span>{rowData.name}</span>;
+      return `${rowData.phone_number}`;
     },
   },
 ];
@@ -172,7 +158,10 @@ const INVOICE_ITEMS_COLUMN = [
           <input
             className="table-row-input"
             type="text"
-            value={rowData.count || 1}
+            value={rowData.quantity}
+            onChange={(e) => {
+              console.log(rowData);
+            }}
             // rowData={(e) => onChange(i, parseInt(e.target.value) || 0)}
           />
         </div>

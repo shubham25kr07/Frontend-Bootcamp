@@ -14,9 +14,6 @@ const LazyInvoiceForm = lazy(() => import("./components/InvoiceForm"));
 const InvoiceApp = () => {
   return (
     <div>
-      {/* Hello
-      <Home /> */}
-      {/* <DropDownModal /> */}
       <BrowserRouter>
         <LeftNavigation />
         <Suspense fallback={<h1>Loadding Please Wait ... </h1>}>

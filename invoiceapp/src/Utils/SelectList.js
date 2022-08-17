@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const SelectList = (props) => {
-  const { dataList, setList, tableHeader, multiple } = props;
+  const { dataList, setList, optionValue } = props;
   const [val, setVal] = useState([]);
 
   const addSelectedRows = (e) => {
@@ -17,7 +17,6 @@ const SelectList = (props) => {
       .map((x) => Number(x.value));
     setVal(updatedOptions);
   };
-
   return (
     <form id="form2" onSubmit={addSelectedRows}>
       <select
@@ -29,7 +28,7 @@ const SelectList = (props) => {
         {dataList.map((data, index) => {
           return (
             <option className="list-option" value={index}>
-              {tableHeader.map((col, key) => (
+              {optionValue.map((col, key) => (
                 <div key={key}>{col.render(data)}</div>
               ))}
             </option>

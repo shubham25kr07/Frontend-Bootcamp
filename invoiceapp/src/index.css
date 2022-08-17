@@ -807,9 +807,10 @@ Invoice-Form Third main div
   margin-right: 10px;
 }
 
-/* .total-amount-field {
+.modal-title {
+  margin-bottom: 20px;
   display: flex;
-  justify-content: space-between;
-  margin-top: 5px;
-  overflow: auto;
-} */
+  align-items: center;
+  justify-content: center;
+  color: #7600dc;
+}

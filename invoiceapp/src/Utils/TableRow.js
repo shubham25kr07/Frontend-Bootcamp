@@ -1,8 +1,9 @@
 const TableRow = (props) => {
-  const { dataList, columns } = props;
+  const { children } = props;
   return (
     <>
-      {dataList &&
+      {children}
+      {/* {dataList &&
         dataList.map((data, index) => (
           <div className="table-row-item" key={index}>
             {columns.map((col, key) => (
@@ -11,7 +12,7 @@ const TableRow = (props) => {
               </div>
             ))}
           </div>
-        ))}
+        ))} */}
     </>
   );
 };

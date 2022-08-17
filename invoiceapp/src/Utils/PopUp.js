@@ -3,7 +3,7 @@ import SelectList from "./SelectList";
 import TableHeader from "./TableHeader";
 
 const PopUp = (props) => {
-  const { displayModel, showModel, dataList, setList, tableHeader } = props;
+  const { displayModel, showModel, children } = props;
 
   return (
     <div>
@@ -13,14 +13,7 @@ const PopUp = (props) => {
             <button type="primary" className="close-btn" onClick={showModel}>
               Close
             </button>
-            <div className="modal-header">
-              <TableHeader columns={tableHeader} />
-            </div>
-            <SelectList
-              dataList={dataList}
-              setList={setList}
-              tableHeader={tableHeader}
-            />
+            {children}
           </div>
         </div>
       )}

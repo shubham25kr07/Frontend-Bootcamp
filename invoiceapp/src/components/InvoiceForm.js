@@ -19,6 +19,9 @@ import TableRow from "../Utils/TableRow";
 
 import ItemCard from "../Utils/ItemCard";
 import TextArea from "../Utils/TextArea";
+import SelectList from "../Utils/SelectList";
+import PopUpTitle from "../Utils/PopUpTitle";
+import TableCell from "../Utils/TableCell";
 
 const InvoiceForm = () => {
   const { itemList, setItemList } = useContext(EntityDetailsContext);
@@ -58,7 +61,11 @@ const InvoiceForm = () => {
   };
   const setModalItemList = (val) => {
     const selectedlist = itemList.filter((_, index) => val.includes(index));
-    setSelectedItemList(selectedlist);
+    const selectedlistquan = selectedlist.map((list) => {
+      return { ...list, quantity: 1 };
+    });
+    setSelectedItemList(selectedlistquan);
+
     showItemModal();
   };
   const setChangeButton = (e) => {
@@ -75,8 +82,10 @@ const InvoiceForm = () => {
   };
   const validateNotes = () => {};
 
+  const handleChangeQuantity = (type, e) => {
+    console.log(e.target.value);
+  };
   console.log(selectedItemList);
-  // console.log(INVOICE_ITEMS_COLUMN);
   return (
     <div className="form-container">
       <div className="form-top-header">
@@ -189,10 +198,30 @@ const InvoiceForm = () => {
             <TableHeader columns={INVOICE_ITEMS_COLUMN} />
           </div>
           <div className="table-row">
-            <TableRow
-              dataList={selectedItemList}
-              columns={INVOICE_ITEMS_COLUMN}
-            />
+            {selectedItemList &&
+              selectedItemList.map((data, index) => (
+                <div className="table-row-item" key={index}>
+                  <TableRow>
+                    <TableCell data={data.Item_Name} />
+                    <Input
+                      type="text"
+                      className="table-row-input"
+                      value={data.quantity}
+                      name="quantity"
+                      id={index}
+                      onChange={handleChangeQuantity.bind(null, "Quantity")}
+                      // onBlur={validateDate.bind(null, "Quantity")} //change the name of handleBlur
+                    />
+                    <TableCell data={data.Price} />
+                    <TableCell data={data.Price * data.quantity} />
+                  </TableRow>
+                  {/* {columns.map((col, key) => (
+              <div className="table-header-row" key={key}>
+                {col.render(data)}
+              </div>
+            ))} */}
+                </div>
+              ))}
           </div>
           <div className="table-button">
             <button
@@ -257,21 +286,24 @@ const InvoiceForm = () => {
           </div>
         </div>
       </form>
-      <PopUp
-        dataList={itemList}
-        displayModel={displayItemModal}
-        showModel={showItemModal}
-        setList={setModalItemList}
-        tableHeader={INVOICE_ITEM_MODAL_HEADER}
-      />
 
-      <PopUp
-        dataList={customerList}
-        displayModel={displayCustomerModal}
-        showModel={showCustomerModal}
-        setList={setModalCustomerList}
-        tableHeader={INVOICE_CUSTOMER_MODAL_HEADER}
-      />
+      <PopUp displayModel={displayItemModal} showModel={showItemModal}>
+        <PopUpTitle title="Add Item" />
+        <SelectList
+          dataList={itemList}
+          setList={setModalItemList}
+          optionValue={INVOICE_ITEM_MODAL_HEADER}
+        />
+      </PopUp>
+
+      <PopUp displayModel={displayCustomerModal} showModel={showCustomerModal}>
+        <PopUpTitle title="Add Customer" />
+        <SelectList
+          dataList={customerList}
+          setList={setModalCustomerList}
+          optionValue={INVOICE_CUSTOMER_MODAL_HEADER}
+        />
+      </PopUp>
     </div>
   );
 };

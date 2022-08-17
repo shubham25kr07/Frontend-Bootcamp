@@ -6,27 +6,7 @@ import { Link } from "react-router-dom";
 
 const Item = () => {
   const { itemList, setItemList } = useContext(EntityDetailsContext);
-  const [currentPage, setCurrentPage] = useState(1);
-  useEffect(() => {
-    const url = `http://localhost:8080/v1/item/itemList?page=${currentPage}`;
-    const data = {
-      sort_key: "item_name",
-      sort_value: "ASC",
-    };
-    callAPI(url, data);
-  }, [currentPage]);
-
-  const callAPI = (url, data) => {
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        setItemList(json.item);
-      })
-      .catch((error) => console.table(error));
-  };
+  const pagination = false;
 
   return (
     <div>
@@ -41,8 +21,7 @@ const Item = () => {
         <Table
           column={ITEM_COLUMN}
           datalist={itemList}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
+          pagination={pagination}
         />
       </div>
     </div>
@@ -50,14 +29,3 @@ const Item = () => {
 };
 
 export default Item;
-
-/*
-Validator
-Item Price
-
-Invoice add->
-
-
-
-
-*/
