@@ -8,6 +8,7 @@ import PopUp from "../Utils/PopUp";
 import DropDownModal from "../Utils/DropDownList";
 import Label from "../Utils/Label";
 import Input from "../Utils/Input";
+import ItemCard from "../Utils/ItemCard";
 const InvoiceForm = () => {
   const { itemList, setItemList } = useContext(EntityDetailsContext);
   const [displayModel, setDisplayModel] = useState(false);
@@ -41,7 +42,7 @@ const InvoiceForm = () => {
     <div className="form-container">
       <div className="form-top-header">
         <h1>New Invoice</h1>
-        <button className="button-61">
+        <button className="add-button">
           <i className="fa fa-file"></i>Save Invoice
         </button>
       </div>
@@ -133,7 +134,45 @@ const InvoiceForm = () => {
         </div>
 
         <div></div>
-        <div></div>
+        <div className="form-third-div">
+          <div>
+            <Label label="Notes" />
+            <div>
+              <Input
+                type="text"
+                className="notes"
+                value={Notes}
+                name="Notes"
+                onChange={handleChange.bind(null, "Notes")}
+                onBlur={validateDate.bind(null, "Notes")}
+              />
+            </div>
+          </div>
+          <div className="form-third-div-f2">
+            <div className="form-item-cards">
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+            </div>
+            <hr className="hr-line" />
+            <ItemCard
+              className={"total-amount"}
+              classNameField={"total-amount-field"}
+            />
+          </div>
+        </div>
         {/* <div>
      
           <div>
