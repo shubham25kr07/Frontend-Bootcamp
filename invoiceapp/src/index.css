@@ -570,10 +570,13 @@ Select Box
   padding-left: 25px;
 }
 
-.active {
-  color: #fff;
-  background: #7600dc;
+.left-nav-text a.active {
+  color: #7600dc;
 }
+/* .active a {
+  
+  background-color: #009879;
+} */
 
 .div-numbers {
   display: flex;

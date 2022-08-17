@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ENTITY } from "./Constants";
 
 const LeftNavigation = () => {
@@ -7,28 +7,28 @@ const LeftNavigation = () => {
       <nav className="nav-menu1 active1">
         <div>
           <div className="left-nav-text" id="left-nav-id">
-            <Link to="/customer">
+            <NavLink to="/customer">
               <i className="fa fa-user"></i>
               <span>{ENTITY.CUSTOMER_ENTITY}</span>
-            </Link>
+            </NavLink>
           </div>
           <div className="left-nav-text   ">
-            <Link to="/item">
+            <NavLink to="/item">
               <i className="fa fa-star"></i>
               <span>{ENTITY.ITEM_ENTITY}</span>
-            </Link>
+            </NavLink>
           </div>
           <div className="left-nav-text">
-            <Link to="/invoice">
+            <NavLink to="/invoice">
               <i className="fa fa-file"></i>
               <span>{ENTITY.INVOICE_ENTITY}</span>
-            </Link>
+            </NavLink>
           </div>
           <div className="left-nav-text">
-            <Link to="#">
+            <NavLink to="/dashboard">
               <i className="fa fa-tachometer"></i>
               <span>{ENTITY.DASHBOARD_ENTITY}</span>
-            </Link>
+            </NavLink>
           </div>
         </div>
       </nav>
