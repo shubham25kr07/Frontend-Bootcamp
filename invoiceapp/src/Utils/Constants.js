@@ -120,4 +120,46 @@ const INVOICE_COLUMN = [
   //   },
   // },
 ];
-export { ENTITY, CUSTOMER_COLUMN, ITEM_COLUMN, INVOICE_COLUMN };
+
+const INVOICE_ITEMS_COLUMN = [
+  {
+    title: "Items",
+    render: (rowData) => {
+      return <div>{rowData.Item_Name}</div>;
+    },
+  },
+  {
+    title: "Quantity",
+    render: (rowData) => {
+      return (
+        <div>
+          <input
+            className="table-row-input"
+            type="text"
+            value={rowData.count || 1}
+            // rowData={(e) => onChange(i, parseInt(e.target.value) || 0)}
+          />
+        </div>
+      );
+    },
+  },
+  {
+    title: "Price",
+    render: (rowData) => {
+      return <div>{rowData.Price}</div>;
+    },
+  },
+  {
+    title: "Amount",
+    render: (rowData) => {
+      return <div>{rowData.Price}</div>;
+    },
+  },
+];
+export {
+  ENTITY,
+  CUSTOMER_COLUMN,
+  ITEM_COLUMN,
+  INVOICE_COLUMN,
+  INVOICE_ITEMS_COLUMN,
+};
