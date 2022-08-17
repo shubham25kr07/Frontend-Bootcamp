@@ -1,6 +1,5 @@
 const Table = (props) => {
   const {
-    // flag,
     column,
     datalist,
     setCurrentPage,
@@ -13,10 +12,8 @@ const Table = (props) => {
       <table className="content-table">
         <thead>
           <tr>
-            {column.map(
-              (item, index) =>
-                item.title !== "ID" ? <th key={index}>{item.title}</th> : null
-              // <th key={index}>{item.title}</th>
+            {column.map((item, index) =>
+              item.title !== "ID" ? <th key={index}>{item.title}</th> : null
             )}
           </tr>
         </thead>
@@ -24,12 +21,10 @@ const Table = (props) => {
           {datalist &&
             datalist.map((item, index) => (
               <tr key={index}>
-                {column.map(
-                  (col, key) =>
-                    col.title !== "ID" ? (
-                      <td key={key}>{col.render(item)}</td>
-                    ) : null
-                  // <td key={key}>{col.render(item)}</td>
+                {column.map((col, key) =>
+                  col.title !== "ID" ? (
+                    <td key={key}>{col.render(item)}</td>
+                  ) : null
                 )}
               </tr>
             ))}
