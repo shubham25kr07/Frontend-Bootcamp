@@ -436,15 +436,45 @@ PopUp Modal CSS
   position: relative;
   padding: 32px;
   width: 100%;
-  max-width: 640px;
+  max-width: 500px;
   background-color: #fff;
 }
 .popup-inner .close-btn {
   position: absolute;
   top: 16px;
   right: 16px;
+  color: red;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.select-list {
+  height: 150px;
+  width: 440px;
+  border: none;
 }
 
+.list-option {
+  /* display: flex;
+  justify-content: space-between; */
+
+  /* background-color: black; */
+  /* justify-content: space-around; */
+}
+.list-div {
+  width: 1000px;
+}
+.table-row-0 {
+  color: green;
+}
+.table-row-1 {
+  background-color: red;
+}
+.button-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 /*
 Select Box
 */
@@ -649,6 +679,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding-left: 20px;
   align-items: center;
   margin-left: 20px;
+}
+.modal-header {
+  display: flex;
+  /* height: 50px; */
+  /* background-color: yellow; */
+  justify-content: space-around;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 400px;
+  padding-right: 20px;
+  padding-left: 20px;
+  align-items: center;
+  background-color: #fafbff;
 }
 .table-header-row {
   width: 40px;

@@ -120,7 +120,43 @@ const INVOICE_COLUMN = [
   //   },
   // },
 ];
-
+const INVOICE_ITEM_MODAL_HEADER = [
+  {
+    title: "Items",
+    render: (rowData) => {
+      return <div className="table-row-0">{rowData.Item_Name}</div>;
+    },
+  },
+  {
+    title: "Price",
+    render: (rowData) => {
+      return <div className="table-row-1">{rowData.Price}</div>;
+    },
+  },
+];
+const INVOICE_CUSTOMER_MODAL_HEADER = [
+  {
+    title: "Customers",
+    render: (rowData) => {
+      return rowData.name;
+      // return <span>{rowData.name}</span>;
+    },
+  },
+  {
+    title: "email",
+    render: (rowData) => {
+      return rowData.email;
+      // return <span>{rowData.name}</span>;
+    },
+  },
+  {
+    title: "Number",
+    render: (rowData) => {
+      return rowData.phone_number;
+      // return <span>{rowData.name}</span>;
+    },
+  },
+];
 const INVOICE_ITEMS_COLUMN = [
   {
     title: "Items",
@@ -162,4 +198,6 @@ export {
   ITEM_COLUMN,
   INVOICE_COLUMN,
   INVOICE_ITEMS_COLUMN,
+  INVOICE_ITEM_MODAL_HEADER,
+  INVOICE_CUSTOMER_MODAL_HEADER,
 };
