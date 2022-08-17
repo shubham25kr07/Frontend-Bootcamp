@@ -304,7 +304,7 @@ i {
 }  */
 
 .left-nav-text {
-  font-size: 20px;
+  font-size: 16px;
   list-style: none;
   padding-top: 20px;
   /* margin-top: 30px;
@@ -482,7 +482,7 @@ Select Box
   margin-right: 28px;
   /* margin-right: 50px; */
 }
-.button-61 {
+.add-button {
   align-items: center;
   appearance: none;
   border-radius: 4px;
@@ -493,7 +493,7 @@ Select Box
   cursor: pointer;
   display: inline-flex;
   font-family: Roboto, sans-serif;
-  font-size: 0.875rem;
+  font-size: 16px;
   font-weight: 500;
   height: 36px;
   justify-content: center;
@@ -506,7 +506,7 @@ Select Box
   position: relative;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
   -webkit-user-select: none;
@@ -572,7 +572,12 @@ Select Box
 
 .left-nav-text a.active {
   color: #7600dc;
+  /* width: 100%;
+  background-color: #7303fc; */
 }
+/* .left-nav-text div {
+  background: #eff8ff;
+} */
 /* .active a {
   
   background-color: #009879;
@@ -605,3 +610,73 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
 }
+
+.form-third-div {
+  padding-left: 40px;
+  padding-right: 30px;
+  display: flex;
+}
+.notes {
+  background-color: white;
+  border: 2px solid;
+  border-radius: 4px;
+  height: 100px;
+  color: black;
+  width: 500px;
+  border-color: lightgray;
+  padding-left: 8px;
+}
+/*
+Invoice-Form Third main div
+*/
+.form-third-div-f2 {
+  margin-left: 100px;
+
+  background-color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 500px;
+}
+
+.item-card-field {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.item-card-field-quantity-price {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  margin-right: 30px;
+}
+.item-card-name {
+  color: gray;
+}
+.hr-line {
+  margin-top: 30px;
+  background: gray;
+  color: gray;
+  border-color: lightgray;
+}
+.total-amount {
+  color: #7600dc;
+}
+.form-item-cards {
+  height: 120px;
+  padding-right: 5px;
+  overflow: auto;
+}
+.item-card-quantity {
+  /* margin-right: 500px; */
+  margin-right: 10px;
+}
+
+/* .total-amount-field {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  overflow: auto;
+} */
