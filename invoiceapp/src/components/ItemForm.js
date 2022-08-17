@@ -1,6 +1,8 @@
 import { useState } from "react";
 import FormInput from "../Utils/FormInput";
 import { useNavigate } from "react-router-dom";
+import TextArea from "../Utils/TextArea";
+import Label from "../Utils/Label";
 
 const ItemForm = () => {
   const [inputValue, setInputValue] = useState({
@@ -82,24 +84,24 @@ const ItemForm = () => {
             {errors.Price && <div className="error">{errors.Price}</div>}
           </div>
         </div>
-        <div className="input-container label-and-error">
+        <div className="input-container label-and-error mb">
           <div className="lable-input">
-            <FormInput
+            <Label label="Description" />
+            <TextArea
               className={"description"}
               label="Description"
               id="Item_Description"
               name="Item_Description"
-              type="Item_Description"
               value={Item_Description}
               onChange={handleChange.bind(null, "Item_Description")}
               onBlur={handleBlur.bind(null, "Description")}
             />
             {errors.Description && (
-              <div className="error">{errors.Description}</div>
+              <div className="error ">{errors.Description}</div>
             )}
           </div>
         </div>
-        <button className="submit">
+        <button className="submit-item">
           {" "}
           <i className="fa fa-file"></i>Save Item
         </button>

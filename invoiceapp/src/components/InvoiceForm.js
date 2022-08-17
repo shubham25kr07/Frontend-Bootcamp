@@ -13,6 +13,7 @@ import TableHeader from "../Utils/TableHeader";
 import TableRow from "../Utils/TableRow";
 
 import ItemCard from "../Utils/ItemCard";
+import TextArea from "../Utils/TextArea";
 
 const InvoiceForm = () => {
   const { itemList, setItemList } = useContext(EntityDetailsContext);
@@ -167,7 +168,8 @@ const InvoiceForm = () => {
           <div>
             <Label label="Notes" />
             <div>
-              <Input
+              <TextArea
+                id="Notes"
                 type="text"
                 className="notes"
                 value={Notes}
@@ -175,6 +177,14 @@ const InvoiceForm = () => {
                 onChange={handleChange.bind(null, "Notes")}
                 onBlur={validateDate.bind(null, "Notes")}
               />
+              {/* <Input
+                type="text"
+                className="notes"
+                value={Notes}
+                name="Notes"
+                onChange={handleChange.bind(null, "Notes")}
+                onBlur={validateDate.bind(null, "Notes")}
+              /> */}
             </div>
           </div>
           <div className="form-third-div-f2">
