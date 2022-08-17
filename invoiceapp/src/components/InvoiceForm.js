@@ -1,5 +1,10 @@
 import { useContext, useState } from "react";
-import { ITEM_COLUMN, INVOICE_ITEMS_COLUMN } from "../Utils/Constants";
+import {
+  ITEM_COLUMN,
+  INVOICE_ITEMS_COLUMN,
+  INVOICE_ITEM_MODAL_HEADER,
+  INVOICE_CUSTOMER_MODAL_HEADER,
+} from "../Utils/Constants";
 // import { Table } from "react-virtualized";
 import FormInput from "../Utils/FormInput";
 import Table from "../Utils/Table";
@@ -17,12 +22,22 @@ import TextArea from "../Utils/TextArea";
 
 const InvoiceForm = () => {
   const { itemList, setItemList } = useContext(EntityDetailsContext);
-  const [displayModel, setDisplayModel] = useState(false);
+  const { customerList, setCustomerList } = useContext(EntityDetailsContext);
+  const [displayItemModal, setDisplayItemModal] = useState(false);
+  const [displayCustomerModal, setdisplayCustomerModal] = useState(false);
+  const [selectedItemList, setSelectedItemList] = useState([]);
+  const [selectedCustomerList, setSelectedCustomerList] = useState(null);
 
-  console.log(displayModel);
-  const showModel = () => {
-    setDisplayModel(!displayModel);
+  console.log(displayItemModal);
+
+  const showItemModal = () => {
+    setDisplayItemModal(!displayItemModal);
   };
+
+  const showCustomerModal = (e) => {
+    setdisplayCustomerModal(!displayCustomerModal);
+  };
+
   const [inputValue, setInputValue] = useState({
     IssuedAt: new Date().toISOString().slice(0, 10),
     DueDate: "",
@@ -41,8 +56,25 @@ const InvoiceForm = () => {
   const itemListPopUp = () => {
     setShowItemList(!showItemList);
   };
+  const setModalItemList = (val) => {
+    const selectedlist = itemList.filter((_, index) => val.includes(index));
+    setSelectedItemList(selectedlist);
+    showItemModal();
+  };
+  const setChangeButton = (e) => {
+    e.preventDefault();
+    setdisplayCustomerModal(!displayCustomerModal);
+  };
+
+  const setModalCustomerList = (val) => {
+    console.log(val);
+    const selectedlist = customerList[val[0]];
+    console.log(selectedlist);
+    setSelectedCustomerList(selectedlist);
+    showCustomerModal();
+  };
   const validateNotes = () => {};
-  const [selectedItemList, setSelectedItemList] = useState([]);
+
   console.log(selectedItemList);
   // console.log(INVOICE_ITEMS_COLUMN);
   return (
@@ -60,12 +92,24 @@ const InvoiceForm = () => {
 
             <div className="invoice-customer-details-button">
               <div className="">
-                <div>shubham</div>
-                <div>1234 </div>
-                <div>sk@gmail.com</div>
+                {selectedCustomerList ? (
+                  <div>
+                    <div>{selectedCustomerList.name}</div>
+                    <div>{selectedCustomerList.phone_number}</div>
+                    <div>{selectedCustomerList.email}</div>
+                  </div>
+                ) : (
+                  <div></div>
+                )}
               </div>
 
-              <button className="invoice-bill-to-button">Change</button>
+              <button
+                className="invoice-bill-to-button"
+                type="button"
+                onClick={showCustomerModal}
+              >
+                Change
+              </button>
             </div>
           </div>
           <div className="div-f2">
@@ -154,7 +198,7 @@ const InvoiceForm = () => {
             <button
               className="add-item-button"
               type="button"
-              onClick={showModel}
+              onClick={showItemModal}
             >
               <i class="fa fa-shopping-basket"></i>
               Add an Item
@@ -212,81 +256,21 @@ const InvoiceForm = () => {
             />
           </div>
         </div>
-
-        {/* <div>
-     
-          <div>
-            <div>
-              <FormInput
-                type=""
-                value={IssuedAt}
-                placeholder="Issued At"
-                label="IssuedAt"
-                name="IssuedAt"
-                onChange={handleChange.bind(null, "IssuedAt")}
-                onBlur={validateDate.bind(null, "IssuedAt")} //change the name of handleBlur
-                disabled
-              />
-              <FormInput
-                type="date"
-                value={DueDate}
-                placeholder="Due Date"
-                label="DueDate"
-                name="DueDate"
-                onChange={handleChange.bind(null, "DueDate")}
-                onBlur={validateDate.bind(null, "DueDate")} //change the name of handleBlur
-              />
-            </div>
-            <div>
-              <FormInput
-                type="text"
-                value={InvoiceNumber}
-                placeholder="InvoiceNumber"
-                label="InvoiceNumber"
-                name="InvoiceNumber"
-                onChange={handleChange.bind(null, "IssuedAt")}
-                onBlur={validateDate.bind(null, "IssuedAt")} //change the name of handleBlur
-                disabled
-              />
-              <FormInput
-                type="text"
-                value={ReferenceNumber}
-                placeholder="ReferenceNumber"
-                label="ReferenceNumber"
-                name="ReferenceNumber"
-                onChange={handleChange.bind(null, "ReferenceNumber")}
-                onBlur={validateDate.bind(null, "ReferenceNumber")} //change the name of handleBlur
-              />
-            </div>
-          </div>
-        </div> */}
-        <div>
-          {/* {selectedItemList.map((selecteItem) => {
-            return (
-              <div>
-                Name : {selecteItem.Item_Name} Price: {selecteItem.Price}
-              </div>
-            );
-          })} */}
-        </div>
-        {/* <div> */}
-
-        {/* <FormInput
-            type="text"
-            value={Notes}
-            placeholder=""
-            label="Notes"
-            name="Notes"
-            onChange={handleChange.bind(null, "Notes")}
-            onBlur={validateNotes.bind(null, "Notes")} //change the name of handleBlur
-          />
-        </div> */}
       </form>
       <PopUp
         dataList={itemList}
-        displayModel={displayModel}
-        showModel={showModel}
-        setSelectedItemList={setSelectedItemList}
+        displayModel={displayItemModal}
+        showModel={showItemModal}
+        setList={setModalItemList}
+        tableHeader={INVOICE_ITEM_MODAL_HEADER}
+      />
+
+      <PopUp
+        dataList={customerList}
+        displayModel={displayCustomerModal}
+        showModel={showCustomerModal}
+        setList={setModalCustomerList}
+        tableHeader={INVOICE_CUSTOMER_MODAL_HEADER}
       />
     </div>
   );
