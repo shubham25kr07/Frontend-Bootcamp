@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ITEM_COLUMN } from "../Utils/Constants";
+import { ITEM_COLUMN, INVOICE_ITEMS_COLUMN } from "../Utils/Constants";
 // import { Table } from "react-virtualized";
 import FormInput from "../Utils/FormInput";
 import Table from "../Utils/Table";
@@ -8,7 +8,12 @@ import PopUp from "../Utils/PopUp";
 import DropDownModal from "../Utils/DropDownList";
 import Label from "../Utils/Label";
 import Input from "../Utils/Input";
+
+import TableHeader from "../Utils/TableHeader";
+import TableRow from "../Utils/TableRow";
+
 import ItemCard from "../Utils/ItemCard";
+
 const InvoiceForm = () => {
   const { itemList, setItemList } = useContext(EntityDetailsContext);
   const [displayModel, setDisplayModel] = useState(false);
@@ -38,6 +43,7 @@ const InvoiceForm = () => {
   const validateNotes = () => {};
   const [selectedItemList, setSelectedItemList] = useState([]);
   console.log(selectedItemList);
+  // console.log(INVOICE_ITEMS_COLUMN);
   return (
     <div className="form-container">
       <div className="form-top-header">
@@ -133,6 +139,29 @@ const InvoiceForm = () => {
           </div>
         </div>
 
+        <div className="second-div">
+          <div className="table-header">
+            <TableHeader columns={INVOICE_ITEMS_COLUMN} />
+          </div>
+          <div className="table-row">
+            <TableRow
+              dataList={selectedItemList}
+              columns={INVOICE_ITEMS_COLUMN}
+            />
+          </div>
+          <div className="table-button">
+            <button
+              className="add-item-button"
+              type="button"
+              onClick={showModel}
+            >
+              <i class="fa fa-shopping-basket"></i>
+              Add an Item
+            </button>
+          </div>
+        </div>
+        <div></div>
+
         <div></div>
         <div className="form-third-div">
           <div>
@@ -173,6 +202,7 @@ const InvoiceForm = () => {
             />
           </div>
         </div>
+
         {/* <div>
      
           <div>
@@ -220,20 +250,16 @@ const InvoiceForm = () => {
             </div>
           </div>
         </div> */}
-        {/* <div>
-          {selectedItemList.map((selecteItem) => {
+        <div>
+          {/* {selectedItemList.map((selecteItem) => {
             return (
               <div>
                 Name : {selecteItem.Item_Name} Price: {selecteItem.Price}
               </div>
             );
-          })}
-
-          <button type="button" onClick={showModel}>
-            Add Item
-          </button>
+          })} */}
         </div>
-        <div> */}
+        {/* <div> */}
 
         {/* <FormInput
             type="text"
