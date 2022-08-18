@@ -1,5 +1,5 @@
-const TableCell = ({ data }) => {
-  return <div className="table-header-row">{data}</div>;
+const TableCell = ({ data, className }) => {
+  return <div className={className || "table-cell"}>{data}</div>;
 };
 
 export default TableCell;

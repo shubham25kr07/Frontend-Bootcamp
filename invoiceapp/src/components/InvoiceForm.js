@@ -210,10 +210,19 @@ const InvoiceForm = () => {
                       name="quantity"
                       id={index}
                       onChange={handleChangeQuantity.bind(null, "Quantity")}
-                      // onBlur={validateDate.bind(null, "Quantity")} //change the name of handleBlur
                     />
                     <TableCell data={data.Price} />
-                    <TableCell data={data.Price * data.quantity} />
+                    <div className="delete-button-table-cell">
+                      <TableCell
+                        className="row-last-cell"
+                        data={data.Price * data.quantity}
+                      />
+                      <div>
+                        <button className="delete-button" type="button">
+                          <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    </div>
                   </TableRow>
                   {/* {columns.map((col, key) => (
               <div className="table-header-row" key={key}>

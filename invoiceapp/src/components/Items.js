@@ -10,20 +10,32 @@ const Item = () => {
 
   return (
     <div>
-      <div className="table-form">
-        <div class="customers-addcustomer">
-          <h1>Items</h1>
-          <Link to="/item/add" className="add-button">
-            <i class="fa fa-plus"></i>
-            Add Item
-          </Link>
+      {itemList.length > 0 ? (
+        <div className="table-form">
+          <div class="customers-addcustomer">
+            <h1>Items</h1>
+            <Link to="/item/add" className="add-button">
+              <i class="fa fa-plus"></i>
+              Add Item
+            </Link>
+          </div>
+          <Table
+            column={ITEM_COLUMN}
+            datalist={itemList}
+            pagination={pagination}
+          />
         </div>
-        <Table
-          column={ITEM_COLUMN}
-          datalist={itemList}
-          pagination={pagination}
-        />
-      </div>
+      ) : (
+        <div className="empty-invoice-list">
+          <div className="empty-box">
+            <div className="empty-box-text">NO Items</div>
+            <Link to="/item/add" className="add-button">
+              <i class="fa fa-plus"></i>
+              Add Item
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

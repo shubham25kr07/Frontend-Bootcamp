@@ -26,21 +26,35 @@ const Customer = () => {
   };
 
   return (
-    <div className="table-form">
-      <div class="customers-addcustomer ">
-        <h1>Customers</h1>
+    <div>
+      {customerList.length > 0 ? (
+        <div className="table-form">
+          <div class="customers-addcustomer ">
+            <h1>Customers</h1>
 
-        <Link to="/customer/add" className="add-button">
-          <i class="fa fa-plus"></i>
-          Add Customer
-        </Link>
-      </div>
-      <Table
-        column={CUSTOMER_COLUMN}
-        datalist={customerList}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
+            <Link to="/customer/add" className="add-button">
+              <i class="fa fa-plus"></i>
+              Add Customer
+            </Link>
+          </div>
+          <Table
+            column={CUSTOMER_COLUMN}
+            datalist={customerList}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        </div>
+      ) : (
+        <div className="empty-invoice-list">
+          <div className="empty-box">
+            <div className="empty-box-text">NO Customers</div>
+            <Link to="/customer/add" className="add-button">
+              <i class="fa fa-plus"></i>
+              Add Customer
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
