@@ -657,7 +657,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   -webkit-appearance: none;
 }
 
-.second-div {
+.form-second-div {
   /* display: flex; */
   padding-top: 10px;
   /* height: 200px; */
@@ -698,9 +698,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .table-row {
   /* display: flex; */
-  height: 200px;
+  /* height: 200px; */
   background-color: white;
-  overflow: auto;
+  /* overflow: auto; */
   margin-left: 20px;
   /* margin-right: 20px; */
   /* padding-left: 20px;
@@ -798,9 +798,9 @@ Invoice-Form Third main div
   color: #7600dc;
 }
 .form-item-cards {
-  height: 120px;
+  /* height: 120px; */
   padding-right: 5px;
-  overflow: auto;
+  /* overflow: auto; */
 }
 .item-card-quantity {
   /* margin-right: 500px; */
