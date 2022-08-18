@@ -180,6 +180,12 @@ const INVOICE_ITEMS_COLUMN = [
       return <div>{rowData.Price}</div>;
     },
   },
+  {
+    title: "",
+    render: (rowData) => {
+      return <div>{}</div>;
+    },
+  },
 ];
 export {
   ENTITY,
