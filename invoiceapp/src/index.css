@@ -814,3 +814,51 @@ Invoice-Form Third main div
   justify-content: center;
   color: #7600dc;
 }
+
+.delete-button-table-cell {
+  display: flex;
+  justify-content: space-around;
+}
+.delete-button {
+  margin-left: 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.row-last-cell {
+  /* width: 40px; */
+  margin-right: 10px;
+}
+/* .fa-trash {
+  height: 10px;
+} */
+.table-cell {
+  width: 100px;
+  margin-right: 15px;
+}
+
+/*
+Empty Lists
+*/
+
+.empty-invoice-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.empty-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  /* background-color: #009879; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.empty-box-text {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
