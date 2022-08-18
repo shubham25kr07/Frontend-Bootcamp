@@ -6,7 +6,6 @@ import {
   INVOICE_ITEM_MODAL_HEADER,
   INVOICE_CUSTOMER_MODAL_HEADER,
 } from "../Utils/Constants";
-// import { Table } from "react-virtualized";
 import FormInput from "../Utils/FormInput";
 import Table from "../Utils/Table";
 import { EntityDetailsContext } from "../App";
@@ -133,9 +132,11 @@ const InvoiceForm = () => {
       (_, index) => !val.includes(index)
     );
     setItemListToShow(modifiedItemListToShow);
-    const selectedlist = itemList.filter((_, index) => val.includes(index));
+    const selectedlist = itemListToshow.filter((_, index) =>
+      val.includes(index)
+    );
     const selectedlistquan = selectedlist.map((list, index) => {
-      return { ...list, quantity: 0 };
+      return { ...list, quantity: 1 };
     });
 
     setSelectedItemList((prev) => {
@@ -301,19 +302,18 @@ const InvoiceForm = () => {
                   <div className="table-row-item" key={index}>
                     <TableRow>
                       <TableCell data={data.Item_Name} />
-                      <Input
-                        type="text"
-                        className="table-row-input"
-                        value={data.quantity}
-                        name={index}
-                        onChange={(e) => handleChangeQuantity(e, index)}
-                      />
-                      <TableCell data={data.Price} />
-                      <div className="delete-button-table-cell">
-                        <TableCell
-                          className="row-last-cell"
-                          data={data.Price * data.quantity}
+                      <div className="table-cell">
+                        <Input
+                          type="text"
+                          className="table-row-input"
+                          value={data.quantity}
+                          name={index}
+                          onChange={(e) => handleChangeQuantity(e, index)}
                         />
+                      </div>
+                      <TableCell data={data.Price} />
+                      <TableCell data={data.Price * data.quantity} />
+                      <div className="delete-button-table-cell">
                         <div>
                           <button
                             className="delete-button"
