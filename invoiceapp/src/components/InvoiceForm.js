@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   ITEM_COLUMN,
   INVOICE_ITEMS_COLUMN,
@@ -30,8 +30,12 @@ const InvoiceForm = () => {
   const [displayCustomerModal, setdisplayCustomerModal] = useState(false);
   const [selectedItemList, setSelectedItemList] = useState([]);
   const [selectedCustomerList, setSelectedCustomerList] = useState(null);
-
-  console.log(displayItemModal);
+  const [itemListToshow, setItemListToShow] = useState([]);
+  const [quantity, setQuantity] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
+  useEffect(() => {
+    setItemListToShow(itemList);
+  }, [itemList]);
 
   const showItemModal = () => {
     setDisplayItemModal(!displayItemModal);
@@ -48,7 +52,6 @@ const InvoiceForm = () => {
     InvoiceNumber: "",
     ReferenceNumber: "",
   });
-  console.log(itemList);
   const pagination = false;
   const { IssuedAt, DueDate, Notes, ReferenceNumber, InvoiceNumber } =
     inputValue;
@@ -60,12 +63,25 @@ const InvoiceForm = () => {
     setShowItemList(!showItemList);
   };
   const setModalItemList = (val) => {
+    const modifiedItemListToShow = itemListToshow.filter(
+      (_, index) => !val.includes(index)
+    );
+    setItemListToShow(modifiedItemListToShow);
     const selectedlist = itemList.filter((_, index) => val.includes(index));
-    const selectedlistquan = selectedlist.map((list) => {
-      return { ...list, quantity: 1 };
+    const selectedlistquan = selectedlist.map((list, index) => {
+      return { ...list, quantity: 0 };
     });
-    setSelectedItemList(selectedlistquan);
+    // const itemQuantity = selectedlist.map((list, index) => {
+    //   return 1;
+    // });
 
+    setSelectedItemList((prev) => {
+      return [...prev, ...selectedlistquan];
+    });
+    // setQuantity((pre) => {
+    //   return [...pre, ...itemQuantity];
+    // });
+    // console.log(quantity);
     showItemModal();
   };
   const setChangeButton = (e) => {
@@ -74,18 +90,30 @@ const InvoiceForm = () => {
   };
 
   const setModalCustomerList = (val) => {
-    console.log(val);
     const selectedlist = customerList[val[0]];
-    console.log(selectedlist);
     setSelectedCustomerList(selectedlist);
     showCustomerModal();
   };
   const validateNotes = () => {};
 
-  const handleChangeQuantity = (type, e) => {
-    console.log(e.target.value);
+  const handleChangeQuantity = (e, index) => {
+    var result = [...selectedItemList];
+    let amount = 0;
+    result = result.map((x, y) => {
+      if (y === index) {
+        x.quantity = Number(e.target.value);
+        return x;
+      } else return x;
+    });
+    result.forEach((data) => {
+      console.log(data);
+      amount = amount + data.quantity * data.Price;
+      console.log(amount);
+    });
+
+    setTotalAmount(amount);
+    setSelectedItemList(result);
   };
-  console.log(selectedItemList);
   return (
     <div className="form-container">
       <div className="form-top-header">
@@ -193,44 +221,40 @@ const InvoiceForm = () => {
           </div>
         </div>
 
-        <div className="second-div">
+        <div className="form-second-div">
           <div className="table-header">
             <TableHeader columns={INVOICE_ITEMS_COLUMN} />
           </div>
           <div className="table-row">
             {selectedItemList &&
-              selectedItemList.map((data, index) => (
-                <div className="table-row-item" key={index}>
-                  <TableRow>
-                    <TableCell data={data.Item_Name} />
-                    <Input
-                      type="text"
-                      className="table-row-input"
-                      value={data.quantity}
-                      name="quantity"
-                      id={index}
-                      onChange={handleChangeQuantity.bind(null, "Quantity")}
-                    />
-                    <TableCell data={data.Price} />
-                    <div className="delete-button-table-cell">
-                      <TableCell
-                        className="row-last-cell"
-                        data={data.Price * data.quantity}
+              selectedItemList.map((data, index) => {
+                return (
+                  <div className="table-row-item" key={index}>
+                    <TableRow>
+                      <TableCell data={data.Item_Name} />
+                      <Input
+                        type="text"
+                        className="table-row-input"
+                        value={data.quantity}
+                        name={index}
+                        onChange={(e) => handleChangeQuantity(e, index)}
                       />
-                      <div>
-                        <button className="delete-button" type="button">
-                          <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
-                        </button>
+                      <TableCell data={data.Price} />
+                      <div className="delete-button-table-cell">
+                        <TableCell
+                          className="row-last-cell"
+                          data={data.Price * data.quantity}
+                        />
+                        <div>
+                          <button className="delete-button" type="button">
+                            <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </TableRow>
-                  {/* {columns.map((col, key) => (
-              <div className="table-header-row" key={key}>
-                {col.render(data)}
-              </div>
-            ))} */}
-                </div>
-              ))}
+                    </TableRow>
+                  </div>
+                );
+              })}
           </div>
           <div className="table-button">
             <button
@@ -259,36 +283,27 @@ const InvoiceForm = () => {
                 onChange={handleChange.bind(null, "Notes")}
                 onBlur={validateDate.bind(null, "Notes")}
               />
-              {/* <Input
-                type="text"
-                className="notes"
-                value={Notes}
-                name="Notes"
-                onChange={handleChange.bind(null, "Notes")}
-                onBlur={validateDate.bind(null, "Notes")}
-              /> */}
             </div>
           </div>
           <div className="form-third-div-f2">
             <div className="form-item-cards">
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
+              {selectedItemList &&
+                selectedItemList.map((data, index) => {
+                  return (
+                    <>
+                      <ItemCard
+                        Name={data.Item_Name}
+                        Quantity={data.quantity}
+                        Amount={data.quantity * data.Price}
+                      />
+                    </>
+                  );
+                })}
             </div>
             <hr className="hr-line" />
             <ItemCard
+              Name={"TOTAL AMOUNT:"}
+              Amount={totalAmount}
               className={"total-amount"}
               classNameField={"total-amount-field"}
             />
@@ -299,7 +314,7 @@ const InvoiceForm = () => {
       <PopUp displayModel={displayItemModal} showModel={showItemModal}>
         <PopUpTitle title="Add Item" />
         <SelectList
-          dataList={itemList}
+          dataList={itemListToshow}
           setList={setModalItemList}
           optionValue={INVOICE_ITEM_MODAL_HEADER}
         />
