@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import FormInput from "../Utils/FormInput";
 import { useNavigate } from "react-router-dom";
 import TextArea from "../Utils/TextArea";
 import Label from "../Utils/Label";
+import { EntityDetailsContext } from "../App";
 
 const ItemForm = () => {
+  const { itemList, setItemList } = useContext(EntityDetailsContext);
   const [inputValue, setInputValue] = useState({
     Item_Name: "",
     Item_Description: "",
@@ -45,13 +47,39 @@ const ItemForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const requestBodyJson = inputValue;
+    requestBodyJson["Price"] = Number(requestBodyJson.Price);
     fetch(url, {
       method: "POST",
-      body: JSON.stringify(inputValue),
-    }).then((response) => response.json());
+      body: JSON.stringify(requestBodyJson),
+    })
+      .then(async (response) => {
+        const x = await response.json();
+        console.log(x, response);
+        // return x;
+        if (response.status !== 200) {
+          throw new Error(x.message);
+        } else {
+          return x;
+        }
+      })
+      .then((json) => {
+        console.log(json);
+        const responseItem = {
+          id: json.ItemId,
+          Item_Name: json.name,
+          Price: json.price,
+          Item_Description: json.description,
 
-    // alert("Item Added Successfully");
-    navigate("/item");
+          added_on: "Today",
+        };
+        setItemList((prev) => {
+          console.log(prev);
+          return [...prev, responseItem];
+        });
+        alert("Item Added Successfully");
+        navigate("/item");
+      });
   };
 
   return (
