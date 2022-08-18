@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ITEM_COLUMN,
   INVOICE_ITEMS_COLUMN,
@@ -24,6 +25,7 @@ import PopUpTitle from "../Utils/PopUpTitle";
 import TableCell from "../Utils/TableCell";
 
 const InvoiceForm = () => {
+  const { invoiceList, setInvoiceList } = useContext(EntityDetailsContext);
   const { itemList, setItemList } = useContext(EntityDetailsContext);
   const { customerList, setCustomerList } = useContext(EntityDetailsContext);
   const [displayItemModal, setDisplayItemModal] = useState(false);
@@ -31,7 +33,8 @@ const InvoiceForm = () => {
   const [selectedItemList, setSelectedItemList] = useState([]);
   const [selectedCustomerList, setSelectedCustomerList] = useState(null);
   const [itemListToshow, setItemListToShow] = useState([]);
-  const [quantity, setQuantity] = useState([]);
+  const navigate = useNavigate();
+
   const [totalAmount, setTotalAmount] = useState(0);
   useEffect(() => {
     setItemListToShow(itemList);
@@ -45,19 +48,82 @@ const InvoiceForm = () => {
     setdisplayCustomerModal(!displayCustomerModal);
   };
 
+  const deleteItem = (index) => {
+    console.log("hello");
+    const result = selectedItemList.filter((_, ind) => ind !== index);
+    const resultToShow = selectedItemList.filter((_, ind) => ind === index);
+
+    console.log(resultToShow);
+    setSelectedItemList(result);
+    setItemListToShow((prev) => [...prev, ...resultToShow]);
+  };
+
   const [inputValue, setInputValue] = useState({
     IssuedAt: new Date().toISOString().slice(0, 10),
     DueDate: "",
     Notes: "",
     InvoiceNumber: "",
     ReferenceNumber: "",
+    CustomerId: 0,
   });
   const pagination = false;
   const { IssuedAt, DueDate, Notes, ReferenceNumber, InvoiceNumber } =
     inputValue;
   const [showItemList, setShowItemList] = useState(false);
-  const handleChange = () => {};
-  const saveInvoice = () => {};
+
+  const saveInvoice = (e) => {
+    e.preventDefault();
+    console.log(selectedItemList);
+    const itemIdList = selectedItemList.map((value, index) => value.ItemId);
+    const quantityList = selectedItemList.map((value, index) => value.quantity);
+    const priceList = selectedItemList.map((value, index) => value.Price);
+    // console.log(itemIdList);
+    // console.log(quantityList);
+    // console.log(priceList);
+    const requestBodyJson = {
+      ItemList: itemIdList,
+      QuantityList: quantityList,
+      PriceList: priceList,
+      PaidStatus: "Pending",
+      ...inputValue,
+    };
+
+    const url = "http://localhost:8080/v1/invoice/create";
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(requestBodyJson),
+    })
+      .then(async (response) => {
+        const x = await response.json();
+        console.log(x, response);
+
+        if (response.status !== 200) {
+          throw new Error(x.message);
+        } else {
+          return x;
+        }
+      })
+      .then((json) => {
+        console.log(json);
+        const responseInvoice = {
+          InvoiceId: json.InvoiceId,
+          CreatedAt: json.CreatedAt,
+          CustomerName: json.CustomerName,
+          ReferenceNumber: json.ReferenceNumber,
+          PaidStatus: json.PaidStatus,
+          TotalAmount: json.TotalAmount,
+        };
+        setInvoiceList((prev) => {
+          console.log(prev);
+          return [...prev, responseInvoice];
+        });
+        alert("Invoice Added Successfully");
+        navigate("/invoice");
+      })
+      .catch((error) => {
+        console.table(error);
+      });
+  };
   const validateDate = () => {};
   const itemListPopUp = () => {
     setShowItemList(!showItemList);
@@ -71,17 +137,11 @@ const InvoiceForm = () => {
     const selectedlistquan = selectedlist.map((list, index) => {
       return { ...list, quantity: 0 };
     });
-    // const itemQuantity = selectedlist.map((list, index) => {
-    //   return 1;
-    // });
 
     setSelectedItemList((prev) => {
       return [...prev, ...selectedlistquan];
     });
-    // setQuantity((pre) => {
-    //   return [...pre, ...itemQuantity];
-    // });
-    // console.log(quantity);
+
     showItemModal();
   };
   const setChangeButton = (e) => {
@@ -91,11 +151,23 @@ const InvoiceForm = () => {
 
   const setModalCustomerList = (val) => {
     const selectedlist = customerList[val[0]];
+
+    setInputValue((prev) => ({
+      ...prev,
+      ["CustomerId"]: selectedlist.id,
+    }));
     setSelectedCustomerList(selectedlist);
+
     showCustomerModal();
   };
-  const validateNotes = () => {};
+  const handleChange = (type, e) => {
+    const { value } = e.target;
 
+    setInputValue((prev) => ({
+      ...prev,
+      [type]: value,
+    }));
+  };
   const handleChangeQuantity = (e, index) => {
     var result = [...selectedItemList];
     let amount = 0;
@@ -106,9 +178,7 @@ const InvoiceForm = () => {
       } else return x;
     });
     result.forEach((data) => {
-      console.log(data);
       amount = amount + data.quantity * data.Price;
-      console.log(amount);
     });
 
     setTotalAmount(amount);
@@ -118,11 +188,11 @@ const InvoiceForm = () => {
     <div className="form-container">
       <div className="form-top-header">
         <h1>New Invoice</h1>
-        <button className="add-button">
+        <button className="add-button" onClick={saveInvoice}>
           <i className="fa fa-file"></i>Save Invoice
         </button>
       </div>
-      <form onSubmit={saveInvoice}>
+      <form>
         <div className="form-first-div">
           <div className="div-f1">
             <div className="invoice-bill-to">Bill To</div>
@@ -170,7 +240,7 @@ const InvoiceForm = () => {
               <div>
                 <Label label="Due Date" />
                 <div className="div-i-input">
-                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  {/* <i class="fa fa-calendar" aria-hidden="true"></i> */}
                   <Input
                     type="date"
                     className="input-dates"
@@ -178,7 +248,6 @@ const InvoiceForm = () => {
                     placeholder="Due Date"
                     name="DueDate"
                     onChange={handleChange.bind(null, "DueDate")}
-                    onBlur={validateDate.bind(null, "DueDate")} //change the name of handleBlur
                   />
                 </div>
               </div>
@@ -246,7 +315,11 @@ const InvoiceForm = () => {
                           data={data.Price * data.quantity}
                         />
                         <div>
-                          <button className="delete-button" type="button">
+                          <button
+                            className="delete-button"
+                            type="button"
+                            onClick={(e) => deleteItem(index)}
+                          >
                             <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
                           </button>
                         </div>
@@ -281,7 +354,6 @@ const InvoiceForm = () => {
                 value={Notes}
                 name="Notes"
                 onChange={handleChange.bind(null, "Notes")}
-                onBlur={validateDate.bind(null, "Notes")}
               />
             </div>
           </div>
