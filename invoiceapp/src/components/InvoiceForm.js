@@ -34,7 +34,6 @@ const InvoiceForm = () => {
   const [itemListToshow, setItemListToShow] = useState([]);
   const navigate = useNavigate();
 
-  const [totalAmount, setTotalAmount] = useState(0);
   useEffect(() => {
     setItemListToShow(itemList);
   }, [itemList]);
@@ -142,7 +141,6 @@ const InvoiceForm = () => {
     setSelectedItemList((prev) => {
       return [...prev, ...selectedlistquan];
     });
-
     showItemModal();
   };
   const setChangeButton = (e) => {
@@ -171,19 +169,22 @@ const InvoiceForm = () => {
   };
   const handleChangeQuantity = (e, index) => {
     var result = [...selectedItemList];
-    let amount = 0;
     result = result.map((x, y) => {
       if (y === index) {
         x.quantity = Number(e.target.value);
         return x;
       } else return x;
     });
+    setSelectedItemList(result);
+  };
+  const calculateTotalAmount = () => {
+    var result = [...selectedItemList];
+    let amount = 0;
     result.forEach((data) => {
       amount = amount + data.quantity * data.Price;
     });
-
-    setTotalAmount(amount);
-    setSelectedItemList(result);
+    return amount;
+    // setTotalAmount(amount);
   };
   return (
     <div className="form-container">
@@ -375,7 +376,7 @@ const InvoiceForm = () => {
             <hr className="hr-line" />
             <ItemCard
               Name={"TOTAL AMOUNT:"}
-              Amount={totalAmount}
+              Amount={calculateTotalAmount()}
               className={"total-amount"}
               classNameField={"total-amount-field"}
             />
