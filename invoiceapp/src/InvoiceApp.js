@@ -1,8 +1,6 @@
 import { lazy, Suspense } from "react";
 import LeftNavigation from "./Utils/LeftNavigation";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
-import DropDownModal from "./Utils/DropDownList";
 
 const LazyCustomer = lazy(() => import("./components/Customer"));
 const LazyItem = lazy(() => import("./components/Items"));

@@ -10,7 +10,6 @@ import FormInput from "../Utils/FormInput";
 import Table from "../Utils/Table";
 import { EntityDetailsContext } from "../App";
 import PopUp from "../Utils/PopUp";
-import DropDownModal from "../Utils/DropDownList";
 import Label from "../Utils/Label";
 import Input from "../Utils/Input";
 

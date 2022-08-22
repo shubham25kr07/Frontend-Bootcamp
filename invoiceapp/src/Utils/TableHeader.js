@@ -3,7 +3,9 @@ const TableHeader = (props) => {
   return (
     <>
       {columns.map((item, index) => (
-        <div className={className || "table-header-row"}>{item.title}</div>
+        <div className={className || "table-header-row"} key={index}>
+          {item.title}
+        </div>
       ))}
     </>
   );
