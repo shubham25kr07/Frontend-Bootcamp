@@ -4,7 +4,7 @@ const FormInput = ({
   value,
   label,
   name,
-
+  testId,
   type,
   onChange,
   onBlur,
@@ -17,6 +17,7 @@ const FormInput = ({
     </div>
 
     <input
+      data-testid={testId}
       className={className || "input"}
       type={type}
       value={value}

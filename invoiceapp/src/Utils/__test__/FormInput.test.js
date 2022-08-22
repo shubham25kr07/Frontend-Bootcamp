@@ -5,7 +5,7 @@ describe("FormInput Fields", () => {
   test("should change input field value on change", async () => {
     render(<FormInput label="name" />);
     const inputElement = screen.getByRole("textbox");
-    fireEvent.change(inputElement, { target: { value: "jack" } });
-    expect(inputElement.value).toBe("jack");
+    fireEvent.change(inputElement, { target: { value: "jacks" } });
+    expect(inputElement.value).toBe("jacks");
   });
 });

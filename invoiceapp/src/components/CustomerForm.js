@@ -27,7 +27,6 @@ const CustomerForm = () => {
 
   const handleBlur = (type, e) => {
     const { value } = e.target;
-    console.log("handleBlur");
     if (value === "") {
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -49,7 +48,7 @@ const CustomerForm = () => {
     })
       .then(async (response) => {
         const x = await response.json();
-        console.log(x, response);
+
         // return x;
         if (response.status !== 200) {
           throw new Error(x.message);
@@ -73,6 +72,7 @@ const CustomerForm = () => {
         <div className="input-container customer-input-container">
           <div className="lable-input">
             <FormInput
+              testId={"name"}
               type="text"
               value={name}
               placeholder="Customer Name"
@@ -107,6 +107,7 @@ const CustomerForm = () => {
         <div className="input-container customer-input-container">
           <div className="lable-input">
             <FormInput
+              testId={"email"}
               type="text"
               value={email}
               placeholder="Email"
