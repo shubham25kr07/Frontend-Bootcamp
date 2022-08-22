@@ -13,6 +13,7 @@ const MockCustomer = () => {
   };
   CustomerApi(setCustomerList);
   return (
+    // <Customer />
     <EntityDetailsContext.Provider value={propsValue}>
       <BrowserRouter>
         <Customer />

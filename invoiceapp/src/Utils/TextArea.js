@@ -1,4 +1,12 @@
-const TextArea = ({ className, id, value, name, onChange, onBlur }) => {
+const TextArea = ({
+  className,
+  id,
+  placeholder,
+  value,
+  name,
+  onChange,
+  onBlur,
+}) => {
   return (
     <textarea
       className={className}
@@ -7,6 +15,7 @@ const TextArea = ({ className, id, value, name, onChange, onBlur }) => {
       name={name}
       rows="4"
       cols="50"
+      placeholder={placeholder}
       onChange={onChange}
       onBlur={onBlur}
     ></textarea>
