@@ -30,7 +30,7 @@ const Customer = () => {
       {customerList.length > 0 ? (
         <div className="table-form">
           <div class="customers-addcustomer ">
-            <h1>Customers</h1>
+            <h1 data-testid="custom-element">Customers</h1>
 
             <Link to="/customer/add" className="add-button">
               <i class="fa fa-plus"></i>
@@ -47,9 +47,11 @@ const Customer = () => {
       ) : (
         <div className="empty-invoice-list">
           <div className="empty-box">
-            <div className="empty-box-text">NO Customers</div>
+            <div className="empty-box-text" data-testid="custom-element">
+              NO Customers
+            </div>
             <Link to="/customer/add" className="add-button">
-              <i class="fa fa-plus"></i>
+              <i className="fa fa-plus"></i>
               Add Customer
             </Link>
           </div>
