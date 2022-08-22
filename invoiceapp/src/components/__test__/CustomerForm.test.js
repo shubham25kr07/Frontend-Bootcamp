@@ -2,6 +2,13 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
 import CustomerForm from "../CustomerForm";
+import { server } from "../../mock/SERVER.JS";
+
+beforeAll(() => server.listen());
+
+afterEach(() => server.resetHandlers());
+
+afterAll(() => server.close());
 const MockCustomer = () => {
   return (
     <BrowserRouter>
