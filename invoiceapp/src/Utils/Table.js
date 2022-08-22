@@ -29,33 +29,33 @@ const Table = (props) => {
               </tr>
             ))}
         </tbody>
-        {pagination === true ? (
-          <div>
-            {currentPage > 1 ? (
-              <button
-                onClick={() => {
-                  setCurrentPage((prePage) => {
-                    if (prePage > 1) return prePage - 1;
-                    return prePage;
-                  });
-                }}
-              >
-                Prev
-              </button>
-            ) : null}
-
+      </table>
+      {pagination === true ? (
+        <div>
+          {currentPage > 1 ? (
             <button
               onClick={() => {
                 setCurrentPage((prePage) => {
-                  return prePage + 1;
+                  if (prePage > 1) return prePage - 1;
+                  return prePage;
                 });
               }}
             >
-              Next
+              Prev
             </button>
-          </div>
-        ) : null}
-      </table>
+          ) : null}
+
+          <button
+            onClick={() => {
+              setCurrentPage((prePage) => {
+                return prePage + 1;
+              });
+            }}
+          >
+            Next
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };

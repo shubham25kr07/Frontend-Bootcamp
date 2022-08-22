@@ -1,7 +1,3 @@
-import { INVOICE_ITEMS_COLUMN } from "./Constants";
-import SelectList from "./SelectList";
-import TableHeader from "./TableHeader";
-
 const PopUp = (props) => {
   const { displayModel, showModel, children } = props;
 
