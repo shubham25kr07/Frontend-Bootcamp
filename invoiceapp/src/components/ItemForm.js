@@ -22,6 +22,7 @@ const ItemForm = () => {
   const url = "http://localhost:8080/v1/item/add";
 
   const handleChange = (type, e) => {
+    console.log(e.target.value);
     const { value } = e.target;
     setInputValue((prev) => ({
       ...prev,
