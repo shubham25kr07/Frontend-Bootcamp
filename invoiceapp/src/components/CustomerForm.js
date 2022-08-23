@@ -42,8 +42,10 @@ const CustomerForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     fetch(url, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(inputValue),
     })
       .then(async (response) => {
@@ -90,6 +92,7 @@ const CustomerForm = () => {
           <div className="lable-input  ic1">
             <FormInput
               type="text"
+              testId={"phone"}
               value={phone_number}
               placeholder="Phone Number"
               label="Phone"

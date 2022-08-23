@@ -36,4 +36,16 @@ describe("CustomerForm", () => {
     expect(inputName.value).toBe("SK@gmail.com");
     expect(screen.queryByText("SK@gmail.com")).not.toBeInTheDocument();
   });
+  test("should submit form", async () => {
+    render(<MockCustomer />);
+    const inputName = screen.getByTestId("name");
+    fireEvent.change(inputName, { target: { value: "John" } });
+    const inputEmail = screen.getByTestId("email");
+    fireEvent.change(inputEmail, { target: { value: "SK@gmail.com" } });
+    const inputPhone = screen.getByTestId("phone");
+    fireEvent.change(inputPhone, { target: { value: "987654321" } });
+
+    const buttonSubmit = screen.getByText(/Save Customer/i);
+    fireEvent.click(buttonSubmit);
+  });
 });
