@@ -5,6 +5,7 @@ const Input = ({
   onChange,
   onBlur,
   className,
+  id,
   isDisabled = false,
 }) => {
   return (
@@ -15,6 +16,7 @@ const Input = ({
       name={name}
       onChange={onChange}
       onBlur={onBlur}
+      id={id}
       disabled={isDisabled}
     />
   );
