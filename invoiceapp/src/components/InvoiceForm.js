@@ -1,13 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  ITEM_COLUMN,
   INVOICE_ITEMS_COLUMN,
   INVOICE_ITEM_MODAL_HEADER,
   INVOICE_CUSTOMER_MODAL_HEADER,
 } from "../Utils/Constants";
-import FormInput from "../Utils/FormInput";
-import Table from "../Utils/Table";
 import { EntityDetailsContext } from "../App";
 import PopUp from "../Utils/PopUp";
 import Label from "../Utils/Label";
@@ -23,9 +20,9 @@ import PopUpTitle from "../Utils/PopUpTitle";
 import TableCell from "../Utils/TableCell";
 
 const InvoiceForm = () => {
-  const { invoiceList, setInvoiceList } = useContext(EntityDetailsContext);
-  const { itemList, setItemList } = useContext(EntityDetailsContext);
-  const { customerList, setCustomerList } = useContext(EntityDetailsContext);
+  const { setInvoiceList } = useContext(EntityDetailsContext);
+  const { itemList } = useContext(EntityDetailsContext);
+  const { customerList } = useContext(EntityDetailsContext);
   const [displayItemModal, setDisplayItemModal] = useState(false);
   const [displayCustomerModal, setdisplayCustomerModal] = useState(false);
   const [selectedItemList, setSelectedItemList] = useState([]);
@@ -63,10 +60,8 @@ const InvoiceForm = () => {
     ReferenceNumber: "",
     CustomerId: 0,
   });
-  const pagination = false;
   const { IssuedAt, DueDate, Notes, ReferenceNumber, InvoiceNumber } =
     inputValue;
-  const [showItemList, setShowItemList] = useState(false);
 
   const saveInvoice = (e) => {
     e.preventDefault();
@@ -74,9 +69,6 @@ const InvoiceForm = () => {
     const itemIdList = selectedItemList.map((value, index) => value.ItemId);
     const quantityList = selectedItemList.map((value, index) => value.quantity);
     const priceList = selectedItemList.map((value, index) => value.Price);
-    // console.log(itemIdList);
-    // console.log(quantityList);
-    // console.log(priceList);
     const requestBodyJson = {
       ItemList: itemIdList,
       QuantityList: quantityList,
@@ -122,9 +114,6 @@ const InvoiceForm = () => {
       });
   };
   const validateDate = () => {};
-  const itemListPopUp = () => {
-    setShowItemList(!showItemList);
-  };
   const setModalItemList = (val) => {
     const modifiedItemListToShow = itemListToshow.filter(
       (_, index) => !val.includes(index)
@@ -142,17 +131,12 @@ const InvoiceForm = () => {
     });
     showItemModal();
   };
-  const setChangeButton = (e) => {
-    e.preventDefault();
-    setdisplayCustomerModal(!displayCustomerModal);
-  };
 
   const setModalCustomerList = (val) => {
     const selectedlist = customerList[val[0]];
-
     setInputValue((prev) => ({
       ...prev,
-      ["CustomerId"]: selectedlist.id,
+      CustomerId: selectedlist.id,
     }));
     setSelectedCustomerList(selectedlist);
 

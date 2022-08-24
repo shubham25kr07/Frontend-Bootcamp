@@ -6,7 +6,7 @@ import Label from "../Utils/Label";
 import { EntityDetailsContext } from "../App";
 
 const ItemForm = () => {
-  const { itemList, setItemList } = useContext(EntityDetailsContext);
+  const { setItemList } = useContext(EntityDetailsContext);
   const [inputValue, setInputValue] = useState({
     Item_Name: "",
     Item_Description: "",
