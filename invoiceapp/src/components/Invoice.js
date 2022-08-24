@@ -1,11 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { EntityDetailsContext } from "../App";
 import Table from "../Utils/Table";
 import { INVOICE_COLUMN } from "../Utils/Constants";
-import { InvoiceApi } from "../Utils/Network";
 const Invoice = () => {
-  const { invoiceList, setInvoiceList } = useContext(EntityDetailsContext);
+  const { invoiceList } = useContext(EntityDetailsContext);
   const pagination = false;
 
   return (

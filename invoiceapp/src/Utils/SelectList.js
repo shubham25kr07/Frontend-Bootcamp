@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const SelectList = (props) => {
   const { dataList, setList, optionValue } = props;

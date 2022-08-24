@@ -7,23 +7,21 @@ import { Link } from "react-router-dom";
 const Customer = () => {
   const { customerList, setCustomerList } = useContext(EntityDetailsContext);
   const [currentPage, setCurrentPage] = useState(1);
+  // const callAPI = (url, data) => {};
   useEffect(() => {
     const url = `http://localhost:8080/v1/customer/customerList?page=${currentPage}`;
     const data = {
       sort_key: "name",
       sort_value: "ASC",
     };
-    callAPI(url, data);
-  }, [currentPage]);
 
-  const callAPI = (url, data) => {
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((json) => setCustomerList(json.customer));
-  };
+  }, [currentPage, setCustomerList]);
 
   return (
     <div>
