@@ -248,6 +248,7 @@ const InvoiceForm = () => {
                     value={DueDate}
                     placeholder="Due Date"
                     name="DueDate"
+                    id="dueDate"
                     onChange={handleChange.bind(null, "DueDate")}
                   />
                 </div>

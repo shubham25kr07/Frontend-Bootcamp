@@ -24,6 +24,7 @@ const SelectList = (props) => {
         width="100%"
         onChange={handleChangeNormalSelect}
         multiple
+        id="selectId"
       >
         {dataList.map((data, index) => {
           return (

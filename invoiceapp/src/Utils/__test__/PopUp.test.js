@@ -1,7 +1,6 @@
 import { fireEvent, getByText, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import PopUp from "../PopUp";
-// displayModel, showModel, children
 describe("Popup ", () => {
   test("should display popUp", () => {
     const showModel = jest.fn();
