@@ -37,7 +37,9 @@ const SelectList = (props) => {
         })}
       </select>
       <div className="button-div">
-        <button className="add-button">Add</button>
+        <button data-test-id="save-button" className="add-button">
+          Add
+        </button>
       </div>
     </form>
   );
