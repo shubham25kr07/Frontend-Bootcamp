@@ -73,7 +73,7 @@ const InvoiceForm = () => {
       ItemList: itemIdList,
       QuantityList: quantityList,
       PriceList: priceList,
-      PaidStatus: "Pending",
+      PaidStatus: "pending",
       ...inputValue,
     };
 
