@@ -3,7 +3,7 @@ const { test, expect } = require("@playwright/test");
 const getRandomString = (name) => {
   const num = Math.floor(Math.random() * 1000);
   if (name == "") return `${num}`;
-  return `name${num}`;
+  return `${name}${num}`;
 };
 test.skip("item add page", async ({ page }) => {
   await page.goto("http://localhost:3000/item/");
