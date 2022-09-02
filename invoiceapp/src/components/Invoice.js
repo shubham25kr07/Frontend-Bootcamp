@@ -8,7 +8,6 @@ import AddBox from "../utils/AddBox";
 const Invoice = () => {
   const { invoiceList } = useContext(EntityDetailsContext);
   console.log(invoiceList);
-  const pagination = false;
 
   return (
     <div>
@@ -24,7 +23,7 @@ const Invoice = () => {
           <Table
             column={INVOICE_COLUMN}
             datalist={invoiceList}
-            pagination={pagination}
+            pagination={false}
           />
         </div>
       ) : (

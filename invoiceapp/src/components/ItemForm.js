@@ -147,10 +147,7 @@ const ItemForm = () => {
             <Errors value={errors.Description} className={"error"} />
           </div>
         </div>
-        <button
-          className={isDisabled ? "disabled-item-button" : "submit-item-button"}
-          disabled={isDisabled}
-        >
+        <button className={"submit-item-button"} disabled={isDisabled}>
           {" "}
           <i className="fa fa-file"></i>Save Item
         </button>

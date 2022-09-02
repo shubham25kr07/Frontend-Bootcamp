@@ -5,11 +5,11 @@ const AddBox = ({ value, link }) => {
     <div className="empty-invoice-list">
       <div className="empty-box">
         <div className="empty-box-text" data-testid="custom-element">
-          NO Customers
+          NO {value}
         </div>
         <Link to={link} className="add-button">
           <i className="fa fa-plus"></i>
-          Add Customer
+          Add {value}
         </Link>
       </div>
     </div>

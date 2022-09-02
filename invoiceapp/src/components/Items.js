@@ -8,7 +8,6 @@ import AddBox from "../utils/AddBox";
 
 const Item = () => {
   const { itemList } = useContext(EntityDetailsContext);
-  const pagination = false;
 
   return (
     <div>
@@ -21,11 +20,7 @@ const Item = () => {
               Add Item
             </Link>
           </div>
-          <Table
-            column={ITEM_COLUMN}
-            datalist={itemList}
-            pagination={pagination}
-          />
+          <Table column={ITEM_COLUMN} datalist={itemList} pagination={false} />
         </div>
       ) : (
         <AddBox value="Item" link="/item/add" />

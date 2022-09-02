@@ -36,9 +36,9 @@ const Table = (props) => {
           {onPageChange > 1 ? (
             <button
               onClick={() => {
-                setCurrentPage((prePage) => {
-                  if (prePage > 1) return prePage - 1;
-                  return prePage;
+                setCurrentPage((prevPage) => {
+                  if (prevPage > 1) return prevPage - 1;
+                  return prevPage;
                 });
               }}
             >
@@ -48,8 +48,8 @@ const Table = (props) => {
           {onPageChange < totalPage ? (
             <button
               onClick={() => {
-                setCurrentPage((prePage) => {
-                  return prePage + 1;
+                setCurrentPage((prevPage) => {
+                  return prevPage + 1;
                 });
               }}
             >
