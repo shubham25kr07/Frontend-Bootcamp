@@ -3,21 +3,15 @@ import { CUSTOMER_COLUMN } from "../utils/Constants";
 import Table from "../utils/Table";
 import { EntityDetailsContext } from "../App";
 import { Link } from "react-router-dom";
-import { getCustomerList } from "../apis/customer";
 import AddBox from "../utils/AddBox";
 
 const Customer = () => {
-  const { customerList, setCustomerList } = useContext(EntityDetailsContext);
+  const { customerList, fetchCustomers } = useContext(EntityDetailsContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await getCustomerList(1);
-
-      setCustomerList(response);
-    }
-    fetchData();
-  }, [currentPage, setCustomerList]);
+    fetchCustomers(currentPage);
+  }, [currentPage, fetchCustomers]);
 
   return (
     <div>
@@ -35,7 +29,7 @@ const Customer = () => {
             column={CUSTOMER_COLUMN}
             datalist={customerList}
             setCurrentPage={setCurrentPage}
-            currentPage={currentPage}
+            onPageChange={currentPage}
           />
         </div>
       ) : (

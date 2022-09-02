@@ -3,7 +3,7 @@ const Table = (props) => {
     column,
     datalist,
     setCurrentPage,
-    currentPage,
+    onPageChange,
     pagination = true,
   } = props;
 
@@ -32,7 +32,7 @@ const Table = (props) => {
       </table>
       {pagination === true ? (
         <div>
-          {currentPage > 1 ? (
+          {onPageChange > 1 ? (
             <button
               onClick={() => {
                 setCurrentPage((prePage) => {

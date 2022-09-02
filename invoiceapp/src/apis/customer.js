@@ -1,9 +1,5 @@
-const getCustomerList = async (page) => {
-  const url = `http://localhost:8080/v1/customer/customerList?page=${page}`;
-  const data = {
-    sort_key: "name",
-    sort_value: "ASC",
-  };
+const getCustomerList = async (page, data) => {
+  const url = `${process.env.REACT_APP_HOST}/v1/customer/customerList?page=${page}`;
   const response = await fetch(url, {
     method: "POST",
     body: JSON.stringify(data),
@@ -15,7 +11,7 @@ const getCustomerList = async (page) => {
 };
 
 const addCustomer = async (data) => {
-  const url = "http://localhost:8080/v1/customer/add";
+  const url = `${process.env.REACT_APP_HOST}/v1/customer/add`;
 
   const response = await fetch(url, {
     method: "POST",

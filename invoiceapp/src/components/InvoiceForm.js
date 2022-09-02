@@ -161,7 +161,6 @@ const InvoiceForm = () => {
       amount = amount + data.quantity * data.Price;
     });
     return amount;
-    // setTotalAmount(amount);
   };
   return (
     <div className="form-container">

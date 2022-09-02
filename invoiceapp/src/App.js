@@ -10,25 +10,52 @@ function App() {
   const [customerList, setCustomerList] = useState([]);
   const [itemList, setItemList] = useState([]);
   const [invoiceList, setInvoiceList] = useState([]);
+  const fetchCustomers = async (page = 1) => {
+    const data = {
+      sort_key: "name",
+      sort_value: "ASC",
+    };
+    const customerData = await getCustomerList(page, data);
+    setCustomerList(customerData);
+  };
+  const fetchItems = async (page = 1) => {
+    const data = {
+      sort_key: "item_name",
+      sort_value: "ASC",
+    };
+    const itemData = await getItemList(page, data);
+    setItemList(itemData);
+  };
+  const fetchInvoice = async () => {
+    const invoiceData = await getInvoiceList();
+    setInvoiceList(invoiceData);
+  };
+
   const propsValue = {
     customerList,
-    setCustomerList,
+
     itemList,
     setItemList,
     invoiceList,
     setInvoiceList,
+    fetchCustomers,
+    fetchItems,
+    fetchInvoice,
   };
 
   useEffect(() => {
-    async function fetchData() {
-      const customerData = await getCustomerList(1);
-      const itemData = await getItemList(1);
-      const invoiceData = await getInvoiceList();
-      setCustomerList(customerData);
-      setInvoiceList(invoiceData);
-      setItemList(itemData);
-    }
-    fetchData();
+    // async function fetchData() {
+    //   const customerData = await getCustomerList(1);
+    //   const itemData = await getItemList(1);
+    //   const invoiceData = await getInvoiceList();
+    //   setCustomerList(customerData);
+    //   setInvoiceList(invoiceData);
+    //   setItemList(itemData);
+    // }
+    // fetchData();
+    fetchCustomers();
+    fetchItems();
+    fetchInvoice();
   }, []);
   return (
     <div>

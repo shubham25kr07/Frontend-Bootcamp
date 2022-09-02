@@ -1,5 +1,5 @@
 const getInvoiceList = async () => {
-  const url = "http://localhost:8080/v1/invoice/list";
+  const url = `${process.env.REACT_APP_HOST}/v1/invoice/list`;
 
   const invoiceList = await fetch(url, {
     method: "GET",
@@ -9,7 +9,7 @@ const getInvoiceList = async () => {
 };
 
 const addInvoice = async (data) => {
-  const url = "http://localhost:8080/v1/invoice/create";
+  const url = `${process.env.REACT_APP_HOST}/v1/invoice/create`;
   const response = await fetch(url, {
     method: "POST",
     body: JSON.stringify(data),

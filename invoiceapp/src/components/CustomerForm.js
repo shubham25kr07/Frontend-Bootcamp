@@ -42,7 +42,6 @@ const CustomerForm = () => {
     if (type === "email") {
       console.log("hello");
       if (!isValidEmail(value)) {
-        // setError('Email is invalid');
         console.log(isValidEmail(value));
         console.log(value);
         setErrors((prevErrors) => ({

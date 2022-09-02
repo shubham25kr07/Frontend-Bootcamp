@@ -1,9 +1,6 @@
-const getItemList = async (page) => {
-  const url = `http://localhost:8080/v1/item/itemList?page=${page}`;
-  const data = {
-    sort_key: "item_name",
-    sort_value: "ASC",
-  };
+const getItemList = async (page, data) => {
+  const url = `${process.env.REACT_APP_HOST}/v1/item/itemList?page=${page}`;
+
   const itemList = await fetch(url, {
     method: "POST",
     body: JSON.stringify(data),
@@ -22,7 +19,7 @@ const getItemList = async (page) => {
 };
 
 const addItem = async (data) => {
-  const url = "http://localhost:8080/v1/item/add";
+  const url = `${process.env.REACT_APP_HOST}/v1/item/add`;
   const response = await fetch(url, {
     method: "POST",
     body: JSON.stringify(data),
