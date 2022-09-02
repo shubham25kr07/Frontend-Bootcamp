@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
-import FormInput from "../Utils/FormInput";
+import FormInput from "../utils/FormInput";
 import { useNavigate } from "react-router-dom";
-import TextArea from "../Utils/TextArea";
-import Label from "../Utils/Label";
+import TextArea from "../utils/TextArea";
+import Label from "../utils/Label";
 import { EntityDetailsContext } from "../App";
+import Errors from "../utils/Errors";
+import { addItem } from "../apis/item";
 
 const ItemForm = () => {
   const { setItemList } = useContext(EntityDetailsContext);
@@ -17,13 +19,28 @@ const ItemForm = () => {
     Description: "",
     Price: null,
   });
+  const [isDisabled, setDisabled] = useState(true);
   const { Item_Name, Item_Description, Price } = inputValue;
   const navigate = useNavigate();
-  const url = "http://localhost:8080/v1/item/add";
+
+  const checkFields = (type, value) => {
+    const tempInputValue = inputValue;
+    tempInputValue[type] = value;
+    if (
+      tempInputValue.Item_Name &&
+      tempInputValue.Item_Description &&
+      tempInputValue.Price
+    ) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  };
 
   const handleChange = (type, e) => {
-    console.log(e.target.value);
     const { value } = e.target;
+    checkFields(type, value);
+
     setInputValue((prev) => ({
       ...prev,
       [type]: value,
@@ -45,44 +62,44 @@ const ItemForm = () => {
       }));
     }
   };
+  const extractData = (json) => {
+    const responseItem = {
+      id: json.ItemId,
+      Item_Name: json.name,
+      Price: json.price,
+      Item_Description: json.description,
+
+      added_on: "Today",
+    };
+    return responseItem;
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    if (errors.Description || errors.Item_Name || errors.Price) {
+      alert("Form Entries are not valid");
+      return;
+    }
     const requestBodyJson = inputValue;
     requestBodyJson["Price"] = Number(requestBodyJson.Price);
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(requestBodyJson),
-    })
-      .then(async (response) => {
-        const x = await response.json();
-        console.log(x, response);
-        // return x;
-        if (response.status !== 200) {
-          throw new Error(x.message);
-        } else {
-          return x;
-        }
-      })
-      .then((json) => {
-        console.log(json);
-        const responseItem = {
-          id: json.ItemId,
-          Item_Name: json.name,
-          Price: json.price,
-          Item_Description: json.description,
 
-          added_on: "Today",
-        };
+    const addData = async () => {
+      const response = await addItem(requestBodyJson);
+      const json = await response.json();
+
+      if (response.status !== 200) {
+        throw new Error(json.message);
+      } else {
+        const responseItem = extractData(json);
         setItemList((prev) => {
           console.log(prev);
           return [...prev, responseItem];
         });
         alert("Item Added Successfully");
         navigate("/item");
-      });
+      }
+    };
+    addData();
   };
-
   return (
     <div className="form-container">
       <div className="title">New Item</div>
@@ -97,20 +114,20 @@ const ItemForm = () => {
               onChange={handleChange.bind(null, "Item_Name")}
               onBlur={handleBlur.bind(null, "Name")} //change the name of handleBlur
             />
-            {errors.Name && <div className="error">{errors.Name}</div>}
+            <Errors value={errors.Name} className={"error"} />
           </div>
         </div>
         <div className="input-container label-and-error">
           <div className="lable-input">
             <FormInput
-              type="text"
+              type="number"
               value={Price}
               label="Price"
               name="price"
               onChange={handleChange.bind(null, "Price")}
               onBlur={handleBlur.bind(null, "Price")}
             />
-            {errors.Price && <div className="error">{errors.Price}</div>}
+            <Errors value={errors.Price} className={"error"} />
           </div>
         </div>
         <div className="input-container label-and-error mb">
@@ -125,12 +142,13 @@ const ItemForm = () => {
               onChange={handleChange.bind(null, "Item_Description")}
               onBlur={handleBlur.bind(null, "Description")}
             />
-            {errors.Description && (
-              <div className="error ">{errors.Description}</div>
-            )}
+            <Errors value={errors.Description} className={"error"} />
           </div>
         </div>
-        <button className="submit-item">
+        <button
+          className={isDisabled ? "disabled-item-button" : "submit-item-button"}
+          disabled={isDisabled}
+        >
           {" "}
           <i className="fa fa-file"></i>Save Item
         </button>

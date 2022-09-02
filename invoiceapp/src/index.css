@@ -146,8 +146,18 @@
   transition: transform 200ms, color 200ms;
   top: 20px;
 }
+.disabled-item-button {
+  margin-top: 60px;
+  height: 45px;
+  width: 200px;
 
-.submit-item {
+  font-size: 15px;
+  background-color: #5851d9;
+  opacity: 0.4;
+  color: white;
+  border-radius: 4px;
+}
+.submit-item-button {
   margin-top: 60px;
   height: 45px;
   width: 200px;
@@ -157,7 +167,19 @@
   color: white;
   border-radius: 4px;
 }
-.submit {
+.disabled-customer-button {
+  margin-top: 30px;
+  height: 45px;
+  width: 200px;
+  opacity: 0.5;
+  font-size: 15px;
+  background-color: #5851d9;
+  /* background-color: #b0afbd; */
+  /* border: none; */
+  color: white;
+  border-radius: 4px;
+}
+.submit-customer-button {
   margin-top: 30px;
   height: 45px;
   width: 200px;
@@ -180,7 +202,16 @@
   /* outline: 0; */
   /* text-align: center; */
 }
+.navlink-class {
+  text-decoration: none;
+  cursor: pointer;
+  color: #060b26;
+}
 
+.active {
+  text-decoration: none;
+  color: #7303fc;
+}
 .submit:active {
   background-color: #06b;
 }
@@ -860,4 +891,10 @@ Empty Lists
 .empty-box-text {
   margin-bottom: 20px;
   font-size: 30px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

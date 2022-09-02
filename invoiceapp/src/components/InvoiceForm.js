@@ -4,20 +4,21 @@ import {
   INVOICE_ITEMS_COLUMN,
   INVOICE_ITEM_MODAL_HEADER,
   INVOICE_CUSTOMER_MODAL_HEADER,
-} from "../Utils/Constants";
+} from "../utils/Constants";
 import { EntityDetailsContext } from "../App";
-import PopUp from "../Utils/PopUp";
-import Label from "../Utils/Label";
-import Input from "../Utils/Input";
+import PopUp from "../utils/PopUp";
+import Label from "../utils/Label";
+import Input from "../utils/Input";
 
-import TableHeader from "../Utils/TableHeader";
-import TableRow from "../Utils/TableRow";
+import TableHeader from "../utils/TableHeader";
+import TableRow from "../utils/TableRow";
 
-import ItemCard from "../Utils/ItemCard";
-import TextArea from "../Utils/TextArea";
-import SelectList from "../Utils/SelectList";
-import PopUpTitle from "../Utils/PopUpTitle";
-import TableCell from "../Utils/TableCell";
+import ItemCard from "../utils/ItemCard";
+import TextArea from "../utils/TextArea";
+import SelectList from "../utils/SelectList";
+import PopUpTitle from "../utils/PopUpTitle";
+import TableCell from "../utils/TableCell";
+import { addInvoice } from "../apis/invoice";
 
 const InvoiceForm = () => {
   const { setInvoiceList } = useContext(EntityDetailsContext);
@@ -76,42 +77,35 @@ const InvoiceForm = () => {
       PaidStatus: "pending",
       ...inputValue,
     };
+    const extractData = (json) => {
+      const responseInvoice = {
+        InvoiceId: json.InvoiceId,
+        CreatedAt: json.CreatedAt,
+        CustomerName: json.CustomerName,
+        ReferenceNumber: json.ReferenceNumber,
+        PaidStatus: json.PaidStatus,
+        TotalAmount: json.TotalAmount,
+      };
+      return responseInvoice;
+    };
+    const addData = async () => {
+      const response = await addInvoice(requestBodyJson);
 
-    const url = "http://localhost:8080/v1/invoice/create";
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(requestBodyJson),
-    })
-      .then(async (response) => {
-        const x = await response.json();
-        console.log(x, response);
-
-        if (response.status !== 200) {
-          throw new Error(x.message);
-        } else {
-          return x;
-        }
-      })
-      .then((json) => {
-        console.log(json);
-        const responseInvoice = {
-          InvoiceId: json.InvoiceId,
-          CreatedAt: json.CreatedAt,
-          CustomerName: json.CustomerName,
-          ReferenceNumber: json.ReferenceNumber,
-          PaidStatus: json.PaidStatus,
-          TotalAmount: json.TotalAmount,
-        };
+      const json = await response.json();
+      if (response.status !== 200) {
+        throw new Error(json.message);
+      } else {
+        const responseInvoice = extractData(json);
+        console.log(responseInvoice);
         setInvoiceList((prev) => {
-          console.log(prev);
+          // console.log(prev);
           return [...prev, responseInvoice];
         });
         alert("Invoice Added Successfully");
         navigate("/invoice");
-      })
-      .catch((error) => {
-        console.table(error);
-      });
+      }
+    };
+    addData();
   };
   const validateDate = () => {};
   const setModalItemList = (val) => {

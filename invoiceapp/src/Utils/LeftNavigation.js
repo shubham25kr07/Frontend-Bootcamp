@@ -6,30 +6,33 @@ const LeftNavigation = () => {
     <div className="header">
       <nav className="nav-menu1 active1">
         <div>
-          <div className="left-nav-text" id="left-nav-id">
-            <NavLink to="/customer">
+          <NavLink className="navlink-class" to="/customer">
+            <div className="left-nav-text" id="left-nav-id">
               <i className="fa fa-user"></i>
               <span>{ENTITY.CUSTOMER_ENTITY}</span>
-            </NavLink>
-          </div>
-          <div className="left-nav-text   ">
-            <NavLink to="/item">
+            </div>
+          </NavLink>
+
+          <NavLink className="navlink-class" to="/item">
+            <div className="left-nav-text">
               <i className="fa fa-star"></i>
               <span>{ENTITY.ITEM_ENTITY}</span>
-            </NavLink>
-          </div>
-          <div className="left-nav-text">
-            <NavLink to="/invoice">
+            </div>
+          </NavLink>
+
+          <NavLink className="navlink-class" to="/invoice">
+            <div className="left-nav-text">
               <i className="fa fa-file"></i>
               <span>{ENTITY.INVOICE_ENTITY}</span>
-            </NavLink>
-          </div>
-          <div className="left-nav-text">
-            <NavLink to="/dashboard">
+            </div>
+          </NavLink>
+
+          <NavLink className="navlink-class" to="/dashboard">
+            <div className="left-nav-text">
               <i className="fa fa-tachometer"></i>
               <span>{ENTITY.DASHBOARD_ENTITY}</span>
-            </NavLink>
-          </div>
+            </div>
+          </NavLink>
         </div>
       </nav>
     </div>
