@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
-import LeftNavigation from "./utils/LeftNavigation";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import LeftNavigation from "./utils/LeftNavigation";
 
 const Customer = lazy(() => import("./components/Customer"));
 const Item = lazy(() => import("./components/Items"));

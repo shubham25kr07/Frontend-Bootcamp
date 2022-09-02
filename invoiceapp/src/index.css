@@ -305,7 +305,7 @@
   padding: 0%;
 }
 /* buttons */
-.customers-addcustomer {
+.title-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -315,7 +315,6 @@
   margin-bottom: -1%;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  /* margin-left: */
 }
 
 .add-button {

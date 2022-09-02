@@ -3,9 +3,10 @@ const getInvoiceList = async () => {
 
   const invoiceList = await fetch(url, {
     method: "GET",
-  }).then((response) => response.json());
-
-  return invoiceList;
+  });
+  // .then((response) => response.json());
+  const response = await invoiceList.json();
+  return response;
 };
 
 const addInvoice = async (data) => {
@@ -13,14 +14,14 @@ const addInvoice = async (data) => {
   const response = await fetch(url, {
     method: "POST",
     body: JSON.stringify(data),
-  })
-    .then(async (response) => {
-      return response;
-    })
+  });
+  // .then(async (response) => {
+  //   return response;
+  // })
 
-    .catch((error) => {
-      console.table(error);
-    });
+  // .catch((error) => {
+  //   console.table(error);
+  // });
   return response;
 };
 

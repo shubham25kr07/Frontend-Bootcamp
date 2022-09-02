@@ -1,5 +1,6 @@
 import InvoiceApp from "./InvoiceApp";
 import { createContext, useEffect, useState } from "react";
+
 import { getCustomerList } from "./apis/customer";
 import { getItemList } from "./apis/item";
 import { getInvoiceList } from "./apis/invoice";
@@ -10,13 +11,15 @@ function App() {
   const [customerList, setCustomerList] = useState([]);
   const [itemList, setItemList] = useState([]);
   const [invoiceList, setInvoiceList] = useState([]);
+  const [customerTotalPages, setcustomerTotalPages] = useState(0);
   const fetchCustomers = async (page = 1) => {
     const data = {
       sort_key: "name",
       sort_value: "ASC",
     };
-    const customerData = await getCustomerList(page, data);
-    setCustomerList(customerData);
+    const json = await getCustomerList(page, data);
+    setCustomerList(json.customer);
+    setcustomerTotalPages(parseInt((Number(json.total_rows) + 10) / 10));
   };
   const fetchItems = async (page = 1) => {
     const data = {
@@ -41,6 +44,7 @@ function App() {
     fetchCustomers,
     fetchItems,
     fetchInvoice,
+    customerTotalPages,
   };
 
   useEffect(() => {

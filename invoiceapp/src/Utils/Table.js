@@ -5,6 +5,7 @@ const Table = (props) => {
     setCurrentPage,
     onPageChange,
     pagination = true,
+    totalPage,
   } = props;
 
   return (
@@ -44,16 +45,17 @@ const Table = (props) => {
               Prev
             </button>
           ) : null}
-
-          <button
-            onClick={() => {
-              setCurrentPage((prePage) => {
-                return prePage + 1;
-              });
-            }}
-          >
-            Next
-          </button>
+          {onPageChange < totalPage ? (
+            <button
+              onClick={() => {
+                setCurrentPage((prePage) => {
+                  return prePage + 1;
+                });
+              }}
+            >
+              Next
+            </button>
+          ) : null}
         </div>
       ) : null}
     </div>

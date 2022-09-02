@@ -3,11 +3,19 @@ const getCustomerList = async (page, data) => {
   const response = await fetch(url, {
     method: "POST",
     body: JSON.stringify(data),
-  }).then(async (response) => {
-    return response.json();
   });
-
-  return response.customer;
+  // .then(async (response) => {
+  //   return response.json();
+  // });
+  const json = await response.json();
+  // const response = await await fetch(url, {
+  //   method: "POST",
+  //   body: JSON.stringify(data),
+  // });
+  // const movies = await response.json();
+  // return movies;
+  // console.log(json);
+  return json;
 };
 
 const addCustomer = async (data) => {
@@ -17,9 +25,10 @@ const addCustomer = async (data) => {
     method: "POST",
 
     body: JSON.stringify(data),
-  }).then(async (response) => {
-    return response;
   });
+  // .then(async (response) => {
+  //   return response;
+  // });
 
   return response;
 };

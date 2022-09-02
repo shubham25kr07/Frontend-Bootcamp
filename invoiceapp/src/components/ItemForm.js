@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import FormInput from "../utils/FormInput";
 import { useNavigate } from "react-router-dom";
+
+import FormInput from "../utils/FormInput";
 import TextArea from "../utils/TextArea";
 import Label from "../utils/Label";
 import { EntityDetailsContext } from "../App";

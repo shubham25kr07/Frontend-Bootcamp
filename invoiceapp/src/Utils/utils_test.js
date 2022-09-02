@@ -1,8 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+
 import { EntityDetailsContext } from "../App";
-// const propsValue = {};
+
 const Wrapper = ({ children }) => {
   return (
     <EntityDetailsContext.Provider value={propsValue}>

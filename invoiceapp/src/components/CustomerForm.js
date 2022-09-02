@@ -1,6 +1,7 @@
 import { useState } from "react";
-import FormInput from "../utils/FormInput";
 import { useNavigate } from "react-router-dom";
+
+import FormInput from "../utils/FormInput";
 import Errors from "../utils/Errors";
 import { addCustomer } from "../apis/customer";
 
