@@ -281,7 +281,9 @@
   flex-direction: column;
   margin-left: 0%;
 }
-
+.submit-item-button:disabled {
+  opacity: 0.4;
+}
 .list-hover-slide button {
   background: transparent;
   border: none !important;
