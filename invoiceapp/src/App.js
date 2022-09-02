@@ -1,6 +1,9 @@
 import InvoiceApp from "./InvoiceApp";
 import { createContext, useEffect, useState } from "react";
-import { CustomerApi, InvoiceApi, ItemApi } from "./Utils/Network";
+import { getCustomerList } from "./apis/customer";
+import { getItemList } from "./apis/item";
+import { getInvoiceList } from "./apis/invoice";
+
 export const EntityDetailsContext = createContext();
 
 function App() {
@@ -15,10 +18,17 @@ function App() {
     invoiceList,
     setInvoiceList,
   };
+
   useEffect(() => {
-    CustomerApi(setCustomerList);
-    ItemApi(setItemList);
-    InvoiceApi(setInvoiceList);
+    async function fetchData() {
+      const customerData = await getCustomerList(1);
+      const itemData = await getItemList(1);
+      const invoiceData = await getInvoiceList();
+      setCustomerList(customerData);
+      setInvoiceList(invoiceData);
+      setItemList(itemData);
+    }
+    fetchData();
   }, []);
   return (
     <div>

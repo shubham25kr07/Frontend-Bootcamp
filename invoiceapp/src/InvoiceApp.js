@@ -1,13 +1,13 @@
 import { lazy, Suspense } from "react";
-import LeftNavigation from "./Utils/LeftNavigation";
+import LeftNavigation from "./utils/LeftNavigation";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-const LazyCustomer = lazy(() => import("./components/Customer"));
-const LazyItem = lazy(() => import("./components/Items"));
-const LazyInvoice = lazy(() => import("./components/Invoice"));
-const LazyCustomerForm = lazy(() => import("./components/CustomerForm"));
-const LazyItemForm = lazy(() => import("./components/ItemForm"));
-const LazyInvoiceForm = lazy(() => import("./components/InvoiceForm"));
+const Customer = lazy(() => import("./components/Customer"));
+const Item = lazy(() => import("./components/Items"));
+const Invoice = lazy(() => import("./components/Invoice"));
+const CustomerForm = lazy(() => import("./components/CustomerForm"));
+const ItemForm = lazy(() => import("./components/ItemForm"));
+const InvoiceForm = lazy(() => import("./components/InvoiceForm"));
 
 const InvoiceApp = () => {
   return (
@@ -16,12 +16,12 @@ const InvoiceApp = () => {
         <LeftNavigation />
         <Suspense fallback={<h1>Loadding Please Wait ... </h1>}>
           <Routes>
-            <Route path="/customer" element={<LazyCustomer />} />
-            <Route path="/customer/add" element={<LazyCustomerForm />} />
-            <Route path="/item" element={<LazyItem />} />
-            <Route path="/item/add" element={<LazyItemForm />} />
-            <Route path="/invoice" element={<LazyInvoice />} />
-            <Route path="/invoice/add" element={<LazyInvoiceForm />} />
+            <Route path="/customer" element={<Customer />} />
+            <Route path="/customer/add" element={<CustomerForm />} />
+            <Route path="/item" element={<Item />} />
+            <Route path="/item/add" element={<ItemForm />} />
+            <Route path="/invoice" element={<Invoice />} />
+            <Route path="/invoice/add" element={<InvoiceForm />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

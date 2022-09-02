@@ -1,15 +1,17 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { EntityDetailsContext } from "../App";
-import Table from "../Utils/Table";
-import { INVOICE_COLUMN } from "../Utils/Constants";
+import Table from "../utils/Table";
+import { INVOICE_COLUMN } from "../utils/Constants";
+import AddBox from "../utils/AddBox";
 const Invoice = () => {
   const { invoiceList } = useContext(EntityDetailsContext);
+  console.log(invoiceList);
   const pagination = false;
 
   return (
     <div>
-      {invoiceList.length > 0 ? (
+      {invoiceList && invoiceList.length > 0 ? (
         <div className="table-form">
           <div class="customers-addcustomer ">
             <h1 data-testid="invoice-element">Invoice</h1>
@@ -25,17 +27,7 @@ const Invoice = () => {
           />
         </div>
       ) : (
-        <div className="empty-invoice-list">
-          <div className="empty-box">
-            <div className="empty-box-text" data-testid="no-invoice-element">
-              NO Invoices
-            </div>
-            <Link to="/invoice/add" className="add-button">
-              <i className="fa fa-plus"></i>
-              Add Invoice
-            </Link>
-          </div>
-        </div>
+        <AddBox value="Invoice" link="/invoice/add" />
       )}
     </div>
   );
